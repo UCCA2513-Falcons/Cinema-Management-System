@@ -1,0 +1,233 @@
+﻿@page
+@model Falcons.Pages.management.FnB.InventoryModel
+@{
+    Layout = "_ManagementLayout";
+
+    ViewData["Title"] = "Food and Beverages Inventory";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Inventory</div>
+            </div>
+            <div class="card-body">
+                <!-- Button -->
+                <div class="d-flex">
+                    <button class="btn btn-primary btn-round ml-auto mb-3" data-toggle="modal" data-target="#addProductModal">
+                        <i class="fa fa-plus"></i>
+                        Add Inventory Item
+                    </button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+                                    <span class="fw-mediumbold">
+                                        New
+                                    </span>
+                                    <span class="fw-light">
+                                        Inventory Item
+                                    </span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="small">Please fill in all the field.</p>
+                                <form role="form">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Name</label>
+                                                <input id="ProductName" type="text" class="form-control" placeholder="Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Category</label>
+                                                <select id="ProductCategory" class="form-control">
+                                                    <option>Side Dishes</option>
+                                                    <option>Burger</option>
+                                                    <option>Beverage</option>
+                                                    <option>Dessert</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-default">
+                                                <label>Price</label>
+                                                <input id="ProductPrice" type="number" class="form-control" placeholder="MYR 0.00">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-default">
+                                                <label>Size</label>
+                                                <select id="ProductSize" class="form-control">
+                                                    <option value="Small">Small</option>
+                                                    <option value="Medium">Medium</option>
+                                                    <option value="Large">Large</option>
+                                                    <option value="Extra Large">Extra Large</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Description</label>
+                                                <textarea class="form-control" id="ProductDescription" rows="8" placeholder="Product description here ..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer no-bd">
+                                <button type="button" id="addProductButton" class="btn btn-primary">Add</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal End -->
+                <!-- Table -->
+                <div class="table-responsive">
+                    <table id="InventoryTypeTable" class=" display table table-striped table-hover" cellspacing="0" width="100%">
+                        <thead>
+                            <tr role="row"></tr>
+
+                            <tr role="row">
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Chicken</td>
+                                <td>Meal</td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Nugget</td>
+                                <td>Meal</td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Blueberry</td>
+                                <td>Fruit</td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Coke</td>
+                                <td>Beverage</td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Pepsi Cola</td>
+                                <td>Beverage</td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Chilli Sauce</td>
+                                <td>Sauce</td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Tomato Sauce</td>
+                                <td>Sauce</td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Table End -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+<script>
+
+    $('#InventoryTypeTable').DataTable({
+        "pageLength": 5
+    });
+</script>
+}
