@@ -1,0 +1,174 @@
+﻿@page
+@model Falcons.Pages.management.HRM.AttendanceModel
+@{
+
+    Layout = "_ManagementLayout";
+
+    ViewData["Title"] = "Attendance";
+
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Attendance</div>
+            </div>
+            <div class="card-body">
+                <!-- Button -->
+                <div class="d-flex">
+                    <button class="btn btn-primary btn-round ml-auto mb-3" data-toggle="modal" data-target="#addEmployee">
+                        <i class="fa fa-plus"></i>
+                        Add New Staff
+                    </button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+                                    <span class="fw-mediumbold">
+                                        New
+                                    </span>
+                                    <span class="fw-light">
+                                        New Employee
+                                    </span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="small">Please fill in all the field.</p>
+                                <form role="form">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Employee ID</label>
+                                                <input id="addEmpID" type="text" class="form-control" placeholder="Employee ID">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>First Name</label>
+                                                <input id="addFirstName" type="text" class="form-control" placeholder="First Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Last Name</label>
+                                                <textarea class="form-control" rows="8" placeholder="Last Name"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>First Name</label>
+                                                <input id="addFirstName" type="text" class="form-control" placeholder="First Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer no-bd">
+                                <button type="button" id="addFirstName" class="btn btn-primary">Add</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="table-responsive">
+                    <table id="employee-row" class=" display table table-striped table-hover" cellspacing="0" width="100%">
+                        <thead>
+                            <tr role="row"></tr>
+
+                            <tr role="row">
+                                <th>Employee ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Department</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>00001</td>
+                                <td>Andy</td>
+                                <td>Tan</td>
+                                <td>Purchasing</td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="View">
+                                            <i class="fa fa-info"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>00001</td>
+                                <td>Calvin</td>
+                                <td>Chin</td>
+                                <td>R&D</td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="View">
+                                            <i class="fa fa-info"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>00001</td>
+                                <td>Alex</td>
+                                <td>Ng</td>
+                                <td>Accounting and Finance</td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="View">
+                                            <i class="fa fa-info"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>// Add Category
+        $('#employee-row').DataTable({
+            "pageLength": 5,
+        });
+
+        var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+        $('#addFirstName').click(function () {
+            $('#employee-row').dataTable().fnAddData([
+                $("#addFirstName").val(),
+                $("#addPosition").val(),
+                $("#addOffice").val(),
+                action
+            ]);
+            $('#addCategoryModal').modal('hide');
+
+        });</script>
+} 

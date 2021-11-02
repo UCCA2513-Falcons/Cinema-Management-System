@@ -6141,24 +6141,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\Falcons.csproj",
+      "projectUniqueName": "D:\\GitHub\\GitHub\\Falcons\\Falcons.csproj",
       "projectName": "Falcons",
-      "projectPath": "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\Falcons.csproj",
+      "projectPath": "D:\\GitHub\\GitHub\\Falcons\\Falcons.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\obj\\",
+      "outputPath": "D:\\GitHub\\GitHub\\Falcons\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
