@@ -1,0 +1,120 @@
+﻿
+.textColor {
+    color: #cbcbcb;
+}
+
+.box {
+    position: relative;
+    margin-top: 25px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #f1f2f3 25px, #222831 25px);
+}
+
+.box .img-box {
+    background: #f1f2f3;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 215px;
+    border-radius: 0 0 0 40px;
+    margin: -1px;
+    padding: 25px;
+}
+
+.box .img-box img {
+    max-width: 100%;
+    max-height: 145px;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+
+.box:hover .img-box img {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.box .detail-box {
+    padding: 25px;
+}
+
+.box .detail-box h5 {
+    font-weight: 600;
+}
+
+.box .detail-box p {
+    font-size: 15px;
+}
+
+.box .detail-box h6 {
+    margin-top: 10px;
+}
+
+.food_section .box .options {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.food_section .box .options a {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: #ffbe33;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.box .options {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.box .options a {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: #ffbe33;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.box .options a svg {
+    width: 18px;
+    height: auto;
+    fill: #ffffff;
+}
+
+.box .options a {
+    color: #ffffff;
+}
