@@ -1,6 +1,7 @@
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\PubTmp\Out\Falcons.exe
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\PubTmp\Out\wwwroot\assets\img\2021-11-02\burger.png
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\PubTmp\Out\wwwroot\assets\img\2021-11-02\fries.png
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\PubTmp\Out\wwwroot\assets\img\2021-11-02\popcorn.jpg
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\PubTmp\Out\wwwroot\assets\main\css\bootstrap.min.css
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\PubTmp\Out\wwwroot\assets\main\css\elegant-icons.css
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\PubTmp\Out\wwwroot\assets\main\css\font-awesome.min.css
