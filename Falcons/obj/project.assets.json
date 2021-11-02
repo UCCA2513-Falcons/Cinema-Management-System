@@ -6147,11 +6147,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\OneDrive - 1utarmy.onmicrosoft.com\\Oct 2021\\UCCA2513 MINI PROJECT\\Cinema Management System\\Falcons\\Falcons\\Falcons.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\Falcons.csproj",
       "projectName": "Falcons",
-      "projectPath": "C:\\Users\\User\\OneDrive - 1utarmy.onmicrosoft.com\\Oct 2021\\UCCA2513 MINI PROJECT\\Cinema Management System\\Falcons\\Falcons\\Falcons.csproj",
+      "projectPath": "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\Falcons.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\OneDrive - 1utarmy.onmicrosoft.com\\Oct 2021\\UCCA2513 MINI PROJECT\\Cinema Management System\\Falcons\\Falcons\\obj\\",
+      "outputPath": "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
