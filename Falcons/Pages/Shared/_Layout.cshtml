@@ -15,7 +15,9 @@
           rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="~/assets/main/css/bootstrap.min.css" type="text/css">
+    <!--link rel="stylesheet" href="~/assets/main/css/bootstrap.min.css" type="text/css"-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
     <link rel="stylesheet" href="~/assets/main/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="~/assets/main/css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="~/assets/main/css/plyr.css" type="text/css">
@@ -23,6 +25,11 @@
     <link rel="stylesheet" href="~/assets/main/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="~/assets/main/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="~/assets/main/css/style.css" type="text/css">
+
+    <!-- Font Awesome 5.15.4 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
@@ -68,310 +75,8 @@
         </div>
     </header>
     <!-- Header End -->
-    <!-- Movie Banner Section Begin -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero__slider owl-carousel">
-                <div class="hero__items set-bg" data-setbg="assets/main/img/banner-movies/a-quiet-place-part-II.jpg">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label">Horror, Triller</div>
-                                <h2>A Quiet Place 2</h2>
-                                <p>Following the deadly events at home...</p>
-                                <a href="#"><span>Book Now</span> <span>More Info</span><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero__items set-bg" data-setbg="assets/main/img/banner-movies/dont-breathe-2.jpg">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label">Horror, Triller</div>
-                                <h2>Don't Breathe 2</h2>
-                                <p>Blind veteran Norman Nordstrom has been hiding out for several years...</p>
-                                <a href="#"><span>Book Now</span> <span>More Info</span><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero__items set-bg" data-setbg="assets/main/img/banner-movies/sinkhole.jpg">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label">Comedy</div>
-                                <h2>Sinkhole</h2>
-                                <p>A common man and his family move into a house purchased after 11 years...</p>
-                                <a href="#"><span>Book Now</span> <span>More Info</span><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero__items set-bg" data-setbg="assets/main/img/banner-movies/antlers.jpg">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label">Horror, Triller</div>
-                                <h2>Antlers</h2>
-                                <p>A small-town Oregon teacher and her brother...</p>
-                                <a href="#"><span>Book Now</span> <span>More Info</span><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero__items set-bg" data-setbg="assets/main/img/banner-movies/eternals.jpg">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label">Adventure</div>
-                                <h2>Eternals</h2>
-                                <p>The Eternals, a race of immortal beings with superhuman powers...</p>
-                                <a href="#"><span>Book Now</span> <span>More Info</span><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Movie Banner Section End -->
-    <!-- Product Section Begin -->
-    <section class="product spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="trending__product">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-8">
-                                <div class="section-title">
-                                    <h4>Now Showing</h4>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="btn__all">
-                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="assets/main/img/now-showing/antlers-poster.jpg">
-                                        @*<div class="ep">18 / 18</div>*@
-                                        <div class="comment"><i class="fa fa-comments"></i> 100</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 1000</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Horror</li>
-                                            <li>Triller</li>
-                                        </ul>
-                                        <h5><a href="#">Antlers</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="assets/main/img/now-showing/a-quiet-place-2-poster.jpg">
-                                        @*<div class="ep">18 / 18</div>*@
-                                        <div class="comment"><i class="fa fa-comments"></i> 20</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 877</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Horror</li>
-                                            <li>Triller</li>
-                                        </ul>
-                                        <h5><a href="#">A Quiet Place 2</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="assets/main/img/now-showing/dont-breathe-2-poster.jpg">
-                                        @*<div class="ep">18 / 18</div>*@
-                                        <div class="comment"><i class="fa fa-comments"></i> 55</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 890</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Horror</li>
-                                            <li>Triller</li>
-                                        </ul>
-                                        <h5><a href="#">Don't Breathe 2</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="assets/main/img/now-showing/eternals-poster.jpg">
-                                        @*<div class="ep">18 / 18</div>*@
-                                        <div class="comment"><i class="fa fa-comments"></i> 22</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 761</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Adventure</li>
-                                            <li>Action</li>
-                                        </ul>
-                                        <h5><a href="#">Eternals</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="assets/main/img/now-showing/halloweenkills-posters.jpg">
-                                        @*<div class="ep">18 / 18</div>*@
-                                        <div class="comment"><i class="fa fa-comments"></i> 10</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 250</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Horror</li>
-                                            <li>Triller</li>
-                                        </ul>
-                                        <h5><a href="#">Halloween Kills</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="assets/main/img/now-showing/sinkhole-poster.jpg">
-                                        @*<div class="ep">18 / 18</div>*@
-                                        <div class="comment"><i class="fa fa-comments"></i> 52</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 536</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Comedy</li>
-                                            <li>Drama</li>
-                                        </ul>
-                                        <h5><a href="#">Sinkhole</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="popular__product">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-8">
-                                <div class="section-title">
-                                    <h4>Coming Soon</h4>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="btn__all">
-                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="assets/main/img/comingsoon/bossbaby2-poster.jpg">
-                                        @*<div class="ep">18 / 18</div>*@
-                                        @*<div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                            <div class="view"><i class="fa fa-eye"></i> 9141</div>*@
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Comedy</li>
-                                            <li>Family</li>
-                                        </ul>
-                                        <h5><a href="#">The Boss Baby 2: Family Business</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="assets/main/img/comingsoon/ghostbusters-poster.jpg">
-                                        @*<div class="ep">18 / 18</div>
-                                            <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                            <div class="view"><i class="fa fa-eye"></i> 9141</div>*@
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Fantasy</li>
-                                            <li>Comedy</li>
-                                        </ul>
-                                        <h5><a href="#">Ghostbusters: Afterlife</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="assets/main/img/comingsoon/venom-poster.jpg">
-                                        @*<div class="ep">18 / 18</div>
-                                            <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                            <div class="view"><i class="fa fa-eye"></i> 9141</div>*@
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Action</li>
-                                            @*<li>Comedy</li>*@
-                                        </ul>
-                                        <h5><a href="#">Venom: Let There Be Carnage</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-8">
-                    <div class="product__sidebar">
-                        <div class="product__sidebar__view">
-                            <div class="section-title">
-                                <h5>Top Views</h5>
-                            </div>
-                            <ul class="filter__controls">
-                                <li class="active" data-filter="*">Day</li>
-                                <li data-filter=".week">Week</li>
-                                <li data-filter=".month">Month</li>
-                                <li data-filter=".years">Years</li>
-                            </ul>
-                            <div class="filter__gallery">
-                                <div class="product__sidebar__view__item set-bg mix day years"
-                                     data-setbg="assets/main/img/now-showing/antlers-poster.jpg">
-                                    @*<div class="ep">18 / ?</div>*@
-                                    <div class="view"><i class="fa fa-eye"></i> 1000</div>
-                                    <h5><a href="#">Antlers</a></h5>
-                                </div>
-                                <div class="product__sidebar__view__item set-bg mix month week"
-                                     data-setbg="assets/main/img/now-showing/dont-breathe-2-poster.jpg">
-                                    @*<div class="ep">18 / ?</div>*@
-                                    <div class="view"><i class="fa fa-eye"></i> 890</div>
-                                    <h5><a href="#">Don't Breathe 2</a></h5>
-                                </div>
-                                <div class="product__sidebar__view__item set-bg mix week years"
-                                     data-setbg="assets/main/img/now-showing/a-quiet-place-2-poster.jpg">
-                                    @*<div class="ep">18 / ?</div>*@
-                                    <div class="view"><i class="fa fa-eye"></i> 877</div>
-                                    <h5><a href="#">A Quiet Place 2</a></h5>
-                                </div>
-                                <div class="product__sidebar__view__item set-bg mix years month"
-                                     data-setbg="assets/main/img/now-showing/eternals-poster.jpg">
-                                    @*<div class="ep">18 / ?</div>*@
-                                    <div class="view"><i class="fa fa-eye"></i> 761</div>
-                                    <h5><a href="#">Eternals</a></h5>
-                                </div>
-                                <div class="product__sidebar__view__item set-bg mix day"
-                                     data-setbg="assets/main/img/now-showing/sinkhole-poster.jpg">
-                                    @*<div class="ep">18 / ?</div>*@
-                                    <div class="view"><i class="fa fa-eye"></i> 536</div>
-                                    <h5><a href="#">Sinkhole</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Product Section End -->
     <!-- Content Section -->
-    <div class="container">
+    <div class="container mt-3">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -426,13 +131,17 @@
     <!---script src="~/js/site.js" asp-append-version="true"></script--->
     <!-- Js Plugins -->
     <script src="~/assets/main/js/jquery-3.3.1.min.js"></script>
-    <script src="~/assets/main/js/bootstrap.min.js"></script>
+    <!--script src="~/assets/main/js/bootstrap.min.js"></script--->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <script src="~/assets/main/js/player.js"></script>
     <script src="~/assets/main/js/jquery.nice-select.min.js"></script>
     <script src="~/assets/main/js/mixitup.min.js"></script>
     <script src="~/assets/main/js/jquery.slicknav.js"></script>
     <script src="~/assets/main/js/owl.carousel.min.js"></script>
     <script src="~/assets/main/js/main.js"></script>
+
+    <!-- Font Awesome 5.15.4 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
