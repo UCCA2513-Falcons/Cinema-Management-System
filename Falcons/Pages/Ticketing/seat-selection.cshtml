@@ -1,0 +1,111 @@
+﻿@page
+@model Falcons.Pages.Ticketing.seat_selectionModel
+@{
+    ViewData["Title"] = "Seat Booking";
+}
+
+@section Styles {
+    <link href="~/css/Seat.css" rel="stylesheet" />
+}
+
+<div class="section-title">
+    <h4>Select Seat</h4>
+</div>
+
+<div class="movie-container">
+    <select name="ticket-type" id="ticket-type">
+        <option value="">Select ticket type</option>
+        <option value="">Adult</option>
+        <option value="">Child (below 18)</option>
+        <option value="">Senior Citizen</option>
+        <option value="">Disabled</option>
+    </select>
+</div>
+
+<ul class="showcase">
+    <li>
+        <div class="seat"></div>
+        <small>Available</small>
+    </li>
+
+    <li>
+        <div class="seat selected"></div>
+        <small>Selected</small>
+    </li>
+
+    <li>
+        <div class="seat sold"></div>
+        <small>Sold</small>
+    </li>
+</ul>
+
+<div class="container2">
+    <div class="screen"></div>
+
+    <div class="seats">
+        <div class="row2">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+
+        <div class="row2">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat sold"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+
+        <div class="row2">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat sold"></div>
+        </div>
+
+        <div class="row2">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat sold"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+
+        <div class="row2">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+
+        <div class="row2">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+    </div>
+</div>
+
+<p class="text2">
+    You have selected <span id="count">0</span> seat.
+    Total amount is <span id="total">0</span>
+</p>

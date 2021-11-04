@@ -1,0 +1,81 @@
+﻿@page
+@model Falcons.Pages.Ticketing.QuickBookModel
+@{
+    ViewData["Title"] = "Book your movies";
+}
+
+@section Styles {
+    <link href="~/css/QuickBook.css" rel="stylesheet" />
+}
+
+<div class="section-title">
+    <h4>Quick Book</h4>
+</div>
+
+<div id="quick_book">
+    <form name="bookmovie" id="bookmovie" method="post">
+        <div class="container-fluid">
+            <div class="container">
+
+                <div class="row quickbook">
+
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <!--movie!-->
+                        <select name="movie" id="movie" class="form-control dropdown">
+                            <option value="">Select Movie</option>
+                            <option value="">A Quiet Place Part II (P13)</option>
+                            <option value="">Chinese Doctors (P13)</option>
+                            <option value="">Dont Breathe 2 (18)</option>
+                            <option value="">Escape Room: Tournament Of Champions (P13)</option>
+                            <option value="">Fast & Furious 9: The Fast Saga (P13)</option>
+                            <option value="">Shang-Chi And The Legend of The Ten Rings (P13)</option>
+                            <option value="">Sinkhole (P13)</option>
+                        </select>
+                        <!--movie!-->
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+
+                        <!--SHOWING DATE!-->
+                        <select name="showing_date" id="showing_date" class="form-control dropdown">
+                            <option value="">Select Date</option>
+                            <option value="">4/11/2021</option>
+                            <option value="">5/11/2021</option>
+                            <option value="">6/11/2021</option>
+                            <option value="">7/11/2021</option>
+                        </select>
+
+                        <!--SHOWING DATE!-->
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+
+                        <!--SHOWING TIME!-->
+                        <select name="showing_time" id="showing_time" class="form-control dropdown">
+                            <option value="">Select Time</option>
+                            <option value="">10:30</option>
+                            <option value="">13:50</option>
+                            <option value="">16:10</option>
+                            <option value="">17:10</option>
+                        </select>
+
+                        <!--SHOWING TIME!-->
+
+                    </div>
+
+                    <div class="col-lg-2  col-md-2 visible">
+
+                        <a href="/Ticketing/seat-selection" style="width:auto" id="buy-ticket" name="buy-ticket"
+                           class="btn btn-primary" value="Submit">SUBMIT</a>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+}
