@@ -13,5 +13,13 @@ namespace Falcons.Models
 
         public DbSet<FoodType> FoodType { get; set; }
         public DbSet<FoodInventory> FoodInventory { get; set; }
+
+        public DbSet<ProductCategory> ProductCategory { get; set; }
+
+        public DbSet<Product> Product { get; set; }
+
+        public DbSet<Role> Role { get; set; }
+
+        public DbSet<User> User { get; set; }
     }
 }
