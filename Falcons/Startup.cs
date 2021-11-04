@@ -1,4 +1,5 @@
 using Falcons.Data;
+using Falcons.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,13 @@ namespace Falcons
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+
+            //Falcons LocalDB Connection Configuration
+            services.AddDbContext<FalconsDBContext>(options => 
+            options.UseSqlServer(Configuration.GetConnectionString("FalconsConnection")));
+
+
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
