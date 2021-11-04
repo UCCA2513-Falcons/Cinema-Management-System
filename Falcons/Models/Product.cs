@@ -26,5 +26,9 @@ namespace Falcons.Models
 
         [Required]
         public virtual ProductCategory ProductCategory { get; set; }
+
+        public virtual ICollection<MenuItem> MenuItems { get; set; }
+
+        public virtual ICollection<FnBOrderDetail> FnBOrderDetails { get; set; }
     }
 }

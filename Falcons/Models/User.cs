@@ -40,5 +40,7 @@ namespace Falcons.Models
 
         [Required]
         public virtual Role Role { get; set; }
+
+        public virtual ICollection<FnBOrder> FnBOrders { get; set; }
     }
 }
