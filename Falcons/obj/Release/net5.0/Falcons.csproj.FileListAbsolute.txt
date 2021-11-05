@@ -187,3 +187,5 @@ D:\GitHub\GitHub\Falcons\obj\Release\net5.0\Falcons.dll
 D:\GitHub\GitHub\Falcons\obj\Release\net5.0\ref\Falcons.dll
 D:\GitHub\GitHub\Falcons\obj\Release\net5.0\Falcons.pdb
 D:\GitHub\GitHub\Falcons\obj\Release\net5.0\Falcons.genruntimeconfig.cache
+D:\GitHub\GitHub\Falcons\obj\Release\net5.0\Razor\Pages\Ticketing\QuickBook.cshtml.g.cs
+D:\GitHub\GitHub\Falcons\obj\Release\net5.0\Razor\Pages\Ticketing\seat-selection.cshtml.g.cs
