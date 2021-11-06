@@ -10,16 +10,19 @@ namespace Falcons.Models
     public class Role
     {
         [Key]
+        [Display(Name = "Role ID")]
         public int RoleID { get; set; }
 
         [Column(TypeName = "ntext")]
         [MaxLength(200)]
         [Required]
+        [Display(Name = "Title")]
         public string RoleTitle { get; set; }
 
         [MaxLength(100)]
+        [Display(Name = "Position")]
         public string Position { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        public ICollection<User> Users { get; set; }
     }
 }

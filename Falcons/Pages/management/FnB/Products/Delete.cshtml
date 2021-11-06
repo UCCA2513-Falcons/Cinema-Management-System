@@ -1,0 +1,38 @@
+﻿@page
+@model Falcons.Pages.management.FnB.Products.DeleteModel
+@{
+    Layout = "_ManagementLayout";
+
+    ViewData["Title"] = "Food and Beverages Delete Product";
+}
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Product.ProductID)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Product.ProductID)
+    </dd>
+</dl>
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Product.ProductTitle)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Product.ProductTitle)
+    </dd>
+</dl>
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Product.ProductDescription)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Product.ProductDescription)
+    </dd>
+</dl>
+
+<form method="post">
+    <input type="hidden" asp-for="Product.ProductID" />
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <a asp-page="./Index" class="btn btn-primary">Back to List</a>
+</form>

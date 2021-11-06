@@ -10,25 +10,30 @@ namespace Falcons.Models
     public class Product
     {
         [Key]
+        [Display(Name = "Product ID")]
         public int ProductID { get; set; }
 
         [Required]
         [MaxLength(100)]
+        [Display(Name = "Name")]
         public string ProductTitle { get; set; }
-
-        [Required]
-        [Column(TypeName = "decimal(6,2)")]
-        public decimal ProductPrice { get; set; }
 
         [Column(TypeName = "ntext")]
         [MaxLength(2000)]
+        [Display(Name = "Description")]
         public string ProductDescription { get; set; }
 
-        [Required]
-        public virtual ProductCategory ProductCategory { get; set; }
+        [Display(Name = "Category")]
+        [ForeignKey("ProductCategory")]
+        public int CategoryID { get; set; }
 
-        public virtual ICollection<MenuItem> MenuItems { get; set; }
+        public ProductCategory ProductCategory { get; set; }
 
-        public virtual ICollection<FnBOrderDetail> FnBOrderDetails { get; set; }
+        [Display(Name = "Main Image")]
+        public string ImageURL { get; set; }
+
+        public ICollection<MenuItem> MenuItems { get; set; }
+
+        public ICollection<FnBOrderDetail> FnBOrderDetails { get; set; }
     }
 }

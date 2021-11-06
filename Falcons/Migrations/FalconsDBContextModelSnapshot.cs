@@ -29,14 +29,14 @@ namespace Falcons.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserUID")
+                    b.Property<int>("UID")
                         .HasColumnType("int");
 
                     b.HasKey("FnBOrderID");
 
-                    b.HasIndex("UserUID");
+                    b.HasIndex("UID");
 
-                    b.ToTable("FnBOrder");
+                    b.ToTable("FnBOrders");
                 });
 
             modelBuilder.Entity("Falcons.Models.FnBOrderDetail", b =>
@@ -46,10 +46,10 @@ namespace Falcons.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("FnBOrderID")
+                    b.Property<int>("OrderID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProductID")
+                    b.Property<int>("ProductID")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductPrice")
@@ -60,11 +60,11 @@ namespace Falcons.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("FnBOrderID");
+                    b.HasIndex("OrderID");
 
                     b.HasIndex("ProductID");
 
-                    b.ToTable("FnBOrderDetail");
+                    b.ToTable("FnBOrderDetails");
                 });
 
             modelBuilder.Entity("Falcons.Models.FoodInventory", b =>
@@ -81,7 +81,7 @@ namespace Falcons.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<int>("FoodTypeFID")
+                    b.Property<int>("FID")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
@@ -97,9 +97,9 @@ namespace Falcons.Migrations
 
                     b.HasKey("RecordID");
 
-                    b.HasIndex("FoodTypeFID");
+                    b.HasIndex("FID");
 
-                    b.ToTable("FoodInventory");
+                    b.ToTable("FoodInventories");
                 });
 
             modelBuilder.Entity("Falcons.Models.FoodType", b =>
@@ -121,7 +121,7 @@ namespace Falcons.Migrations
 
                     b.HasKey("FID");
 
-                    b.ToTable("FoodType");
+                    b.ToTable("FoodTypes");
                 });
 
             modelBuilder.Entity("Falcons.Models.Menu", b =>
@@ -141,7 +141,7 @@ namespace Falcons.Migrations
 
                     b.HasKey("MenuID");
 
-                    b.ToTable("Menu");
+                    b.ToTable("Menus");
                 });
 
             modelBuilder.Entity("Falcons.Models.MenuItem", b =>
@@ -163,7 +163,7 @@ namespace Falcons.Migrations
 
                     b.HasIndex("ProductID");
 
-                    b.ToTable("MenuItem");
+                    b.ToTable("MenuItems");
                 });
 
             modelBuilder.Entity("Falcons.Models.Product", b =>
@@ -173,15 +173,15 @@ namespace Falcons.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ProductCategoryCategoryID")
+                    b.Property<int>("CategoryID")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductDescription")
                         .HasMaxLength(2000)
                         .HasColumnType("ntext");
-
-                    b.Property<decimal>("ProductPrice")
-                        .HasColumnType("decimal(6,2)");
 
                     b.Property<string>("ProductTitle")
                         .IsRequired()
@@ -190,9 +190,9 @@ namespace Falcons.Migrations
 
                     b.HasKey("ProductID");
 
-                    b.HasIndex("ProductCategoryCategoryID");
+                    b.HasIndex("CategoryID");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Falcons.Models.ProductCategory", b =>
@@ -209,7 +209,7 @@ namespace Falcons.Migrations
 
                     b.HasKey("CategoryID");
 
-                    b.ToTable("ProductCategory");
+                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("Falcons.Models.Role", b =>
@@ -287,7 +287,7 @@ namespace Falcons.Migrations
                 {
                     b.HasOne("Falcons.Models.User", "User")
                         .WithMany("FnBOrders")
-                        .HasForeignKey("UserUID")
+                        .HasForeignKey("UID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -298,11 +298,15 @@ namespace Falcons.Migrations
                 {
                     b.HasOne("Falcons.Models.FnBOrder", "FnBOrder")
                         .WithMany("FnBOrderDetails")
-                        .HasForeignKey("FnBOrderID");
+                        .HasForeignKey("OrderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Falcons.Models.Product", "Product")
                         .WithMany("FnBOrderDetails")
-                        .HasForeignKey("ProductID");
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("FnBOrder");
 
@@ -313,7 +317,7 @@ namespace Falcons.Migrations
                 {
                     b.HasOne("Falcons.Models.FoodType", "FoodType")
                         .WithMany("FoodInventories")
-                        .HasForeignKey("FoodTypeFID")
+                        .HasForeignKey("FID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -343,7 +347,7 @@ namespace Falcons.Migrations
                 {
                     b.HasOne("Falcons.Models.ProductCategory", "ProductCategory")
                         .WithMany("Products")
-                        .HasForeignKey("ProductCategoryCategoryID")
+                        .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

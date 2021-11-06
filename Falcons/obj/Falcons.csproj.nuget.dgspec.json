@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\GitHub\\Falcons\\Falcons.csproj": {}
+    "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\Falcons.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\GitHub\\Falcons\\Falcons.csproj": {
+    "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\Falcons.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\GitHub\\Falcons\\Falcons.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\Falcons.csproj",
         "projectName": "Falcons",
-        "projectPath": "D:\\GitHub\\GitHub\\Falcons\\Falcons.csproj",
+        "projectPath": "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\Falcons.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\GitHub\\Falcons\\obj\\",
+        "outputPath": "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,6 +63,10 @@
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[5.0.11, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
             }
           },
           "imports": [

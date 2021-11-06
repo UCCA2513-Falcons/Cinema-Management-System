@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -39,8 +40,11 @@ namespace Falcons.Models
         public bool ApprovalStatus { get; set; } = false;
 
         [Required]
-        public virtual Role Role { get; set; }
+        [Display(Name = "Role")]
+        [ForeignKey("Role")]
+        public int RoleID { get; set; }
 
-        public virtual ICollection<FnBOrder> FnBOrders { get; set; }
+        public Role Role { get; set; }
+        public ICollection<FnBOrder> FnBOrders { get; set; }
     }
 }
