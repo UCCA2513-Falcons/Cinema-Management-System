@@ -25,6 +25,8 @@ namespace Falcons.Models
         public DbSet<FnBOrder> FnBOrder { get; set; }
         public DbSet<FnBOrderDetail> FnBOrderDetail { get; set; }
 
+        public DbSet<Employee> Employee { get; set; }
+
         /*protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<FnBOrderDetail>().HasKey(table => new { table.FnBOrder, table.Product});
