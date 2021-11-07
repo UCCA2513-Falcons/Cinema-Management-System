@@ -9,11 +9,11 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     <div class="form-group form-group-default">
                         <label asp-for="Product.ProductID"></label>
                         <input class="form-control" asp-for="Product.ProductID" disabled />
-                        <input class="form-control" type="hidden" asp-for="Product.ProductID" />
+                        <input class="form-control" type="hidden" asp-for="Product.ProductID" value="@Model.Product.ProductID"/>
                     </div>
                     <div class="form-group form-group-default">
                         <label asp-for="Product.ProductTitle"></label>
@@ -28,14 +28,152 @@
                         <textarea class="form-control" asp-for="Product.ProductDescription" rows="8" placeholder="Product description here ..."></textarea>
                     </div>
                     <div class="form-group form-group-default">
-                        <label asp-for="Photo"></label>
-                        <input class="form-control" asp-for="Photo" accept=".jpg,.jpeg,.png,.webp" />
+                        <label>Photo</label>
+                        <input class="form-control" multiple asp-for="Photo" />
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Save" class="btn btn-primary btn-lg" />
+                        <a href="/management/FnB/Products/Index" class="btn btn-primary btn-lg ml-4">Return To Products</a>
                     </div>
                 </form>
+                <div class="form-group">
+                    <label>Photo</label><br />
+                    <!-- error when Model.imgList is null reference -->
+                    @if (Model.imgList != null)
+                    {
+                        foreach (string item in Model.imgList)
+                        {
+                            <form role="form" method="post" asp-page-handler="DeleteImage">
+                                <input type="hidden" value="@Model.Product.ProductID" asp-for="ProductID" />
+                                <input type="hidden" value="@item" asp-for="ImgURL" />
+                                <button class="btn btn-default" >
+                                    <img src="/assets/img/products/@item" width="250px" height="auto" class="img-fluid rounded float-left" />
+                                </button>
+                            </form>
+                        }
+                    }
+                    
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <h4>Product Size</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- Button -->
+                <div class="d-flex">
+                    <button class="btn btn-primary btn-round ml-auto mb-3" data-toggle="modal" data-target="#addProductModal">
+                        <i class="fa fa-plus"></i>
+                        Add Product Size
+                    </button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+                                    <span class="fw-mediumbold">
+                                        New
+                                    </span>
+                                    <span class="fw-light">
+                                        Size
+                                    </span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form role="form" method="post">
+                                <input type="hidden" asp-for="ProductDetail.ProductID" value="@Model.Product.ProductID"/>
+                                <div class="modal-body">
+                                    <p class="small">Please fill in all the field.</p>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Size</label>
+                                                <input class="form-control" asp-for="ProductDetail.Size"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-default">
+                                                <label asp-for="ProductDetail.ProductPrice"></label>
+                                                <input class="form-control" asp-for="ProductDetail.ProductPrice" type="number" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer no-bd">
+                                    <button asp-page-handler="AddProductDetails" type="submit" class="btn btn-primary">Add</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal End -->
+
+                <!-- Table -->
+                <div class="table-responsive">
+                    <table id="product-size" class=" display table table-striped table-hover" cellspacing="0" width="100%">
+                        <thead>
+                            <tr role="row"></tr>
+
+                            <tr role="row">
+                                <th>Price</th>
+                                <th>Size</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                @if (Model.ProductDetails != null)
+                                {
+                                    @foreach (var item in Model.ProductDetails)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @item.Size
+                                            </td>
+                                            <td>
+                                                @item.ProductPrice
+                                            </td>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <form role="form" method="post">
+                                                        <input type="hidden" value="@item.ProductDetailID" asp-for="ProductDetail.ProductDetailID" />
+                                                        <button asp-page-handler="DeleteProductDetails" data-toggle="tooltip" title="Remove" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                    </table>
+                </div>
+
+                <!-- Table End -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $('#product-size').DataTable({
+            "pageLength": 5,
+        });
+    </script>
+}

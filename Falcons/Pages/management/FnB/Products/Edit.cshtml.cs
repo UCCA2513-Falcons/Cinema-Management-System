@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,13 +20,31 @@ namespace Falcons.Pages.management.FnB.Products
 
         public List<SelectListItem> CategoryOptions { get; set; }
 
+        public List<string> imgList { get; set; }
+
+        [BindProperty]
+        public string ImgURL { get; set; }
+
+        [BindProperty]
+        public int ProductID { get; set; }
+
+        public int count { get; set; }
+
+        [BindProperty]
+        public List<ProductDetails> ProductDetails { get; set; }
+
+        [BindProperty]
+        public ProductDetails ProductDetail { get; set; }
+
         [BindProperty]
         public Product Product { get; set; }
 
         [BindProperty]
-        public IFormFileCollection Photo { get; set; }
+        public List<IFormFile> Photo { get; set; }
 
         private IWebHostEnvironment webHostEnvironment;
+
+        public List<SelectListItem> ProductOptions { get; set; }
 
         public EditModel(FalconsDBContext context, IWebHostEnvironment WebHostEnvironment)
         {
@@ -37,7 +56,8 @@ namespace Falcons.Pages.management.FnB.Products
         {
             if(id == null)
             {
-                return NotFound();
+                //return NotFound();
+                return RedirectToPage("./Index");
             }
 
             CategoryOptions = await _context.ProductCategories.Select(c =>
@@ -47,9 +67,31 @@ namespace Falcons.Pages.management.FnB.Products
                                         Text = c.CategoryName.ToString()
                                     }).ToListAsync();
 
+            ProductOptions = await _context.Products.Select(c => 
+                                        new SelectListItem { 
+                                            Value = c.ProductID.ToString(),
+                                            Text = c.ProductTitle.ToString()
+                                        }).ToListAsync();
+
             Product = await _context.Products.FindAsync(id);
 
-            if(Product == null)
+            imgList = new List<string>();
+
+            if (!String.IsNullOrWhiteSpace(Product.ImageURL))
+            {
+                if (Product.ImageURL.Contains(","))
+                {
+                    imgList = Product.ImageURL.Split(",").ToList();
+                }
+                else
+                {
+                    imgList.Add(Product.ImageURL);
+                }
+            }
+
+            ProductDetails = _context.ProductDetails.Where(pd => pd.ProductID == id).ToList();
+
+            if (Product == null)
             {
                 return NotFound();
             }
@@ -57,62 +99,104 @@ namespace Falcons.Pages.management.FnB.Products
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
+            /*if (!ModelState.IsValid)
             {
                 return Page();
-            }
+            }*/
+
+            CategoryOptions = _context.ProductCategories.Select(c =>
+                                    new SelectListItem
+                                    {
+                                        Value = c.CategoryID.ToString(),
+                                        Text = c.CategoryName.ToString()
+                                    }).ToList();
+
+            ProductOptions = _context.Products.Select(c =>
+                                        new SelectListItem
+                                        {
+                                            Value = c.ProductID.ToString(),
+                                            Text = c.ProductTitle.ToString()
+                                        }).ToList();
+
+            Product EditProduct = _context.Products.Find(Product.ProductID);
+
+            //Product.ImageURL = EditProduct.ImageURL;
 
             //image upload
             string UniqueFileName = null;
-            if(Photo != null)
+            if(Photo.Count > 0)
             {
-                //System.DateTime CurrentTime = new DateTime();
-                //string DateFolder = CurrentTime.Year + "-" + CurrentTime.Month;
-
-                string UploadFolder = webHostEnvironment.WebRootPath + "\\assets\\img\\";
-
-                /*
-                //create the folder if not exist
-                if (!(Directory.Exists(UploadFolder)))
-                {
-                    Directory.CreateDirectory(UploadFolder);
-                }
-
-                
-                UniqueFileName = Guid.NewGuid().ToString() + "_" + Photo[0];
-                string FilePath = Path.Combine(UploadFolder, UniqueFileName);
-                using(var FileStream = new FileStream(FilePath, FileMode.Create))
-                {
-                    Photo[0].CopyTo(FileStream);
-                }*/
+                string UploadFolder = Path.Combine(webHostEnvironment.WebRootPath ,"assets\\img\\products");
 
                 List<string> URLList = new List<string>();
+                int ImgListCount = 0;
 
-                foreach(var item in Photo)
+                foreach(IFormFile item in Photo)
                 {
-                    UniqueFileName = Guid.NewGuid().ToString() + "_" + item;
+                    UniqueFileName = Guid.NewGuid().ToString() + "_" + item.FileName;
                     string FilePath = Path.Combine(UploadFolder, UniqueFileName);
                     using (var FileStream = new FileStream(FilePath, FileMode.Create))
                     {
-                        await item.CopyToAsync(FileStream);
-                        await FileStream.FlushAsync();
+                        item.CopyTo(FileStream);
+                        FileStream.Flush();
                     }
-
-                    //direct assign if the img url is the first one
-                    URLList.Add(FilePath);
+                    URLList.Add(UniqueFileName);
+                    ImgListCount++;
                 }
 
-                Product.ImageURL = String.Join(",",URLList);
+                string JoinURL = "";
+                //string SrcImgURL = EditProduct.ImageURL;
+                if (!String.IsNullOrWhiteSpace(EditProduct.ImageURL))
+                {
+                    JoinURL = EditProduct.ImageURL + ","+ String.Join(",", URLList);
+                }
+                else
+                {
+                    if(ImgListCount > 1)
+                    {
+                        JoinURL = String.Join(",", URLList);
+                    }
+                    else
+                    {
+                        //error cannot fetch and assign the URLList[0]
+                        JoinURL = URLList.First();
+                    }
+                }
+
+                EditProduct.ImageURL = JoinURL;
+            }
+            
+            EditProduct.ProductTitle = Product.ProductTitle;
+            EditProduct.ProductDescription = Product.ProductDescription;
+            EditProduct.CategoryID = Product.CategoryID;
+
+            _context.Attach(EditProduct).State = EntityState.Modified;
+
+            /*if (EditProduct.ImageURL != null)
+            {
+                imgList = EditProduct.ImageURL.Split(",").ToList();
+            }*/
+            if (!String.IsNullOrWhiteSpace(EditProduct.ImageURL))
+            {
+                if (EditProduct.ImageURL.Contains(","))
+                {
+                    imgList = EditProduct.ImageURL.Split(",").ToList();
+                }
+                else
+                {
+                    imgList.Add(EditProduct.ImageURL);
+                }
             }
 
-            _context.Attach(Product).State = EntityState.Modified;
+            ProductDetails = _context.ProductDetails.Where(pd => pd.ProductID == EditProduct.ProductID).ToList();
+
             //ProductCategory pcEdit = await _context.ProductCategories.FindAsync(pc.CategoryID);
 
             try
             {
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -126,7 +210,87 @@ namespace Falcons.Pages.management.FnB.Products
                 }
             }
 
-            return RedirectToPage("./Index");
+            //return RedirectToPage("./Index");
+            //return Redirect("Edit?id=" + Product.ProductID);
+            return Page();
+        }
+
+        public IActionResult OnPostAddProductDetails(ProductDetails ProductDetail)
+        {
+            CategoryOptions = _context.ProductCategories.Select(c =>
+                                    new SelectListItem
+                                    {
+                                        Value = c.CategoryID.ToString(),
+                                        Text = c.CategoryName.ToString()
+                                    }).ToList();
+
+            ProductOptions = _context.Products.Select(c =>
+                                        new SelectListItem
+                                        {
+                                            Value = c.ProductID.ToString(),
+                                            Text = c.ProductTitle.ToString()
+                                        }).ToList();
+
+            Product EditProduct = _context.Products.Find(ProductDetail.ProductID);
+
+            if(EditProduct != null)
+            {
+                /*if (EditProduct.ImageURL != null)
+                {
+                    imgList = EditProduct.ImageURL.Split(",").ToList();
+                }*/
+
+                if (EditProduct.ImageURL.Contains(","))
+                {
+                    imgList = EditProduct.ImageURL.Split(",").ToList();
+                }
+                else
+                {
+                    imgList.Add(Product.ImageURL);
+                }
+            }
+
+            _context.ProductDetails.Add(ProductDetail);
+            _context.SaveChanges();
+
+            ProductDetails = _context.ProductDetails.Where(pd => pd.ProductID == ProductDetail.ProductID).ToList();
+
+            //return Page();
+            return Redirect("Edit?id=" + ProductDetail.ProductID);
+        }
+
+        public IActionResult OnPostDeleteProductDetails(ProductDetails ProductDetail)
+        {
+            int pageId = _context.ProductDetails.Find(ProductDetail.ProductDetailID).ProductID;
+
+            _context.ProductDetails.Remove(_context.ProductDetails.Find(ProductDetail.ProductDetailID));
+            _context.SaveChanges();
+
+            return Redirect("Edit?id=" + pageId);
+        }
+
+        public IActionResult OnPostDeleteImage(string ImgURL, int ProductID)
+        {
+            Product Product = _context.Products.Find(ProductID);
+            string ImageURLOrigin = Product.ImageURL;
+
+            if(ImageURLOrigin != null)
+            {
+                List<string> ImageURLList = ImageURLOrigin.Split(",").ToList();
+
+                //ImageURLList.Find(s => s.Contains(ImgURL));
+                ImageURLList.Remove(ImageURLList.Find(s => s.Contains(ImgURL)));
+
+                string JoinURL = String.Join(",",ImageURLList);
+
+                Product.ImageURL = JoinURL;
+
+                _context.Products.Update(Product);
+                _context.SaveChanges();
+            }
+
+            return Redirect("Edit?id=" + ProductID);
+            //return Page();
         }
     }
 }

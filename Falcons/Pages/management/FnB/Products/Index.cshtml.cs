@@ -38,10 +38,10 @@ namespace Falcons.Pages.management.FnB.Products
 
         public async Task<IActionResult> OnPostAsync()
         {
-            
-           // Product.ProductCategory = await _context.ProductCategories.FindAsync(Product.CategoryID);
 
+            // Product.ProductCategory = await _context.ProductCategories.FindAsync(Product.CategoryID);
 
+            Product.ImageURL = "";
             await _context.Products.AddAsync(Product);
 
             await _context.SaveChangesAsync();

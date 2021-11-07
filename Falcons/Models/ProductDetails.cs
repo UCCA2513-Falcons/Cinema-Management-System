@@ -9,6 +9,9 @@ namespace Falcons.Models
 {
     public class ProductDetails
     {
+        [Key]
+        public int ProductDetailID { get; set; }
+
         [ForeignKey("Product")]
         public int ProductID { get; set; }
         public Product Product { get; set; }

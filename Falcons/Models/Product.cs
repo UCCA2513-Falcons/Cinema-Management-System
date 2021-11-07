@@ -29,7 +29,7 @@ namespace Falcons.Models
 
         public ProductCategory ProductCategory { get; set; }
 
-        [Display(Name = "Main Image")]
+        [Display(Name = "Image")]
         public string ImageURL { get; set; }
 
         public ICollection<MenuItem> MenuItems { get; set; }

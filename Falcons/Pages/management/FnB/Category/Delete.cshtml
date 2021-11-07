@@ -5,6 +5,7 @@
 
     ViewData["Title"] = "Food and Beverages Delete Category";
 }
+
 <dl class="row">
     <dt class="col-sm-2">
         @Html.DisplayNameFor(model => model.ProductCategory.CategoryName)
@@ -13,6 +14,10 @@
         @Html.DisplayFor(model => model.ProductCategory.CategoryName)
     </dd>
 </dl>
+
+<div class="alert alert-danger" role="alert">
+    Continue proceed will delete this category and the product related to it !
+</div>
 
 <form method="post">
     <input type="hidden" asp-for="ProductCategory.CategoryID" />
