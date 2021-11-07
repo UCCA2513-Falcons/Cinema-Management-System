@@ -1,0 +1,54 @@
+﻿@page
+@model Falcons.Pages.management.FnB.Inventory.EditInventoryRecordModel
+@{
+    Layout = "_ManagementLayout";
+
+    ViewData["Title"] = "Edit Inventory Record";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group form-group-default">
+                        <label asp-for="FoodInventory.RecordID"></label>
+                        <input class="form-control" asp-for="FoodInventory.RecordID" disabled />
+                        <input class="form-control" type="hidden" asp-for="FoodInventory.RecordID" />
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="FoodInventory.FID"></label>
+                        <select asp-for="FoodInventory.FID" asp-items="Model.FoodTypeOptions"></select>
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="FoodInventory.Quantity"></label>
+                        <input class="form-control" asp-for="FoodInventory.Quantity" type="number" min="0" />
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="FoodInventory.Price"></label>
+                        <input class="form-control" asp-for="FoodInventory.Price" type="number" min="0" />
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="FoodInventory.RecordType"></label>
+                        <select class="form-control" asp-for="FoodInventory.RecordType">
+                            <option value="Purchase">Purchase</option>
+                            <option value="Return">Return</option>
+                            <option value="Consume">Consume</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="FoodInventory.Date"></label>
+                        <input class="form-control" asp-for="FoodInventory.Date" />
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="FoodInventory.Description"></label>
+                        <textarea class="form-control" asp-for="FoodInventory.Description" rows="8"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary btn-lg" />
+                        <a href="/management/FnB/Inventory/Index" class="btn btn-primary btn-lg ml-3">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

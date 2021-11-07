@@ -1,0 +1,34 @@
+﻿@page
+@model Falcons.Pages.management.FnB.Inventory.EditModel
+@{
+    Layout = "_ManagementLayout";
+
+    ViewData["Title"] = "Edit Food Item";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group form-group-default">
+                        <label asp-for="FoodType.FID"></label>
+                        <input class="form-control" asp-for="FoodType.FID" disabled />
+                        <input class="form-control" type="hidden" asp-for="FoodType.FID" />
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="FoodType.Title"></label>
+                        <input class="form-control" asp-for="FoodType.Title" />
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="FoodType.Type"></label>
+                        <input class="form-control" asp-for="FoodType.Type" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary btn-lg" />
+                        <a href="/management/FnB/Inventory/Index" class="btn btn-primary btn-lg ml-3">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

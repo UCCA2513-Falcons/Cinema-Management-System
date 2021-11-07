@@ -27,7 +27,6 @@ namespace Falcons.Models
         [Display(Name = "Description")]
         public string Description { get; set; }
 
-        [Required]
         [Display(Name = "Price")]
         [Column(TypeName = "decimal(6,2)")]
         public decimal Price { get; set; }
@@ -38,7 +37,7 @@ namespace Falcons.Models
         public string RecordType { get; set; }
 
         [Required]
-        [Display(Name = "Food Type")]
+        [Display(Name = "Inventory Item")]
         [ForeignKey("FoodType")]
         public int FID { get; set; }
         public FoodType FoodType { get; set; }
