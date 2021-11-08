@@ -1,0 +1,177 @@
+﻿@page
+@model Falcons.Pages.management.FnB.Products.EditPackageMenuModel
+@{
+    Layout = "_ManagementLayout";
+    ViewData["Title"] = "Edit Package Menu - Food and Beverages";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    Menu
+                </div>
+            </div>
+            <div class="card-body">
+                <form method="post" role="form">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group form-group-default">
+                                <label asp-for="Menu.MenuID"></label>
+                                <input class="form-control" asp-for="Menu.MenuID" disabled/>
+                                <input class="form-control" asp-for="Menu.MenuID" type="hidden"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group form-group-default">
+                                <label asp-for="Menu.PackageName"></label>
+                                <input class="form-control" asp-for="Menu.PackageName" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group form-group-default">
+                                <label asp-for="Menu.Description"></label>
+                                <textarea class="form-control" asp-for="Menu.Description" rows="8"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn btn-primary btn-lg" />
+                                <a href="/management/FnB/Products/Index" class="btn btn-primary btn-lg ml-3">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Package Table -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    Menu Item
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- Button -->
+                <div class="d-flex">
+                    <button class="btn btn-primary btn-round ml-auto mb-3" data-toggle="modal" data-target="#AddInventoryRecordModal">
+                        <i class="fa fa-plus"></i>
+                        Add Menu Item
+                    </button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="AddInventoryRecordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+                                    <span class="fw-mediumbold">
+                                        New
+                                    </span>
+                                    <span class="fw-light">
+                                        Menu Item
+                                    </span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form role="form" method="post">
+                                <div class="modal-body">
+                                    <p class="small">Please fill in all the field.</p>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label asp-for="MenuItem.MenuID"></label>
+                                                <input asp-for="MenuItem.MenuID" value="@Model.Menu.MenuID" type="hidden" class="form-control" />
+                                                <input asp-for="MenuItem.MenuID" value="@Model.Menu.MenuID" disabled class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label asp-for="MenuItem.ProductID"></label>
+                                                <select asp-for="MenuItem.ProductID" asp-items="Model.ProductOptions" class="form-control"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer no-bd">
+                                    <button type="submit" asp-page-handler="CreateMenuItem" class="btn btn-primary">Add</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal End -->
+                <!-- Table -->
+                <div class="table-responsive">
+                    <table id="MenuItemTable" class=" display table table-striped table-hover" cellspacing="0" width="100%">
+                        <thead>
+                            <tr role="row"></tr>
+
+                            <tr role="row">
+                                <th>Product ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.MenuItems != null)
+                            {
+                                @foreach (var item in Model.MenuItems)
+                                {
+                                    <tr>
+                                        <td>@item.ProductID</td>
+                                        <td>@Html.DisplayFor(PorductItem => Model._context.Products.Find(item.ProductID).ProductTitle)</td>
+                                        <td>@Html.DisplayFor(PorductItem => Model._context.ProductCategories.Find(Model._context.Products.Find(item.ProductID).CategoryID).CategoryName)</td>
+                                        <td>
+                                            <div class="form-button-action">
+                                                <form method="post">
+                                                    <input type="hidden" value="@item.Id" asp-for="MenuItemID" />
+                                                    <button asp-page-handler="DeleteMenuItem" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Table End -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    <script>
+        $('#MenuItemTable').DataTable({
+            "pageLength": 10
+        });
+    </script>
+}

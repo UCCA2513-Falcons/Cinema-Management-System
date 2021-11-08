@@ -163,7 +163,6 @@ C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\Razor\Pages\FnB\Menu.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\Razor\Pages\FnB\ViewDetails.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\Razor\Pages\Index.cshtml.g.cs
-C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\Razor\Pages\management\FnB\Report.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\Razor\Pages\Privacy.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\Razor\Pages\Shared\_Layout.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\Razor\Pages\Shared\_LoginPartial.cshtml.g.cs
@@ -463,3 +462,5 @@ C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\Razor\Pages\management\FnB\Inventory\Edit.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\Razor\Pages\management\FnB\Inventory\Delete.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\Razor\Pages\management\FnB\Inventory\EditInventoryRecord.cshtml.g.cs
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\Razor\Pages\management\FnB\Report\Index.cshtml.g.cs
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Release\net5.0\Razor\Pages\management\FnB\Products\EditPackageMenu.cshtml.g.cs

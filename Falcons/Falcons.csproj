@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Folder Include="Functions\" />
+    <Folder Include="wwwroot\assets\img\products\" />
   </ItemGroup>
 
 </Project>

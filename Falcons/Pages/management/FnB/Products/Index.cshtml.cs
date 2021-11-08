@@ -20,6 +20,10 @@ namespace Falcons.Pages.management.FnB.Products
 
         public List<Product> AllProduct { get; set; }
 
+        public List<Menu> Menus;
+        [BindProperty]
+        public Menu Menu { get; set; }
+
         public IndexModel(FalconsDBContext context)
         {
             _context = context;
@@ -31,7 +35,10 @@ namespace Falcons.Pages.management.FnB.Products
                                         Value = c.CategoryID.ToString(),
                                         Text = c.CategoryName.ToString()
                                     }).ToListAsync();
+
             AllProduct = await _context.Products.ToListAsync();
+
+            Menus = await _context.Menus.ToListAsync();
 
             return Page();
         }
@@ -48,12 +55,36 @@ namespace Falcons.Pages.management.FnB.Products
 
             AllProduct = await _context.Products.ToListAsync();
 
+            Menus = await _context.Menus.ToListAsync();
+
             CategoryOptions = await _context.ProductCategories.Select(c =>
                                     new SelectListItem
                                     {
                                         Value = c.CategoryID.ToString(),
                                         Text = c.CategoryName.ToString()
                                     }).ToListAsync();
+
+            return Page();
+        }
+
+        public IActionResult OnPostCreateMenu()
+        {
+            if (Menu != null)
+            {
+                _context.Menus.Add(Menu);
+                _context.SaveChanges();
+            }
+
+            AllProduct = _context.Products.ToList();
+
+            CategoryOptions = _context.ProductCategories.Select(c =>
+                                    new SelectListItem
+                                    {
+                                        Value = c.CategoryID.ToString(),
+                                        Text = c.CategoryName.ToString()
+                                    }).ToList();
+
+            Menus = _context.Menus.ToList();
 
             return Page();
         }

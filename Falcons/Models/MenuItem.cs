@@ -23,7 +23,6 @@ namespace Falcons.Models
         [Display(Name = "Product")]
         [ForeignKey("Product")]
         public int ProductID { get; set; }
-
         public Product Product { get; set; }
     }
 }
