@@ -7,22 +7,26 @@ using System.Threading.Tasks;
 
 namespace Falcons.Models
 {
-    public class Ticket
+    public class Seat
     {
         [Key]
-        [Display(Name = "Ticket ID")]
-        public Int32 TID { get; set; }
+        [Display(Name = "Seat Number")]
+        public Int32 SID { get; set; }
 
-        [Required]
-        [MaxLength(10)]
-        [Display(Name = "Amount")]
-        public double amount { get; set; }
 
-        [Required]
-        [MaxLength(10)]
+        [Display(Name = "Seat Status")]
+        public String status { get; set; }
+
+        [Display(Name = "Hall No")]
+        [ForeignKey("Hall")]
+        public Int32 HID { get; set; }
+
         [Display(Name = "Booking ID")]
         [ForeignKey("Booking")]
-        public Int32 bookingID { get; set; }
+        public Int32 BID { get; set; }
+
+        [Required]
+        public virtual ICollection<Hall> Halls { get; set; }
 
         [Required]
         public virtual ICollection<Booking> booking { get; set; }
