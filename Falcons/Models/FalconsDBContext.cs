@@ -28,6 +28,11 @@ namespace Falcons.Models
 
         public DbSet<Employee> Employee { get; set; }
 
+        // ticket
+
+        public DbSet<Booking> Booking { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
+
         /*protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<FnBOrderDetail>().HasKey(table => new { table.FnBOrder, table.Product});
