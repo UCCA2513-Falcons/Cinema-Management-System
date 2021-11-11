@@ -430,12 +430,9 @@ C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Category\Delete.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Category\Edit.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Category\Index.cshtml.g.cs
-C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Inventory.cshtml.g.cs
-C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Package.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Products\Delete.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Products\Edit.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Products\Index.cshtml.g.cs
-C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Report.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\HRM\Attendance.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\HRM\Employee.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\HRM\Leave.cshtml.g.cs
@@ -457,3 +454,9 @@ C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\ref\Falcons.dll
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Falcons.pdb
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Falcons.genruntimeconfig.cache
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Inventory\Delete.cshtml.g.cs
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Inventory\Edit.cshtml.g.cs
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Inventory\EditInventoryRecord.cshtml.g.cs
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Inventory\Index.cshtml.g.cs
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Products\EditPackageMenu.cshtml.g.cs
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Report\Index.cshtml.g.cs

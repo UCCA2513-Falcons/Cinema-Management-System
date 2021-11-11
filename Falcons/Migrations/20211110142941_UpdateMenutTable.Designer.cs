@@ -4,14 +4,16 @@ using Falcons.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Falcons.Migrations
 {
     [DbContext(typeof(FalconsDBContext))]
-    partial class FalconsDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211110142941_UpdateMenutTable")]
+    partial class UpdateMenutTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

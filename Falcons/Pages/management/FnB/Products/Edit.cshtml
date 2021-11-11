@@ -13,7 +13,7 @@
                     <div class="form-group form-group-default">
                         <label asp-for="Product.ProductID"></label>
                         <input class="form-control" asp-for="Product.ProductID" disabled />
-                        <input class="form-control" type="hidden" asp-for="Product.ProductID" value="@Model.Product.ProductID"/>
+                        <input class="form-control" type="hidden" asp-for="Product.ProductID" value="@Model.Product.ProductID" />
                     </div>
                     <div class="form-group form-group-default">
                         <label asp-for="Product.ProductTitle"></label>
@@ -29,32 +29,35 @@
                     </div>
                     <div class="form-group form-group-default">
                         <label>Photo</label>
-                        <input class="form-control" asp-for="Photo" accept="image/*"/>
+                        <input class="form-control" asp-for="Photo" accept="image/*" />
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Save" class="btn btn-primary btn-lg" />
                         <a href="/management/FnB/Products/Index" class="btn btn-primary btn-lg ml-3">Cancel</a>
                     </div>
                 </form>
-                <div class="form-group">
-                    <label>Photo</label><br />
-                    <!-- error when Model.imgList is null reference -->
-                    @if (Model.imgList != null)
-                    {
-                        foreach (string item in Model.imgList)
-                        {
-                            <form role="form" method="post" asp-page-handler="DeleteImage">
-                                <input type="hidden" value="@Model.Product.ProductID" asp-for="ProductID" />
-                                <input type="hidden" value="@item" asp-for="ImgURL" />
-                                <button class="btn btn-default" >
-                                    <img src="/assets/img/products/@item" width="250px" height="auto" class="img-fluid rounded float-left" />
-                                </button>
-                            </form>
-                        }
-                    }
+
+                @if (Model.imgList != null)
+                {
+                    <div class="form-group form-group-default">
+                    <label>Image</label><br />
+                                        <div style="display:flex;">
+                                            @foreach (string item in Model.imgList)
+                                            {
+                                                <form role="form" method="post" asp-page-handler="DeleteImage" class="ml-1 mr-1">
+                                                    <input type="hidden" value="@Model.Product.ProductID" asp-for="ProductID" />
+                                                    <input type="hidden" value="@item" asp-for="ImgURL" />
+                                                    <button class="btn btn-default" title="Remove Image">
+                                                        <img src="/assets/img/products/@item" width="250px" height="auto" class="img-fluid rounded float-left" />
+                                                    </button>
+                                                </form>
+                                            }
+                                        </div>
+                    </div>
+                }
+
                     
                 </div>
-            </div>
         </div>
     </div>
 </div>
@@ -145,7 +148,7 @@
                                                 @item.Size
                                             </td>
                                             <td>
-                                                @item.ProductPrice
+                                                @item.ProductPrice.ToString("c")
                                             </td>
                                             <td>
                                                 <div class="form-button-action">

@@ -14,13 +14,13 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="post" role="form">
+                <form method="post" enctype="multipart/form-data" role="form">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group form-group-default">
                                 <label asp-for="Menu.MenuID"></label>
-                                <input class="form-control" asp-for="Menu.MenuID" disabled/>
-                                <input class="form-control" asp-for="Menu.MenuID" type="hidden"/>
+                                <input class="form-control" asp-for="Menu.MenuID" disabled />
+                                <input class="form-control" asp-for="Menu.MenuID" type="hidden" />
                             </div>
                         </div>
                     </div>
@@ -42,6 +42,14 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
+                            <div class="form-group form-group-default">
+                                <label asp-for="Menu.ImageURL"></label>
+                                <input class="form-control" asp-for="Photo" accept="image/*" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <input type="submit" value="Save" class="btn btn-primary btn-lg" />
                                 <a href="/management/FnB/Products/Index" class="btn btn-primary btn-lg ml-3">Cancel</a>
@@ -49,6 +57,27 @@
                         </div>
                     </div>
                 </form>
+
+                @if (Model.ImgList != null)
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group form-group-default" style="display:flex;">
+                                @foreach (string item in Model.ImgList)
+                                {
+                                <form role="form" method="post" asp-page-handler="DeleteImage" class="ml-1 mr-1">
+                                    <input type="hidden" value="@Model.Menu.MenuID" asp-for="MenuID" />
+                                    <input type="hidden" value="@item" asp-for="ImgURL" />
+                                    <button class="btn btn-default" title="Remove Image">
+                                        <img src="/assets/img/menus/@item" width="250px" height="auto" class="img-fluid rounded float-left" />
+                                    </button>
+                                </form>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+
             </div>
         </div>
     </div>

@@ -21,6 +21,8 @@ namespace Falcons.Models
         [MaxLength(1000)]
         [Display(Name = "Menu Desccription")]
         public string Description { get; set; }
+        [Display(Name = "Images")]
+        public string ImageURL { get; set; }
 
         public ICollection<MenuItem> MenuItems { get; set; }
     }

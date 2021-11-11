@@ -160,7 +160,7 @@ namespace Falcons.Pages.management.FnB.Products
                     }
                     else
                     {
-                        //error cannot fetch and assign the URLList[0]
+                        //error cannot fetch and assign the URLList[0], URLList.ElementAt()
                         JoinURL = URLList.First();
                     }
                 }
@@ -173,26 +173,6 @@ namespace Falcons.Pages.management.FnB.Products
             EditProduct.CategoryID = Product.CategoryID;
 
             _context.Attach(EditProduct).State = EntityState.Modified;
-
-            /*if (EditProduct.ImageURL != null)
-            {
-                imgList = EditProduct.ImageURL.Split(",").ToList();
-            }*/
-            if (!String.IsNullOrWhiteSpace(EditProduct.ImageURL))
-            {
-                if (EditProduct.ImageURL.Contains(","))
-                {
-                    imgList = EditProduct.ImageURL.Split(",").ToList();
-                }
-                else
-                {
-                    imgList.Add(EditProduct.ImageURL);
-                }
-            }
-
-            ProductDetails = _context.ProductDetails.Where(pd => pd.ProductID == EditProduct.ProductID).ToList();
-
-            //ProductCategory pcEdit = await _context.ProductCategories.FindAsync(pc.CategoryID);
 
             try
             {
@@ -210,9 +190,30 @@ namespace Falcons.Pages.management.FnB.Products
                 }
             }
 
+            /*if (EditProduct.ImageURL != null)
+           {
+               imgList = EditProduct.ImageURL.Split(",").ToList();
+           }*/
+            imgList = new List<string>();
+            if (!String.IsNullOrWhiteSpace(EditProduct.ImageURL))
+            {
+                if (EditProduct.ImageURL.Contains(","))
+                {
+                    imgList = EditProduct.ImageURL.Split(",").ToList();
+                }
+                else
+                {
+                    imgList.Add(EditProduct.ImageURL);
+                }
+            }
+
+            ProductDetails = _context.ProductDetails.Where(pd => pd.ProductID == EditProduct.ProductID).ToList();
+
+            //ProductCategory pcEdit = await _context.ProductCategories.FindAsync(pc.CategoryID);
+
             //return RedirectToPage("./Index");
-            //return Redirect("Edit?id=" + Product.ProductID);
-            return Page();
+            return Redirect("Edit?id=" + EditProduct.ProductID);
+            //return Page();
         }
 
         public IActionResult OnPostAddProductDetails(ProductDetails ProductDetail)
@@ -274,7 +275,7 @@ namespace Falcons.Pages.management.FnB.Products
             Product Product = _context.Products.Find(ProductID);
             string ImageURLOrigin = Product.ImageURL;
 
-            if(ImageURLOrigin != null)
+            if(!String.IsNullOrWhiteSpace(ImageURLOrigin))
             {
                 List<string> ImageURLList = ImageURLOrigin.Split(",").ToList();
 
@@ -287,6 +288,15 @@ namespace Falcons.Pages.management.FnB.Products
 
                 _context.Products.Update(Product);
                 _context.SaveChanges();
+
+                //folder path to image
+                string UploadFolder = Path.Combine(webHostEnvironment.WebRootPath, "assets\\img\\products");
+
+                //delete the image file if exists
+                if (System.IO.File.Exists(UploadFolder + "\\" + ImgURL))
+                {
+                    System.IO.File.Delete(UploadFolder + "\\" + ImgURL);
+                }
             }
 
             return Redirect("Edit?id=" + ProductID);

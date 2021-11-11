@@ -243,7 +243,7 @@
                                         <td>@item.RecordID</td>
                                         <td>@item.FoodType.Title</td>
                                         <td>@item.Quantity</td>
-                                        <td>@item.Price</td>
+                                        <td>@item.Price.ToString("c")</td>
                                         <td>@item.Date.ToString("dd-MMM-yyyy") </td>
                                         <td>@Html.Raw((item.Description.Length > 60 ? item.Description.Substring(0, 60) + " ..." : item.Description))</td>
 
