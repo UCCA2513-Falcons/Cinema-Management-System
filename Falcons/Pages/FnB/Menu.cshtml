@@ -30,26 +30,61 @@
         </div>
     </div>
 
-    <div class="col-md-4">
-        <div class="box">
-            <div>
-                <div class="img-box">
-                    <img src="~/assets/img/2021-11-02/fries.png" />
-                </div>
-                <div class="detail-box">
-                    <h5 style="color:#cbcbcb;">Thai Flavour Fries</h5>
-                    <p style="color:#cbcbcb;">Delicious Thai flavours fries.</p>
+    @if (Model.Menus.Count != 0)
+    {
+        foreach (var item in Model.Menus)
+        {
+            <div class="col-md-4">
+                <div class="box">
+                    <div>
+                        <div class="img-box">
+                            <img src="@(String.IsNullOrWhiteSpace(item.ImageURL) ? "/assets/img/No-Image.png" : "/assets/img/menus/" + item.ImageURL.Split(",").First())" />
 
-                    <div class="options">
-                        <h6 style="color:#cbcbcb;">RM 5</h6>
-                        <a asp-page="ViewDetails">
-                            <i class="fas fa-chevron-circle-right"></i>
-                        </a>
+                        </div>
+                        <div class="detail-box">
+                            <h5 style="color:#cbcbcb;">@item.PackageName</h5>
+                            <p style="color:#cbcbcb;">@Html.Raw(@item.Description.Length > 40 ? @item.Description.Substring(0, 40) + "..." : @item.Description)</p>
+
+                            <div class="options">
+                                <h6 style="color:#cbcbcb;"></h6>
+                                <a asp-page="ViewDetails">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        }
+    }
+
+    @if (Model.Products.Count != 0)
+    {
+        foreach (var item in Model.Products)
+        {
+            <div class="col-md-4">
+                <div class="box">
+                    <div>
+                        <div class="img-box">
+                            <img src="@(String.IsNullOrWhiteSpace(item.ImageURL) ? "/assets/img/No-Image.png" : "/assets/img/products/" + item.ImageURL.Split(",").First())" />
+
+                        </div>
+                        <div class="detail-box">
+                            <h5 style="color:#cbcbcb;">@item.ProductTitle</h5>
+                            <p style="color:#cbcbcb;">@Html.Raw(@item.ProductDescription.Length > 40 ? @item.ProductDescription.Substring(0, 40) + "..." : @item.ProductDescription)</p>
+
+                            <div class="options">
+                                <h6 style="color:#cbcbcb;"></h6>
+                                <a asp-page="ViewDetails">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
 
 
 </div>

@@ -21,7 +21,7 @@ namespace Falcons.Models
         [Required]
         [MaxLength(10)]
         [Display(Name = "Role ID")]
-        [ForeignKey("Role")]
+        //[ForeignKey("Role")]
         public Int32 RoleID { get; set; }
 
         [Required]
@@ -55,7 +55,7 @@ namespace Falcons.Models
 
         
 
-        [Required]
-        public virtual ICollection<Role> role { get; set; }
+        //[Required]
+        //public virtual ICollection<Role> role { get; set; }
     }
 }

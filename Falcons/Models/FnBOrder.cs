@@ -19,10 +19,8 @@ namespace Falcons.Models
 
         [Required]
         [Display(Name = "User")]
-        [ForeignKey("User")]
         public int UID { get; set; }
 
-        public User User { get; set; }
         public ICollection<FnBOrderDetail> FnBOrderDetails { get; set; }
     }
 }

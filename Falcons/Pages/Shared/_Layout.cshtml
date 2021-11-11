@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -68,6 +72,7 @@
                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
                         <a asp-area="" asp-page="/Identity/"><span class="icon_profile"></span></a>
                         <!---partial name="_LoginPartial" /--->
+                        @if (SignInManager.IsSignedIn(User)) {  }
                     </div>
                 </div>
             </div>

@@ -11,13 +11,16 @@ namespace Falcons.Pages.FnB
     public class MenuModel : PageModel
     {
         private readonly FalconsDBContext _context;
+        public List<Menu> Menus;
+        public List<Product> Products;
         public MenuModel(FalconsDBContext context)
         {
             _context = context;
         }
         public IActionResult OnGet()
         {
-            _context.Menus.ToList();
+            Menus = _context.Menus.ToList();
+            Products = _context.Products.ToList();
             return Page();
         }
 

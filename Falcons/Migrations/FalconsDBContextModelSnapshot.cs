@@ -30,9 +30,13 @@ namespace Falcons.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("int");
 
-                    b.Property<int>("UID")
+                    b.Property<int>("RoleID")
                         .HasMaxLength(10)
                         .HasColumnType("int");
+
+                    b.Property<double>("amount")
+                        .HasMaxLength(10)
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("bookingDate")
                         .HasColumnType("datetime2");
@@ -44,7 +48,18 @@ namespace Falcons.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("showDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("showTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ticketTID")
+                        .HasColumnType("int");
+
                     b.HasKey("BID");
+
+                    b.HasIndex("ticketTID");
 
                     b.ToTable("Booking");
                 });
@@ -96,8 +111,6 @@ namespace Falcons.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("FnBOrderID");
-
-                    b.HasIndex("UID");
 
                     b.ToTable("FnBOrders");
                 });
@@ -302,27 +315,6 @@ namespace Falcons.Migrations
                     b.ToTable("ProductDetails");
                 });
 
-            modelBuilder.Entity("Falcons.Models.Role", b =>
-                {
-                    b.Property<int>("RoleID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Position")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("RoleTitle")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("ntext");
-
-                    b.HasKey("RoleID");
-
-                    b.ToTable("Role");
-                });
-
             modelBuilder.Entity("Falcons.Models.Ticket", b =>
                 {
                     b.Property<int>("TID")
@@ -330,90 +322,28 @@ namespace Falcons.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("MID")
-                        .IsRequired()
+                    b.Property<double>("amount")
                         .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("float");
 
                     b.Property<int>("bookingID")
                         .HasMaxLength(10)
                         .HasColumnType("int");
 
-                    b.Property<int>("hallNo")
-                        .HasMaxLength(3)
-                        .HasColumnType("int");
-
-                    b.Property<string>("movieName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("seatNo")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
-
-                    b.Property<DateTime>("showDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("showTime")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("TID");
-
-                    b.HasIndex("bookingID");
 
                     b.ToTable("Ticket");
                 });
 
-            modelBuilder.Entity("Falcons.Models.User", b =>
+            modelBuilder.Entity("Falcons.Models.Booking", b =>
                 {
-                    b.Property<int>("UID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.HasOne("Falcons.Models.Ticket", "ticket")
+                        .WithMany("booking")
+                        .HasForeignKey("ticketTID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<bool>("ApprovalStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("BlockSuspicious")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("PhoneNo")
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
-
-                    b.Property<int>("RoleID")
-                        .HasColumnType("int");
-
-                    b.HasKey("UID");
-
-                    b.HasIndex("RoleID");
-
-                    b.ToTable("User");
+                    b.Navigation("ticket");
                 });
 
             modelBuilder.Entity("Falcons.Models.Employee", b =>
@@ -423,17 +353,6 @@ namespace Falcons.Migrations
                         .HasForeignKey("EmployeesEmpID");
 
                     b.Navigation("Employees");
-                });
-
-            modelBuilder.Entity("Falcons.Models.FnBOrder", b =>
-                {
-                    b.HasOne("Falcons.Models.User", "User")
-                        .WithMany("FnBOrders")
-                        .HasForeignKey("UID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Falcons.Models.FnBOrderDetail", b =>
@@ -507,33 +426,6 @@ namespace Falcons.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Falcons.Models.Ticket", b =>
-                {
-                    b.HasOne("Falcons.Models.Booking", "booking")
-                        .WithMany("Tickets")
-                        .HasForeignKey("bookingID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("booking");
-                });
-
-            modelBuilder.Entity("Falcons.Models.User", b =>
-                {
-                    b.HasOne("Falcons.Models.Role", "Role")
-                        .WithMany("Users")
-                        .HasForeignKey("RoleID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("Falcons.Models.Booking", b =>
-                {
-                    b.Navigation("Tickets");
-                });
-
             modelBuilder.Entity("Falcons.Models.FnBOrder", b =>
                 {
                     b.Navigation("FnBOrderDetails");
@@ -561,14 +453,9 @@ namespace Falcons.Migrations
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("Falcons.Models.Role", b =>
+            modelBuilder.Entity("Falcons.Models.Ticket", b =>
                 {
-                    b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("Falcons.Models.User", b =>
-                {
-                    b.Navigation("FnBOrders");
+                    b.Navigation("booking");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,10 +11,6 @@ namespace Falcons.Models
         public FalconsDBContext(DbContextOptions<FalconsDBContext> options) : base(options) {
         }
 
-        //User & Roles
-        public DbSet<Role> Role { get; set; }
-        public DbSet<User> User { get; set; }
-
         //Food and Beverages
         public DbSet<FoodType> FoodTypes { get; set; }
         public DbSet<FoodInventory> FoodInventories { get; set; }
@@ -32,18 +28,5 @@ namespace Falcons.Models
 
         public DbSet<Booking> Booking { get; set; }
         public DbSet<Ticket> Ticket { get; set; }
-
-        /*protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<FnBOrderDetail>().HasKey(table => new { table.FnBOrder, table.Product});
-
-            builder.Entity<FnBOrderDetail>()
-                .HasOne(order => order.FnBOrder)
-                .WithMany(order => order.FnBOrderDetails);
-
-            builder.Entity<FnBOrderDetail>()
-                .HasOne(product => product.Product)
-                .WithMany(product => product.FnBOrderDetails);
-        }*/
     }
 }
