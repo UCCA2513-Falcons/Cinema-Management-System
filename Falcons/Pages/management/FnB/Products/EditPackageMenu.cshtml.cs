@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Falcons.Code;
+using Falcons.Data;
 using Falcons.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,9 +17,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Falcons.Pages.management.FnB.Products
 {
-    public class EditPackageMenuModel : PageModel
+    [Authorize(Roles = "Admin, Manager")]
+    public class EditPackageMenuModel : DI_BasePageModel
     {
         public readonly FalconsDBContext _context;
+        protected IServiceProvider ServiceProvider { get; }
 
         [BindProperty]
         public Menu Menu { get; set; }
@@ -43,9 +49,17 @@ namespace Falcons.Pages.management.FnB.Products
 
         private IWebHostEnvironment webHostEnvironment;
 
-        public EditPackageMenuModel(FalconsDBContext context, IWebHostEnvironment WebHostEnvironment)
+        public EditPackageMenuModel(FalconsDBContext context,
+         IWebHostEnvironment WebHostEnvironment,
+         ApplicationDbContext authcontext,
+         IAuthorizationService authorizationService,
+         UserManager<IdentityUser> userManager,
+         RoleManager<IdentityRole> roleManager,
+         IServiceProvider serviceProvider
+            ) : base(authcontext, authorizationService, userManager, roleManager)
         {
             _context = context;
+            ServiceProvider = serviceProvider;
             webHostEnvironment = WebHostEnvironment;
         }
 

@@ -2,23 +2,36 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Falcons.Code;
+using Falcons.Data;
 using Falcons.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace Falcons.Pages.management.FnB.Category
 {
-    public class DeleteModel : PageModel
+    [Authorize(Roles = "Admin")]
+    public class DeleteModel : DI_BasePageModel
     {
         private readonly FalconsDBContext _context;
+        protected IServiceProvider ServiceProvider { get; }
 
         [BindProperty]
         public ProductCategory ProductCategory { get; set; }
 
-        public DeleteModel(FalconsDBContext context)
+        public DeleteModel(FalconsDBContext context,
+            ApplicationDbContext authcontext,
+            IAuthorizationService authorizationService,
+         UserManager<IdentityUser> userManager,
+         RoleManager<IdentityRole> roleManager,
+         IServiceProvider serviceProvider
+            ) : base(authcontext, authorizationService, userManager, roleManager)
         {
             _context = context;
+            ServiceProvider = serviceProvider;
         }
 
         public async Task<IActionResult> OnGetAsync(int? id)
