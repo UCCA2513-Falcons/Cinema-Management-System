@@ -10,13 +10,17 @@ namespace Falcons.Models
     public class FnBOrder
     {
         [Key]
+        [Display(Name = "Order ID")]
         public int FnBOrderID { get; set; }
 
+        [Display(Name = "Date")]
+        [DataType(DataType.Date)]
         public DateTime OrderDate { get; set; }
 
         [Required]
-        public virtual User User { get; set; }
+        [Display(Name = "User")]
+        public int UID { get; set; }
 
-        public virtual ICollection<FnBOrderDetail> FnBOrderDetails { get; set; }
+        public ICollection<FnBOrderDetail> FnBOrderDetails { get; set; }
     }
 }

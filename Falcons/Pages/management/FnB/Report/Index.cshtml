@@ -1,0 +1,194 @@
+﻿@page
+@model Falcons.Pages.management.FnB.Report.IndexModel
+@{
+    Layout = "_ManagementLayout";
+    ViewData["Title"] = "Report";
+}
+
+<!-- Inventory Value Report-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Product Inventory Value</div>
+            </div>
+            <div class="card-body">
+                <div id="chart-container">
+                    <canvas id="LineChart" height="400px"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Inventory Value Report -->
+<!-- Annual Expense Report-->
+<div class="row mt-3">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Annual Expenses</div>
+            </div>
+            <div class="card-body">
+                <div id="chart-container">
+                    <canvas id="barChart" height="450px"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Annual Expense Report-->
+<!-- Earning Report-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Earning</div>
+            </div>
+            <div class="card-body">
+                <div id="chart-container">
+                    <canvas id="EarningLineChart" height="400px"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Inventory Value Report -->
+
+
+@section Scripts {
+    <script>
+
+        // Line Chart Inventory Value
+
+        var lineChart = document.getElementById('LineChart').getContext('2d');
+
+        var myLineChart = new Chart(lineChart, {
+            type: 'line',
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: "Inventory Value(MYR)",
+                    borderColor: "#1d7af3",
+                    pointBorderColor: "#FFF",
+                    pointBackgroundColor: "#1d7af3",
+                    pointBorderWidth: 2,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 4,
+                    backgroundColor: 'transparent',
+                    fill: true,
+                    borderWidth: 2,
+                    data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 900]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 10,
+                        fontColor: '#1d7af3',
+                    }
+                },
+                tooltips: {
+                    bodySpacing: 4,
+                    mode: "nearest",
+                    intersect: 0,
+                    position: "nearest",
+                    xPadding: 10,
+                    yPadding: 10,
+                    caretPadding: 10
+                },
+                layout: {
+                    padding: { left: 15, right: 15, top: 15, bottom: 15 }
+                }
+            }
+        });
+
+        //End Line Chart Invetory Value
+
+
+        //Start Bar Chart Annual Expense
+
+        var barChart = document.getElementById('barChart').getContext('2d');
+
+        var myBarChart = new Chart(barChart, {
+            type: 'bar',
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: "Expenses (MYR)",
+                    backgroundColor: 'rgb(23, 125, 255)',
+                    borderColor: 'rgb(23, 125, 255)',
+                    data: [3667, 2375, 9423, 5355, 4454, 5646, 8654, 7566, 9787, 6588, 5417, 8883],
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+            }
+        });
+
+        //End Bar Chart Annual Expense
+
+
+        // Earning Line Chart
+
+        var lineChart = document.getElementById('EarningLineChart').getContext('2d');
+
+        var myLineChart = new Chart(lineChart, {
+            type: 'line',
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: "Earning (MYR)",
+                    borderColor: "#1d7af3",
+                    pointBorderColor: "#FFF",
+                    pointBackgroundColor: "#1d7af3",
+                    pointBorderWidth: 2,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 4,
+                    backgroundColor: 'transparent',
+                    fill: true,
+                    borderWidth: 2,
+                    data: [2133, 4344, 3545, 2845, 4324, 2133, 3200, 2933, 3600, 2400, 2666, 4600]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 10,
+                        fontColor: '#1d7af3',
+                    }
+                },
+                tooltips: {
+                    bodySpacing: 4,
+                    mode: "nearest",
+                    intersect: 0,
+                    position: "nearest",
+                    xPadding: 10,
+                    yPadding: 10,
+                    caretPadding: 10
+                },
+                layout: {
+                    padding: { left: 15, right: 15, top: 15, bottom: 15 }
+                }
+            }
+        });
+
+        //End Earning Line Chart
+    </script>
+}

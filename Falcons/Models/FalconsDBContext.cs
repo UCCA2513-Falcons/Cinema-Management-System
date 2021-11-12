@@ -11,31 +11,22 @@ namespace Falcons.Models
         public FalconsDBContext(DbContextOptions<FalconsDBContext> options) : base(options) {
         }
 
-        //User & Roles
-        public DbSet<Role> Role { get; set; }
-        public DbSet<User> User { get; set; }
-
         //Food and Beverages
-        public DbSet<FoodType> FoodType { get; set; }
-        public DbSet<FoodInventory> FoodInventory { get; set; }
-        public DbSet<ProductCategory> ProductCategory { get; set; }
-        public DbSet<Product> Product { get; set; }
-        public DbSet<Menu> Menu { get; set; }
-        public DbSet<MenuItem> MenuItem { get; set; } 
-        public DbSet<FnBOrder> FnBOrder { get; set; }
-        public DbSet<FnBOrderDetail> FnBOrderDetail { get; set; }
+        public DbSet<FoodType> FoodTypes { get; set; }
+        public DbSet<FoodInventory> FoodInventories { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductDetails> ProductDetails { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<MenuItem> MenuItems { get; set; } 
+        public DbSet<FnBOrder> FnBOrders { get; set; }
+        public DbSet<FnBOrderDetail> FnBOrderDetails { get; set; }
 
-        /*protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<FnBOrderDetail>().HasKey(table => new { table.FnBOrder, table.Product});
+        public DbSet<Employee> Employee { get; set; }
 
-            builder.Entity<FnBOrderDetail>()
-                .HasOne(order => order.FnBOrder)
-                .WithMany(order => order.FnBOrderDetails);
+        // ticket
 
-            builder.Entity<FnBOrderDetail>()
-                .HasOne(product => product.Product)
-                .WithMany(product => product.FnBOrderDetails);
-        }*/
+        public DbSet<Booking> Booking { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
     }
 }

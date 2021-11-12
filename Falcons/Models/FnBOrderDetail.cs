@@ -11,17 +11,29 @@ namespace Falcons.Models
     public class FnBOrderDetail
     {
         [Key]
+        [Display(Name = "ID")]
         public int ID { get; set; }
 
-        public virtual FnBOrder FnBOrder { get; set; }
+        [Display(Name = "Order")]
+        [ForeignKey("FnBOrder")]
+        public int OrderID { get; set; }
 
-        public virtual Product Product { get; set; }
+        [Display(Name = "Product")]
+        [Required]
+        [ForeignKey("Product")]
+        public int ProductID { get; set; }
+        
 
         [Required]
+        [Display(Name = "Quantity")]
         public int Quantity { get; set; }
 
         [Required]
+        [Display(Name = "Price")]
         public int ProductPrice { get; set; }
+
+        public Product Product { get; set; }
+        public FnBOrder FnBOrder { get; set; }
 
     }
 }

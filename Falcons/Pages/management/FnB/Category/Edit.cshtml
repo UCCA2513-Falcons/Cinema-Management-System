@@ -1,0 +1,30 @@
+﻿@page
+@model Falcons.Pages.management.FnB.Category.EditModel
+@{
+    Layout = "_ManagementLayout";
+
+    ViewData["Title"] = "Edit";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group form-group-default">
+                        <label asp-for="PC.CategoryID"></label>
+                        <input class="form-control" asp-for="PC.CategoryID" disabled />
+                        <input class="form-control" type="hidden" asp-for="PC.CategoryID" />
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="PC.CategoryName"></label>
+                        <input class="form-control" asp-for="PC.CategoryName" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary btn-lg" />
+                        <a href="/management/FnB/Category/Index" class="btn btn-primary btn-lg ml-3">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,251 @@
+﻿@page
+@model Falcons.Pages.management.FnB.Products.IndexModel
+@{
+    Layout = "_ManagementLayout";
+    ViewData["Title"] = "Food and Beverages Product";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Product</div>
+            </div>
+            <div class="card-body">
+                <!-- Button -->
+                <div class="d-flex">
+                    <button class="btn btn-primary btn-round ml-auto mb-3" data-toggle="modal" data-target="#addProductModal">
+                        <i class="fa fa-plus"></i>
+                        Add Product
+                    </button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+                                    <span class="fw-mediumbold">
+                                        New
+                                    </span>
+                                    <span class="fw-light">
+                                        Product
+                                    </span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form role="form" method="post">
+                                <div class="modal-body">
+                                    <p class="small">Please fill in all the field.</p>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label asp-for="Product.ProductTitle"></label>
+                                                <input asp-for="Product.ProductTitle" type="text" class="form-control" placeholder="Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-default">
+                                                <label asp-for="Product.CategoryID"></label>
+                                                <select asp-for="Product.CategoryID" asp-items="Model.CategoryOptions" class="form-control"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-default">
+                                                <label asp-for="Product.ProductDescription"></label>
+                                                <textarea class="form-control" asp-for="Product.ProductDescription" rows="8" placeholder="Product description here ..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer no-bd">
+                                    <button type="submit" class="btn btn-primary">Add</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal End -->
+                <!-- Table -->
+                <div class="table-responsive">
+                    <table id="product-row" class=" display table table-striped table-hover" cellspacing="0" width="100%">
+                        <thead>
+                            <tr role="row"></tr>
+
+                            <tr role="row">
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.AllProduct)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(PorductItem => item.ProductID)</td>
+                                    <td>@Html.DisplayFor(PorductItem => item.ProductTitle)</td>
+                                    <td>@Html.DisplayFor(PorductItem => Model._context.ProductCategories.Find(item.CategoryID).CategoryName)</td>
+                                    <td>@Html.Raw((item.ProductDescription.Length > 200 ? item.ProductDescription.Substring(0, 200) + " ..." : item.ProductDescription))</td>
+                                    <td>
+                                        <div class="form-button-action">
+                                            <a href="/management/FnB/Products/Edit?id=@Html.DisplayFor(PorductItem => item.ProductID)" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a href="/management/FnB/Products/Delete?id=@Html.DisplayFor(PorductItem => item.ProductID)" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Table End -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Package Product -->
+<div class="row mt-3">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Package</div>
+            </div>
+            <div class="card-body">
+                <!-- Button -->
+                <div class="d-flex">
+                    <button class="btn btn-primary btn-round ml-auto mb-3" data-toggle="modal" data-target="#addPackageModal">
+                        <i class="fa fa-plus"></i>
+                        Create New Package
+                    </button>
+                </div>
+                <!-- Butten End-->
+                <!-- Modal -->
+                <div class="modal fade" id="addPackageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+                                    <span class="fw-mediumbold">
+                                        New
+                                    </span>
+                                    <span class="fw-light">
+                                        Package
+                                    </span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form role="form" method="post">
+                                <div class="modal-body">
+                                    <p class="small">Please fill in all the field.</p>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group form-group-default">
+                                                    <label asp-for="Menu.PackageName"></label>
+                                                    <input asp-for="Menu.PackageName" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group form-group-default">
+                                                    <label asp-for="Menu.Description"></label>
+                                                    <textarea asp-for="Menu.Description" class="form-control" rows="8"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="modal-footer no-bd">
+                                    <button class="btn btn-primary" asp-page-handler="CreateMenu">Add</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal End -->
+                <!-- Table -->
+                <div class="table-responsive">
+                    <table id="PackageProduct" class="display table table-striped table-hover" cellspacing="0" width="100%">
+                        <thead>
+                            <tr role="row"></tr>
+
+                            <tr role="row">
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Menus != null)
+                            {
+                                foreach (var item in Model.Menus)
+                                {
+                                    <tr>
+                                        <td>@item.MenuID</td>
+                                        <td>@item.PackageName</td>
+                                        <td>@Html.Raw((item.Description.Length > 200 ? item.Description.Substring(0, 200) + " ..." : item.Description))</td>
+                                        <td>
+                                            <div class="form-button-action">
+                                                <a data-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-lg" data-original-title="Edit" href="/management/FnB/Products/EditPackageMenu?id=@item.MenuID">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a data-toggle="tooltip" title="Remove" class="btn btn-link btn-danger" data-original-title="Remove" href="/management/FnB/Products/DeletePackageMenu?id=@item.MenuID">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Product Row
+        $('#product-row').DataTable({
+            "pageLength": 10
+        });
+
+        var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+        /*
+        $('#addProductButton').click(function () {
+            $('#product-row').dataTable().fnAddData([
+                $("#ProductName").val(),
+                $("#ProductCategory").val(),
+                $("#ProductPrice").val(),
+                $("#ProductSize").val(),
+                action
+            ]);
+            $('#addProductModal').modal('hide');
+
+        });*/
+
+        //Package Product Datatable initialize
+        $('#PackageProduct').DataTable({
+            "pageLength": 10
+        });
+    </script>
+} 

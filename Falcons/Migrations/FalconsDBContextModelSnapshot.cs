@@ -19,6 +19,84 @@ namespace Falcons.Migrations
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Falcons.Models.Booking", b =>
+                {
+                    b.Property<int>("BID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("MID")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoleID")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<double>("amount")
+                        .HasMaxLength(10)
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("bookingDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("bookingTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("paymentID")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("showDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("showTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ticketTID")
+                        .HasColumnType("int");
+
+                    b.HasKey("BID");
+
+                    b.HasIndex("ticketTID");
+
+                    b.ToTable("Booking");
+                });
+
+            modelBuilder.Entity("Falcons.Models.Employee", b =>
+                {
+                    b.Property<int>("EmpID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Department")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EmployeesEmpID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("LName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Salary")
+                        .HasColumnType("int");
+
+                    b.HasKey("EmpID");
+
+                    b.HasIndex("EmployeesEmpID");
+
+                    b.ToTable("Employee");
+                });
+
             modelBuilder.Entity("Falcons.Models.FnBOrder", b =>
                 {
                     b.Property<int>("FnBOrderID")
@@ -29,14 +107,12 @@ namespace Falcons.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserUID")
+                    b.Property<int>("UID")
                         .HasColumnType("int");
 
                     b.HasKey("FnBOrderID");
 
-                    b.HasIndex("UserUID");
-
-                    b.ToTable("FnBOrder");
+                    b.ToTable("FnBOrders");
                 });
 
             modelBuilder.Entity("Falcons.Models.FnBOrderDetail", b =>
@@ -46,10 +122,10 @@ namespace Falcons.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("FnBOrderID")
+                    b.Property<int>("OrderID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProductID")
+                    b.Property<int>("ProductID")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductPrice")
@@ -60,11 +136,11 @@ namespace Falcons.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("FnBOrderID");
+                    b.HasIndex("OrderID");
 
                     b.HasIndex("ProductID");
 
-                    b.ToTable("FnBOrderDetail");
+                    b.ToTable("FnBOrderDetails");
                 });
 
             modelBuilder.Entity("Falcons.Models.FoodInventory", b =>
@@ -81,7 +157,7 @@ namespace Falcons.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<int>("FoodTypeFID")
+                    b.Property<int>("FID")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
@@ -97,9 +173,9 @@ namespace Falcons.Migrations
 
                     b.HasKey("RecordID");
 
-                    b.HasIndex("FoodTypeFID");
+                    b.HasIndex("FID");
 
-                    b.ToTable("FoodInventory");
+                    b.ToTable("FoodInventories");
                 });
 
             modelBuilder.Entity("Falcons.Models.FoodType", b =>
@@ -121,7 +197,7 @@ namespace Falcons.Migrations
 
                     b.HasKey("FID");
 
-                    b.ToTable("FoodType");
+                    b.ToTable("FoodTypes");
                 });
 
             modelBuilder.Entity("Falcons.Models.Menu", b =>
@@ -135,13 +211,16 @@ namespace Falcons.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("ntext");
 
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PackageName")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.HasKey("MenuID");
 
-                    b.ToTable("Menu");
+                    b.ToTable("Menus");
                 });
 
             modelBuilder.Entity("Falcons.Models.MenuItem", b =>
@@ -163,7 +242,7 @@ namespace Falcons.Migrations
 
                     b.HasIndex("ProductID");
 
-                    b.ToTable("MenuItem");
+                    b.ToTable("MenuItems");
                 });
 
             modelBuilder.Entity("Falcons.Models.Product", b =>
@@ -173,15 +252,15 @@ namespace Falcons.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ProductCategoryCategoryID")
+                    b.Property<int>("CategoryID")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductDescription")
                         .HasMaxLength(2000)
                         .HasColumnType("ntext");
-
-                    b.Property<decimal>("ProductPrice")
-                        .HasColumnType("decimal(6,2)");
 
                     b.Property<string>("ProductTitle")
                         .IsRequired()
@@ -190,9 +269,9 @@ namespace Falcons.Migrations
 
                     b.HasKey("ProductID");
 
-                    b.HasIndex("ProductCategoryCategoryID");
+                    b.HasIndex("CategoryID");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Falcons.Models.ProductCategory", b =>
@@ -209,100 +288,86 @@ namespace Falcons.Migrations
 
                     b.HasKey("CategoryID");
 
-                    b.ToTable("ProductCategory");
+                    b.ToTable("ProductCategories");
                 });
 
-            modelBuilder.Entity("Falcons.Models.Role", b =>
+            modelBuilder.Entity("Falcons.Models.ProductDetails", b =>
                 {
-                    b.Property<int>("RoleID")
+                    b.Property<int>("ProductDetailID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Position")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("RoleTitle")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("ntext");
-
-                    b.HasKey("RoleID");
-
-                    b.ToTable("Role");
-                });
-
-            modelBuilder.Entity("Falcons.Models.User", b =>
-                {
-                    b.Property<int>("UID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("ApprovalStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("BlockSuspicious")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("PhoneNo")
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
-
-                    b.Property<int>("RoleID")
+                    b.Property<int>("ProductID")
                         .HasColumnType("int");
 
-                    b.HasKey("UID");
+                    b.Property<decimal>("ProductPrice")
+                        .HasColumnType("decimal(6,2)");
 
-                    b.HasIndex("RoleID");
+                    b.Property<string>("Size")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("User");
+                    b.HasKey("ProductDetailID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("ProductDetails");
                 });
 
-            modelBuilder.Entity("Falcons.Models.FnBOrder", b =>
+            modelBuilder.Entity("Falcons.Models.Ticket", b =>
                 {
-                    b.HasOne("Falcons.Models.User", "User")
-                        .WithMany("FnBOrders")
-                        .HasForeignKey("UserUID")
+                    b.Property<int>("TID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("amount")
+                        .HasMaxLength(10)
+                        .HasColumnType("float");
+
+                    b.Property<int>("bookingID")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.HasKey("TID");
+
+                    b.ToTable("Ticket");
+                });
+
+            modelBuilder.Entity("Falcons.Models.Booking", b =>
+                {
+                    b.HasOne("Falcons.Models.Ticket", "ticket")
+                        .WithMany("booking")
+                        .HasForeignKey("ticketTID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("ticket");
+                });
+
+            modelBuilder.Entity("Falcons.Models.Employee", b =>
+                {
+                    b.HasOne("Falcons.Models.Employee", "Employees")
+                        .WithMany()
+                        .HasForeignKey("EmployeesEmpID");
+
+                    b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("Falcons.Models.FnBOrderDetail", b =>
                 {
                     b.HasOne("Falcons.Models.FnBOrder", "FnBOrder")
                         .WithMany("FnBOrderDetails")
-                        .HasForeignKey("FnBOrderID");
+                        .HasForeignKey("OrderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Falcons.Models.Product", "Product")
                         .WithMany("FnBOrderDetails")
-                        .HasForeignKey("ProductID");
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("FnBOrder");
 
@@ -313,7 +378,7 @@ namespace Falcons.Migrations
                 {
                     b.HasOne("Falcons.Models.FoodType", "FoodType")
                         .WithMany("FoodInventories")
-                        .HasForeignKey("FoodTypeFID")
+                        .HasForeignKey("FID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -343,22 +408,22 @@ namespace Falcons.Migrations
                 {
                     b.HasOne("Falcons.Models.ProductCategory", "ProductCategory")
                         .WithMany("Products")
-                        .HasForeignKey("ProductCategoryCategoryID")
+                        .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ProductCategory");
                 });
 
-            modelBuilder.Entity("Falcons.Models.User", b =>
+            modelBuilder.Entity("Falcons.Models.ProductDetails", b =>
                 {
-                    b.HasOne("Falcons.Models.Role", "Role")
-                        .WithMany("Users")
-                        .HasForeignKey("RoleID")
+                    b.HasOne("Falcons.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Role");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Falcons.Models.FnBOrder", b =>
@@ -388,14 +453,9 @@ namespace Falcons.Migrations
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("Falcons.Models.Role", b =>
+            modelBuilder.Entity("Falcons.Models.Ticket", b =>
                 {
-                    b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("Falcons.Models.User", b =>
-                {
-                    b.Navigation("FnBOrders");
+                    b.Navigation("booking");
                 });
 #pragma warning restore 612, 618
         }
