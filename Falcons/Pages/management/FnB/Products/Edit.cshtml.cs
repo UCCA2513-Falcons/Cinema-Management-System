@@ -248,7 +248,7 @@ namespace Falcons.Pages.management.FnB.Products
 
             Product EditProduct = _context.Products.Find(ProductDetail.ProductID);
 
-            if(EditProduct != null)
+            if(!String.IsNullOrWhiteSpace(EditProduct.ImageURL))
             {
                 /*if (EditProduct.ImageURL != null)
                 {

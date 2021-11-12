@@ -96,7 +96,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form role="form" method="post">
+                            <form role="form" method="post" asp-page-handler="AddProductDetails">
                                 <input type="hidden" asp-for="ProductDetail.ProductID" value="@Model.Product.ProductID"/>
                                 <div class="modal-body">
                                     <p class="small">Please fill in all the field.</p>

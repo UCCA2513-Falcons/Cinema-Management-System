@@ -12,14 +12,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Falcons.Pages.FnB
 {
-    public class ViewDetailsModel : DI_BasePageModel
+    public class ViewMenuDetailsModel : DI_BasePageModel
     {
-        public Product Product;
-        public List<ProductDetails> ProductDetails;
-
         private readonly FalconsDBContext _context;
         protected IServiceProvider ServiceProvider { get; }
-        public ViewDetailsModel(FalconsDBContext context,
+        public ViewMenuDetailsModel(FalconsDBContext context,
             ApplicationDbContext authcontext,
             IAuthorizationService authorizationService,
          UserManager<IdentityUser> userManager,
@@ -30,14 +27,13 @@ namespace Falcons.Pages.FnB
             _context = context;
             ServiceProvider = serviceProvider;
         }
+
         public IActionResult OnGet(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return Redirect("/FnB/Menu");
             }
-            Product = _context.Products.Find(id);
-            ProductDetails = _context.ProductDetails.Where(pd => pd.ProductID == id).ToList();
 
             return Page();
         }
