@@ -2,11 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Falcons.Code;
-using Falcons.Data;
 using Falcons.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,11 +10,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Falcons.Pages.management.FnB.Inventory
 {
-    [Authorize(Roles = "Admin, Manager, Staff")]
-    public class IndexModel : DI_BasePageModel
+    public class IndexModel : PageModel
     {
         public readonly FalconsDBContext _context;
-        protected IServiceProvider ServiceProvider { get; }
 
         [BindProperty]
         public FoodInventory FoodInventory { get; set; }
@@ -35,16 +29,9 @@ namespace Falcons.Pages.management.FnB.Inventory
         [BindProperty]
         public int RecordID { get; set; }
 
-        public IndexModel(FalconsDBContext context,
-            ApplicationDbContext authcontext,
-            IAuthorizationService authorizationService,
-         UserManager<IdentityUser> userManager,
-         RoleManager<IdentityRole> roleManager,
-         IServiceProvider serviceProvider
-            ) : base(authcontext, authorizationService, userManager, roleManager)
+        public IndexModel(FalconsDBContext context)
         {
             _context = context;
-            ServiceProvider = serviceProvider;
         }
 
         public IActionResult OnGet()

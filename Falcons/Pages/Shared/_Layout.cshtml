@@ -32,11 +32,7 @@
 
     <!-- Font Awesome 5.15.4 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        body,h5, h4,h3, h2, h1, p, a{
-            color:#ffffff;
-        }
-    </style>
+
 
     @await RenderSectionAsync("Styles", required: false)
 </head>
@@ -74,19 +70,9 @@
                 <div class="col-lg-2">
                     <div class="header__right">
                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
+                        <a asp-area="" asp-page="/Identity/"><span class="icon_profile"></span></a>
                         <!---partial name="_LoginPartial" /--->
-                        @if (SignInManager.IsSignedIn(User))
-                        {
-                            <a href="/Identity/Account/Manage" title="Profile"><span class="icon_profile"></span></a>
-                            if (User.IsInRole("Admin") || User.IsInRole("Manager"))
-                            {
-                                <a href="/management/" title="Management"><i class="far fa-building"></i></a>
-                            }
-                        }
-                        else
-                        {
-                            <a href="/Identity/Account/Login"><span class="icon_profile"></span></a>
-                        }
+                        @if (SignInManager.IsSignedIn(User)) {  }
                     </div>
                 </div>
             </div>

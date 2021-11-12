@@ -2,37 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Falcons.Code;
-using Falcons.Data;
 using Falcons.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Falcons.Pages.management.FnB.Category
 {
-    [Authorize(Roles = "Admin")]
-    public class EditModel : DI_BasePageModel
+    public class EditModel : PageModel
     {
         private readonly FalconsDBContext _context;
-        protected IServiceProvider ServiceProvider { get; }
-
+        
         [BindProperty]
         public ProductCategory PC { get; set; }
 
-        public EditModel(FalconsDBContext context,
-            ApplicationDbContext authcontext,
-            IAuthorizationService authorizationService,
-         UserManager<IdentityUser> userManager,
-         RoleManager<IdentityRole> roleManager,
-         IServiceProvider serviceProvider
-            ) : base(authcontext, authorizationService, userManager, roleManager)
+        public EditModel(FalconsDBContext context)
         {
             _context = context;
-            ServiceProvider = serviceProvider;
         }
 
         public async Task<IActionResult> OnGetAsync(int? id)

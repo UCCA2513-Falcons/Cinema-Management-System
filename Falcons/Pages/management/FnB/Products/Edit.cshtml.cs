@@ -4,13 +4,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Falcons.Code;
-using Falcons.Data;
 using Falcons.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -18,11 +14,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Falcons.Pages.management.FnB.Products
 {
-    [Authorize(Roles = "Admin, Manager")]
-    public class EditModel : DI_BasePageModel
+    public class EditModel : PageModel
     {
         private readonly FalconsDBContext _context;
-        protected IServiceProvider ServiceProvider { get; }
 
         public List<SelectListItem> CategoryOptions { get; set; }
 
@@ -52,21 +46,13 @@ namespace Falcons.Pages.management.FnB.Products
 
         public List<SelectListItem> ProductOptions { get; set; }
 
-        public EditModel(FalconsDBContext context,
-         IWebHostEnvironment WebHostEnvironment,
-         ApplicationDbContext authcontext,
-         IAuthorizationService authorizationService,
-         UserManager<IdentityUser> userManager,
-         RoleManager<IdentityRole> roleManager,
-         IServiceProvider serviceProvider
-            ) : base(authcontext, authorizationService, userManager, roleManager)
+        public EditModel(FalconsDBContext context, IWebHostEnvironment WebHostEnvironment)
         {
             _context = context;
-            ServiceProvider = serviceProvider;
             webHostEnvironment = WebHostEnvironment;
         }
 
-    public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if(id == null)
             {

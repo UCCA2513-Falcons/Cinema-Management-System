@@ -9,6 +9,26 @@
 }
 
 <div class="row grid">
+    <div class="col-md-4">
+        <div class="box">
+            <div>
+                <div class="img-box">
+                    <img src="~/assets/img/2021-11-02/burger.png" />
+                </div>
+                <div class="detail-box">
+                    <h5 style="color:#cbcbcb;">Chicken Burger</h5>
+                    <p style="color:#cbcbcb;">Delicious Thai flavours chicken burger.</p>
+
+                    <div class="options">
+                        <h6 style="color:#cbcbcb;">RM 15</h6>
+                        <a asp-page="ViewDetails">
+                            <i class="fas fa-chevron-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @if (Model.Menus.Count != 0)
     {

@@ -2,11 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Falcons.Code;
-using Falcons.Data;
 using Falcons.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,27 +10,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Falcons.Pages.management.FnB.Inventory
 {
-    [Authorize(Roles = "Admin, Manager, Staff")]
-    public class EditInventoryRecordModel : DI_BasePageModel
+    public class EditInventoryRecordModel : PageModel
     {
         public readonly FalconsDBContext _context;
-        protected IServiceProvider ServiceProvider { get; }
 
         [BindProperty]
         public FoodInventory FoodInventory { get; set; }
 
         public List<SelectListItem> FoodTypeOptions { get; set; }
 
-        public EditInventoryRecordModel(FalconsDBContext context,
-            ApplicationDbContext authcontext,
-            IAuthorizationService authorizationService,
-         UserManager<IdentityUser> userManager,
-         RoleManager<IdentityRole> roleManager,
-         IServiceProvider serviceProvider
-            ) : base(authcontext, authorizationService, userManager, roleManager)
+        public EditInventoryRecordModel(FalconsDBContext context)
         {
             _context = context;
-            ServiceProvider = serviceProvider;
         }
 
         public IActionResult OnGet(int? id)
