@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Falcons.Pages.management.FnB.Category
 {
-
+    [Authorize(Roles = "Admin, Manager")]
     public class IndexModel : DI_BasePageModel
     {
         [BindProperty]
@@ -48,7 +48,29 @@ namespace Falcons.Pages.management.FnB.Category
                 await RoleManager.CreateAsync(new IdentityRole("Admin"));
             }
 
+            //add role for manager
+            var ManagerRole = await RoleManager.FindByNameAsync("Manager");
+            if (ManagerRole == null)
+            {
+                await RoleManager.CreateAsync(new IdentityRole("Manager"));
+            }
+
+            //add role for staff
+            var StaffRole = await RoleManager.FindByNameAsync("Staff");
+            if (StaffRole == null)
+            {
+                await RoleManager.CreateAsync(new IdentityRole("Staff"));
+            }
+
+            //add role for user
+            var UserRole = await RoleManager.FindByNameAsync("User");
+            if (UserRole == null)
+            {
+                await RoleManager.CreateAsync(new IdentityRole("User"));
+            }
+
             await UserManager.AddToRoleAsync(usr, "Admin");
+            await UserManager.AddToRoleAsync(usr, "Manager");
         }
 
         public void OnPost()
