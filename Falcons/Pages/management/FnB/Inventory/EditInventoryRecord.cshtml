@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group form-group-default">
                         <label asp-for="FoodInventory.Quantity"></label>
-                        <input class="form-control" asp-for="FoodInventory.Quantity" type="number" min="0" />
+                        <input class="form-control" asp-for="FoodInventory.Quantity" required type="number" min="0" />
                     </div>
                     <div class="form-group form-group-default">
                         <label asp-for="FoodInventory.Price"></label>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group form-group-default">
                         <label asp-for="FoodInventory.RecordType"></label>
-                        <select class="form-control" asp-for="FoodInventory.RecordType">
+                        <select class="form-control" asp-for="FoodInventory.RecordType" required>
                             <option value="Purchase">Purchase</option>
                             <option value="Return">Return</option>
                             <option value="Consume">Consume</option>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group form-group-default">
                         <label asp-for="FoodInventory.Date"></label>
-                        <input class="form-control" asp-for="FoodInventory.Date" />
+                        <input class="form-control" asp-for="FoodInventory.Date" required/>
                     </div>
                     <div class="form-group form-group-default">
                         <label asp-for="FoodInventory.Description"></label>

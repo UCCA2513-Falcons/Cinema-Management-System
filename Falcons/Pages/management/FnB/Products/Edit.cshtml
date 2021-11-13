@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group form-group-default">
                         <label asp-for="Product.ProductTitle"></label>
-                        <input class="form-control" asp-for="Product.ProductTitle" />
+                        <input class="form-control" asp-for="Product.ProductTitle" required />
                     </div>
                     <div class="form-group form-group-default">
                         <label asp-for="Product.CategoryID"></label>
@@ -104,13 +104,13 @@
                                         <div class="col-md-12">
                                             <div class="form-group form-group-default">
                                                 <label>Size</label>
-                                                <input class="form-control" asp-for="ProductDetail.Size"/>
+                                                <input class="form-control" asp-for="ProductDetail.Size" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group form-group-default">
                                                 <label asp-for="ProductDetail.ProductPrice"></label>
-                                                <input class="form-control" asp-for="ProductDetail.ProductPrice" type="number" />
+                                                <input class="form-control" asp-for="ProductDetail.ProductPrice" type="number" required/>
                                             </div>
                                         </div>
                                     </div>

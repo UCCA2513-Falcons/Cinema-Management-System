@@ -23,7 +23,14 @@
                         </div>
                         <div class="detail-box">
                             <h5 style="color:#cbcbcb;">@item.PackageName</h5>
-                            <p style="color:#cbcbcb;">@Html.Raw(@item.Description.Length > 40 ? @item.Description.Substring(0, 40) + "..." : @item.Description)</p>
+                            @if (!String.IsNullOrWhiteSpace(@item.Description))
+                            {
+                                <p style="color:#cbcbcb;">@Html.Raw(@item.Description.Length > 40 ? @item.Description.Substring(0, 40) + "..." : @item.Description)</p>
+                            }
+                            else
+                            {
+                                <p style="color:#cbcbcb;"></p>
+                            }
 
                             <div class="options">
                                 <h6 style="color:#cbcbcb;"></h6>
@@ -47,11 +54,18 @@
                     <div>
                         <div class="img-box">
                             <img src="@(String.IsNullOrWhiteSpace(item.ImageURL) ? "/assets/img/No-Image.png" : "/assets/img/products/" + item.ImageURL.Split(",").First())" />
-
                         </div>
                         <div class="detail-box">
                             <h5 style="color:#cbcbcb;">@item.ProductTitle</h5>
-                            <p style="color:#cbcbcb;">@Html.Raw(@item.ProductDescription.Length > 40 ? @item.ProductDescription.Substring(0, 40) + "..." : @item.ProductDescription)</p>
+                            @if (!String.IsNullOrWhiteSpace(@item.ProductDescription))
+                            {
+                                <p style="color:#cbcbcb;">@Html.Raw(@item.ProductDescription.Length > 40 ? @item.ProductDescription.Substring(0, 40) + "..." : @item.ProductDescription)</p>
+                            }
+                            else
+                            {
+                                <p style="color:#cbcbcb;"></p>
+                            }
+
 
                             <div class="options">
                                 <h6 style="color:#cbcbcb;"></h6>

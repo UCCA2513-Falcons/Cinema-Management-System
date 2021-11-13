@@ -247,8 +247,9 @@ namespace Falcons.Pages.management.FnB.Products
                                         }).ToList();
 
             Product EditProduct = _context.Products.Find(ProductDetail.ProductID);
+            imgList = new List<string>();
 
-            if(!String.IsNullOrWhiteSpace(EditProduct.ImageURL))
+            if (!String.IsNullOrWhiteSpace(EditProduct.ImageURL))
             {
                 /*if (EditProduct.ImageURL != null)
                 {
