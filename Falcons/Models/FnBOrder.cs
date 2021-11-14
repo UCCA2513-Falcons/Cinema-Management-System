@@ -19,7 +19,7 @@ namespace Falcons.Models
 
         [Required]
         [Display(Name = "User")]
-        public int UID { get; set; }
+        public string UID { get; set; }
 
         public ICollection<FnBOrderDetail> FnBOrderDetails { get; set; }
     }

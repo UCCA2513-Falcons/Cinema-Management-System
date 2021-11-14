@@ -19,7 +19,6 @@ namespace Falcons.Pages.management.FnB.Category
         public ProductCategory NewPC { get; set; }
 
         private readonly FalconsDBContext _context;
-
         protected IServiceProvider ServiceProvider { get; }
         public IndexModel(
             FalconsDBContext context,
@@ -69,14 +68,21 @@ namespace Falcons.Pages.management.FnB.Category
                 await RoleManager.CreateAsync(new IdentityRole("User"));
             }
 
-            await UserManager.AddToRoleAsync(usr, "Admin");
-            await UserManager.AddToRoleAsync(usr, "Manager");
+            /*await UserManager.AddToRoleAsync(usr, "Admin");
+            await UserManager.AddToRoleAsync(usr, "Manager");*/
         }
 
         public void OnPost()
         {
-            _context.ProductCategories.Add(NewPC);
-            _context.SaveChanges();
+            if (String.IsNullOrWhiteSpace(NewPC.CategoryName))
+            {
+
+            }else
+            {
+                _context.ProductCategories.Add(NewPC);
+                _context.SaveChanges();
+            }
+            
             category = _context.ProductCategories.ToList();
         }
     }

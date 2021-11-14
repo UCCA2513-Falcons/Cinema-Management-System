@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Functions\" />
-    <Folder Include="Pages\management\User\" />
     <Folder Include="wwwroot\assets\img\menus\" />
     <Folder Include="wwwroot\assets\img\products\" />
   </ItemGroup>

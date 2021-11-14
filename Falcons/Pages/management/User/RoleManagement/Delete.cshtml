@@ -1,0 +1,31 @@
+﻿@page
+@model Falcons.Pages.management.User.RoleManagement.DeleteModel
+@{
+    Layout = "_ManagementLayout";
+}
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.identityRole.Id)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.identityRole.Id)
+    </dd>
+</dl>
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.identityRole.Name)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.identityRole.Name)
+    </dd>
+</dl>
+
+<div class="alert alert-danger" role="alert">
+    Continue proceed will delete this role and the user role related to it !
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="RoleID" value="@Model.identityRole.Id" />
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <a asp-page="./Index" class="btn btn-primary">Back to List</a>
+</form>
