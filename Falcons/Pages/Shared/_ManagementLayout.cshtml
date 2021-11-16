@@ -172,6 +172,29 @@
                         </div>
                     </li>
 
+                    <li class="nav-item">
+                        <a data-toggle="collapse" href="#Movies">
+                            <i class="fas fa-tv"></i>
+                            <p>Movies</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="Movies">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a asp-area="" asp-page="/management/Movies/Movies">
+                                        <span class="sub-item">Movies</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-page="/management/Movies/Showtimes">
+                                        <span class="sub-item">Showtimes</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
                     <!-- User Management Navigation -->
                     <li class="nav-item">
                         <a data-toggle="collapse" href="#UserNav">
