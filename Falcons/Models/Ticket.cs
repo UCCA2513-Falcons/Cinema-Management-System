@@ -22,7 +22,7 @@ namespace Falcons.Models
         [MaxLength(10)]
         [Display(Name = "Booking ID")]
         [ForeignKey("Booking")]
-        public Int32 bookingID { get; set; }
+        public Int32 BID { get; set; }
 
         [Required]
         public virtual ICollection<Booking> booking { get; set; }

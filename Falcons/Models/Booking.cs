@@ -11,18 +11,14 @@ namespace Falcons.Models
     {
         [Key]
         [Display(Name = "Booking ID")]
-        public Int32 BID { get; set; }
+        public Int32 ID { get; set; }
+
 
         [Required]
-        [MaxLength(10)]
-        [Display(Name = "Payment ID")]
-        public Int32 paymentID { get; set; }
-
-        [Required]
-        [MaxLength(10)]
-        [Display(Name = "Role ID")]
+        [MaxLength(100)]
+        [Display(Name = "Email")]
         //[ForeignKey("Role")]
-        public Int32 RoleID { get; set; }
+        public string email { get; set; }
 
         [Required]
         [MaxLength(10)]
@@ -30,20 +26,17 @@ namespace Falcons.Models
         public Int32 MID { get; set; }
 
         [Required]
-        [Display(Name = "Booking Date")]
-        public DateTime bookingDate { get; set; }
+        [MaxLength(100)]
+        [Display(Name = "Movie Name")]
+        public string movieName { get; set; }
 
         [Required]
-        [Display(Name = "Booking Time")]
-        public DateTime bookingTime { get; set; }
+        [Display(Name = "Created on")]
+        public DateTime bookingDateTime { get; set; }
 
         [Required]
-        [Display(Name = "Showing Time")]
-        public DateTime showTime { get; set; }
-
-        [Required]
-        [Display(Name = "Showing Date")]
-        public DateTime showDate { get; set; }
+        [Display(Name = "Booked for")]
+        public DateTime showDateTime { get; set; }
 
         [Required]
         [MaxLength(10)]
@@ -53,7 +46,6 @@ namespace Falcons.Models
         [Required]
         public virtual Ticket ticket { get; set; }
 
-        
 
         //[Required]
         //public virtual ICollection<Role> role { get; set; }

@@ -12,6 +12,8 @@ namespace Falcons.Models
         [Display(Name = "Hall Number")]
         public Int32 HID { get; set; }
 
+
+        public virtual Seat seat { get; set; }
         
     }
 }
