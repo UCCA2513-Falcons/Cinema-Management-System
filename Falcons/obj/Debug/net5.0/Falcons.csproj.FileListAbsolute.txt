@@ -511,3 +511,4 @@ C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\User\Users\Index.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\User\Users\Delete.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\Cart\Index.cshtml.g.cs
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\AssignRole.cshtml.g.cs

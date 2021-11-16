@@ -20,8 +20,8 @@ namespace Falcons.Models
         [Required]
 
         public string Department { get; set; }
-        [Required]
+        //[Required]
 
-        public virtual Employee Employees { get; set; }
+        //public virtual Employee Employees { get; set; }
     }
 }
