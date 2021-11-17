@@ -12,7 +12,6 @@
         }
     </style>
 }
-<div id="sys_msg"></div>
 <div class="row">
     <div class="col-md-5">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -21,7 +20,7 @@
                 @if (Model.Menu != null)
                 {
                     List<string> imgURL;
-                    if (!String.IsNullOrWhiteSpace(Model.Menu.ImageURL))
+                    if (Model.Menu.ImageURL != null)
                     {
                         imgURL = Model.Menu.ImageURL.Split(",").ToList();
 
@@ -119,7 +118,7 @@
                         </select>
                     }
                 </div>
-                <button type="button" class="btn btn-warning mt-3 ml-5" id="AddToCart">Add To Cart</button>
+                <button type="button" class="btn btn-warning mt-3 ml-5">Add To Cart</button>
             </div>
         </div>
     </div>
@@ -133,8 +132,8 @@
 </div>
 
 @section Scripts {
-<script>
-$(function () {
+    <script>
+ $(function () {
             @{
                 var settings = new JsonSerializerSettings()
                 {
@@ -143,7 +142,7 @@ $(function () {
 
                 string json = JsonConvert.SerializeObject(Model.ProductDetails, Formatting.Indented, settings);
              }
-     var size = @Html.Raw(json);
+            var size = @Html.Raw(json);
      function calculatePrice() {
          let estimatedPrice = 0;
          //calculate the estimated price
@@ -161,35 +160,7 @@ $(function () {
          }
 
          $("#PriceIndicator").text("RM" + (estimatedPrice));
-    }
-
-    function getQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
-    }
-
-    function getAllProductDetailID() {
-        let selectProduct = $('select[name="product"]');
-        let ProductDetailArray = [];
-        let ProductDetailItem = new Object();
-        for (let i = 0; i < selectProduct.length; i++) {
-            console.log(selectProduct[i]);
-
-            for (let j = 0; j < size.length; j++) {
-                if (selectProduct[i].value == size[j].ProductDetailID) {
-                    //estimatedPrice += size[j].ProductPrice;
-                    console.log("Selected : " + selectProduct[i].value);
-                    //insert the  product detail ID
-                    ProductDetailItem.ProductDetailID = size[j].ProductDetailID;
-                    ProductDetailArray.push(ProductDetailItem);
-                    ProductDetailItem = new Object();
-                }
-            }
-        }
-
-        return ProductDetailArray;
-    }
+     }
 
      window.onload = calculatePrice();
      $('select[name="product"]').on("change", calculatePrice);
@@ -206,57 +177,7 @@ $(function () {
                 }
                 $("#PriceIndicator").text("RM" + (Price + 0.00));
             });*/
-    $("#AddToCart").click(function () {
 
-        if (getAllProductDetailID().length > 0) {
-            if (typeof (Storage) !== "undefined") {
-                let cartArray = [];
-
-                //check if cart json already exists
-                if (!(localStorage.getItem("FnBMenuCart") == null || localStorage.getItem("FnBMenuCart") == "")) {
-                    cartArray = JSON.parse(localStorage.getItem("FnBMenuCart"));
-                }
-
-                //loop in cart to find and update
-                let updateStatus = false;
-                /*for (let f = 0; f < cartArray.length; f++) {
-                    if (cartArray[f].ProductDetailID == TargetItem) {
-                        cartArray[f].quantity = cartArray[f].quantity + quantity;
-                        updateStatus = true;
-                    }
-                }*/
-
-                //if not found after loop then create new
-                if (!updateStatus) {
-                    let cart = new Object();
-                    //cart.ProductDetailID = TargetItem;
-                    //cart.quantity = quantity;
-
-                    cart.MenuID = getQueryString("id");
-                    cart.ProductDetail = getAllProductDetailID();
-
-                    //push item into array
-                    cartArray.push(cart);
-                }
-
-
-                //store it and display successful message
-                localStorage.setItem("FnBMenuCart", JSON.stringify(cartArray));
-
-                $("div#sys_msg").prepend('<div class="alert alert-success" role="alert" style="margin-top:1rem;margin-bottom:1rem;">' +
-                    'Successfully added to your cart !' +
-                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>' +
-                    '</div>');
-            } else {
-                console.log("no Local Storage available");
-            }
-        } else {
-            $("div#sys_msg").prepend('<div class="alert alert-danger" role="alert" style="margin-top:1rem;margin-bottom:1rem;">' +
-                'Not able to add unavailable product to cart !' +
-                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>' +
-                '</div>');
-        }
-    });
-});
-</script>
+        });
+    </script>
 }

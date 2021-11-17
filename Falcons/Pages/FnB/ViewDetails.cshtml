@@ -11,7 +11,6 @@
         }
     </style>
 }
-<div id="sys_msg"></div>
 <div class="row">
     <div class="col-md-5">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -19,7 +18,7 @@
                 @if (Model.Product != null)
                 {
                     List<string> imgURL;
-                    if (!String.IsNullOrWhiteSpace(Model.Product.ImageURL))
+                    if (Model.Product.ImageURL != null)
                     {
                         imgURL = Model.Product.ImageURL.Split(",").ToList();
 
@@ -97,7 +96,7 @@
 
 
                 </div>
-                <button type="button" class="btn btn-warning mt-3 ml-5" id="AddToCart">Add To Cart</button>
+                <button type="button" class="btn btn-warning mt-3 ml-5">Add To Cart</button>
             </div>
         </div>
     </div>
@@ -132,59 +131,6 @@
                 }
                 $("#PriceIndicator").text("RM" + (Price + 0.00));
             });
-
-            $("#AddToCart").click(function () {
-                //get the selected item
-                let TargetItem = $("#ProductSize").val();
-                let quantity = 1;
-
-                if (TargetItem != null) {
-                    if (typeof (Storage) !== "undefined") {
-                        let cartArray = [];
-
-                        //check if cart json already exists
-                        if (!(localStorage.getItem("FnBProductCart") == null || localStorage.getItem("FnBProductCart") == "")) {
-                            cartArray = JSON.parse(localStorage.getItem("FnBProductCart"));
-                        }
-
-                        //loop in cart to find and update
-                        let updateStatus = false;
-                        for (let f = 0; f < cartArray.length; f++) {
-                            if (cartArray[f].ProductDetailID == TargetItem) {
-                                cartArray[f].quantity = cartArray[f].quantity + quantity;
-                                updateStatus = true;
-                            }
-                        }
-
-                        //if not found after loop then create new
-                        if (!updateStatus) {
-                            let cart = new Object();
-                            cart.ProductDetailID = TargetItem;
-                            cart.quantity = quantity;
-
-                            //push item into array
-                            cartArray.push(cart);
-                        }
-
-
-                        //store it and display successful message
-                        localStorage.setItem("FnBProductCart", JSON.stringify(cartArray));
-
-                        $("div#sys_msg").prepend('<div class="alert alert-success" role="alert" style="margin-top:1rem;margin-bottom:1rem;">' +
-                            'Successfully added to your cart !' +
-                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>' +
-                            '</div>');
-                    } else {
-                        console.log("no Local Storage available");
-                    }
-                } else {
-                    $("div#sys_msg").prepend('<div class="alert alert-danger" role="alert" style="margin-top:1rem;margin-bottom:1rem;">' +
-                        'Not able to add unavailable product to cart !' +
-                        '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>' +
-                        '</div>');
-                }
-            });
-
         });
     </script>
 }
