@@ -746,3 +746,6 @@ C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\De
 C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\ref\Falcons.dll
 C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Falcons.pdb
 C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Falcons.genruntimeconfig.cache
+D:\GitHub\GitHub\Falcons\obj\Debug\net5.0\Falcons.dll
+D:\GitHub\GitHub\Falcons\obj\Debug\net5.0\ref\Falcons.dll
+D:\GitHub\GitHub\Falcons\obj\Debug\net5.0\Falcons.pdb
