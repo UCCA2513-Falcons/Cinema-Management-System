@@ -32,7 +32,7 @@ namespace Falcons.Pages.FnB
         }
         public IActionResult OnGet(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return Redirect("/FnB/Menu");
             }
