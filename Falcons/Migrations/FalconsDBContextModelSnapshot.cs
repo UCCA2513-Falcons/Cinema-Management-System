@@ -21,7 +21,7 @@ namespace Falcons.Migrations
 
             modelBuilder.Entity("Falcons.Models.Booking", b =>
                 {
-                    b.Property<int>("BID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -30,34 +30,35 @@ namespace Falcons.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("int");
 
-                    b.Property<int>("RoleID")
-                        .HasMaxLength(10)
+                    b.Property<int?>("SeatSID")
                         .HasColumnType("int");
 
                     b.Property<double>("amount")
                         .HasMaxLength(10)
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("bookingDate")
+                    b.Property<DateTime>("bookingDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("bookingTime")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("paymentID")
+                    b.Property<string>("movieName")
+                        .IsRequired()
                         .HasMaxLength(10)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(10)");
 
-                    b.Property<DateTime>("showDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("showTime")
+                    b.Property<DateTime>("showDateTime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("ticketTID")
                         .HasColumnType("int");
 
-                    b.HasKey("BID");
+                    b.HasKey("ID");
+
+                    b.HasIndex("SeatSID");
 
                     b.HasIndex("ticketTID");
 
@@ -75,9 +76,6 @@ namespace Falcons.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EmployeesEmpID")
-                        .HasColumnType("int");
-
                     b.Property<string>("FName")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -91,8 +89,6 @@ namespace Falcons.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("EmpID");
-
-                    b.HasIndex("EmployeesEmpID");
 
                     b.ToTable("Employee");
                 });
@@ -201,6 +197,23 @@ namespace Falcons.Migrations
                     b.ToTable("FoodTypes");
                 });
 
+            modelBuilder.Entity("Falcons.Models.Hall", b =>
+                {
+                    b.Property<int>("HID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("seatSID")
+                        .HasColumnType("int");
+
+                    b.HasKey("HID");
+
+                    b.HasIndex("seatSID");
+
+                    b.ToTable("Hall");
+                });
+
             modelBuilder.Entity("Falcons.Models.Menu", b =>
                 {
                     b.Property<int>("MenuID")
@@ -244,6 +257,70 @@ namespace Falcons.Migrations
                     b.HasIndex("ProductID");
 
                     b.ToTable("MenuItems");
+                });
+
+            modelBuilder.Entity("Falcons.Models.Movies", b =>
+                {
+                    b.Property<int>("MovieID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Cast")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Director")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Distributor")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Duration")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Genre")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Language")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("MovieName")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<DateTime>("ReleaseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Subtitle")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Synopsis")
+                        .HasMaxLength(2000)
+                        .HasColumnType("ntext");
+
+                    b.HasKey("MovieID");
+
+                    b.ToTable("Movies");
                 });
 
             modelBuilder.Entity("Falcons.Models.Product", b =>
@@ -316,6 +393,53 @@ namespace Falcons.Migrations
                     b.ToTable("ProductDetails");
                 });
 
+            modelBuilder.Entity("Falcons.Models.Seat", b =>
+                {
+                    b.Property<int>("SID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SID");
+
+                    b.ToTable("Seat");
+                });
+
+            modelBuilder.Entity("Falcons.Models.Showtime", b =>
+                {
+                    b.Property<int>("ShowtimeID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("EndDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("MoviesMovieID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ShowroomNo")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ShowtimeID");
+
+                    b.HasIndex("MoviesMovieID");
+
+                    b.ToTable("Showtime");
+                });
+
             modelBuilder.Entity("Falcons.Models.Ticket", b =>
                 {
                     b.Property<int>("TID")
@@ -323,13 +447,13 @@ namespace Falcons.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("BID")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
                     b.Property<double>("amount")
                         .HasMaxLength(10)
                         .HasColumnType("float");
-
-                    b.Property<int>("bookingID")
-                        .HasMaxLength(10)
-                        .HasColumnType("int");
 
                     b.HasKey("TID");
 
@@ -338,6 +462,10 @@ namespace Falcons.Migrations
 
             modelBuilder.Entity("Falcons.Models.Booking", b =>
                 {
+                    b.HasOne("Falcons.Models.Seat", null)
+                        .WithMany("booking")
+                        .HasForeignKey("SeatSID");
+
                     b.HasOne("Falcons.Models.Ticket", "ticket")
                         .WithMany("booking")
                         .HasForeignKey("ticketTID")
@@ -345,15 +473,6 @@ namespace Falcons.Migrations
                         .IsRequired();
 
                     b.Navigation("ticket");
-                });
-
-            modelBuilder.Entity("Falcons.Models.Employee", b =>
-                {
-                    b.HasOne("Falcons.Models.Employee", "Employees")
-                        .WithMany()
-                        .HasForeignKey("EmployeesEmpID");
-
-                    b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("Falcons.Models.FnBOrderDetail", b =>
@@ -384,6 +503,15 @@ namespace Falcons.Migrations
                         .IsRequired();
 
                     b.Navigation("FoodType");
+                });
+
+            modelBuilder.Entity("Falcons.Models.Hall", b =>
+                {
+                    b.HasOne("Falcons.Models.Seat", "seat")
+                        .WithMany("Halls")
+                        .HasForeignKey("seatSID");
+
+                    b.Navigation("seat");
                 });
 
             modelBuilder.Entity("Falcons.Models.MenuItem", b =>
@@ -427,6 +555,15 @@ namespace Falcons.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Falcons.Models.Showtime", b =>
+                {
+                    b.HasOne("Falcons.Models.Movies", "Movies")
+                        .WithMany("Showtimes")
+                        .HasForeignKey("MoviesMovieID");
+
+                    b.Navigation("Movies");
+                });
+
             modelBuilder.Entity("Falcons.Models.FnBOrder", b =>
                 {
                     b.Navigation("FnBOrderDetails");
@@ -442,6 +579,11 @@ namespace Falcons.Migrations
                     b.Navigation("MenuItems");
                 });
 
+            modelBuilder.Entity("Falcons.Models.Movies", b =>
+                {
+                    b.Navigation("Showtimes");
+                });
+
             modelBuilder.Entity("Falcons.Models.Product", b =>
                 {
                     b.Navigation("FnBOrderDetails");
@@ -452,6 +594,13 @@ namespace Falcons.Migrations
             modelBuilder.Entity("Falcons.Models.ProductCategory", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Falcons.Models.Seat", b =>
+                {
+                    b.Navigation("booking");
+
+                    b.Navigation("Halls");
                 });
 
             modelBuilder.Entity("Falcons.Models.Ticket", b =>

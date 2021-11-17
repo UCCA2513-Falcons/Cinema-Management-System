@@ -29,14 +29,16 @@ p.text2 {
     }
 
 .movie-container {
-    margin: 20px 0;
+    margin: 30px;
+    color: #000;
+    padding: 10px;
 }
 
-    .movie-container select {
-        background-color: #fff border: 0;
-        border-radius: 5px;
+.movie-container select {
+       background-color: #fff border: 0;
+       border-radius: 5px;
         font-size: 16px;
-        margin-left: 10px;
+       margin-left: 10px;
         padding: 5px 15px 5px 15px;
         -moz-appearance: none;
         -webkit-appearance: none;
@@ -90,6 +92,7 @@ p.text2 {
 }
 
 .showcase {
+    margin-top: 100px;
     background: rgba(0, 0, 0, 0.1);
     padding: 5px 10px;
     border-radius: 5px;

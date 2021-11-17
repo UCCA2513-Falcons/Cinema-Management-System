@@ -75,6 +75,7 @@
                     <div class="header__right">
                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
                         <!---partial name="_LoginPartial" /--->
+                        <a asp-page="/Cart" title="Cart"><i class="fas fa-shopping-cart"></i></a>
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <a href="/Identity/Account/Manage" title="Profile"><span class="icon_profile"></span></a>

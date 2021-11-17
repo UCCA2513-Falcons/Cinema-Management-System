@@ -29,6 +29,10 @@ namespace Falcons.Models
         public DbSet<Booking> Booking { get; set; }
         public DbSet<Ticket> Ticket { get; set; }
 
+        public DbSet<Seat> Seat { get; set; }
+
+        public DbSet<Hall> Hall { get; set; }
+
         // Movies
         public DbSet<Movies> Movies { get; set; }
         public DbSet<Showtime> Showtime { get; set; }
