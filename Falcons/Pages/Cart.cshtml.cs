@@ -9,14 +9,19 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
-namespace Falcons.Pages.Cart
+namespace Falcons.Pages
 {
-    public class IndexModel : DI_BasePageModel
+    public class CartModel : DI_BasePageModel
     {
+        public List<ProductDetails> ProductDetails;
+        public List<Menu> Menus;
+        public List<Product> Products;
+
         private readonly FalconsDBContext _context;
         protected IServiceProvider ServiceProvider { get; }
-        public IndexModel(
+        public CartModel(
             FalconsDBContext context,
             ApplicationDbContext authcontext,
             IAuthorizationService authorizationService,
@@ -29,8 +34,11 @@ namespace Falcons.Pages.Cart
             ServiceProvider = serviceProvider;
         }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
+            ProductDetails = await _context.ProductDetails.ToListAsync();
+            Products = await _context.Products.ToListAsync();
+            Menus = await _context.Menus.ToListAsync();
         }
     }
 }

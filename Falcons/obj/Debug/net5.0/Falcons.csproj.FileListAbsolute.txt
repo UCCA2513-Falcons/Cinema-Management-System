@@ -510,7 +510,6 @@ C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\_ViewStart.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\User\Users\Index.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\User\Users\Delete.cshtml.g.cs
-C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\Cart\Index.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\AssignRole.cshtml.g.cs
 C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\bin\Debug\net5.0\appsettings.json
@@ -980,3 +979,7 @@ C:\Users\imshe\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.
 C:\Users\imshe\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\ref\Falcons.dll
 C:\Users\imshe\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Falcons.pdb
 C:\Users\imshe\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Falcons.genruntimeconfig.cache
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\Movies\Movies.cshtml.g.cs
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\Movies\Showtimes.cshtml.g.cs
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\Checkout.cshtml.g.cs
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\Cart.cshtml.g.cs

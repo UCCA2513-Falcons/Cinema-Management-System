@@ -9,6 +9,7 @@ build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 build_property.RootNamespace = Falcons
 build_property.ProjectDir = D:\GitHub\GitHub\Falcons\
 =======
@@ -17,3 +18,7 @@ build_property.ProjectDir = D:\GitHub\GitHub\Falcons\
 >>>>>>> parent of ac9819b (Add Checkout Page and Add to Cart Function)
 =======
 >>>>>>> parent of ac9819b (Add Checkout Page and Add to Cart Function)
+=======
+build_property.RootNamespace = Falcons
+build_property.ProjectDir = D:\GitHub\GitHub\Falcons\
+>>>>>>> parent of 85072c2 (Merge)
