@@ -25,7 +25,7 @@
         </div>
         <div class="row mt-5">
             <div class="col-md-12">
-                <button class="btn btn-primary">Checkout & Pay</button>
+                <a class="btn btn-primary" href="/Checkout">Checkout & Pay</a>
             </div>
         </div>
     </div>
@@ -102,7 +102,7 @@
                         if (cartMenuArray[i].MenuID == Menu[k].MenuID) {
                             title = Menu[k].PackageName;
                             IMGLink = Menu[k].ImageURL.split(",", 1);
-                            id = cartMenuArray[i].MenuID;
+                            id = i;
                         }
                     }
 
@@ -157,7 +157,7 @@
                         if (cartArray[i].ProductDetailID == ProductDetail[k].ProductDetailID) {
                             ProductDescription = ProductDetail[k].Size + " x " + cartArray[i].quantity;
                             TotalPrice = ProductDetail[k].ProductPrice * cartArray[i].quantity;
-                            id = cartArray[i].ProductDetailID;
+                            id = i;
 
                             for (let o = 0; o < Product.length; o++) {
                                 if (Product[o].ProductID == ProductDetail[k].ProductID) {
@@ -186,7 +186,7 @@
                     cartMenuArray = JSON.parse(localStorage.getItem("FnBMenuCart"));
                 }
                 if (cartMenuArray.length > 0) {
-                    for (let i = 0; i<cartMenuArray.length; i++) {
+                    /*for (let i = 0; i<cartMenuArray.length; i++) {
                         if (cartMenuArray[i].MenuID == targetID) {
                             delete cartMenuArray[i];
 
@@ -206,7 +206,25 @@
 
                             location.reload(); //relaod if item is deleted
                         }
+                    }*/
+
+                    delete cartMenuArray[targetID];
+
+                    let filtered = []; //declare array list var
+
+                    //recreate array list wiithout null element
+                    filtered = cartMenuArray.filter(function (el) {
+                        return el != null;
+                    });
+
+                    //remove whole localSotrage item if no item in the array list
+                    if (filtered.length == 0) {
+                        localStorage.removeItem("FnBMenuCart");
+                    } else {
+                        localStorage.setItem("FnBMenuCart", JSON.stringify(filtered));
                     }
+
+                    location.reload(); //relaod if item is deleted
                 }
             }
 
@@ -220,7 +238,7 @@
                     cartProductArray = JSON.parse(localStorage.getItem("FnBProductCart"));
                 }
                 if (cartProductArray.length > 0) {
-                    for (let i = 0; i < cartProductArray.length; i++) {
+                    /*for (let i = 0; i < cartProductArray.length; i++) {
                         if (cartProductArray[i].ProductDetailID == targetID) {
                             delete cartProductArray[i];
 
@@ -240,11 +258,56 @@
 
                             location.reload(); //relaod if item is deleted
                         }
+                    }*/
+
+                    delete cartProductArray[targetID];
+
+                    let filtered = []; //declare array list var
+
+                    //recreate array list wiithout null element
+                    filtered = cartProductArray.filter(function (el) {
+                        return el != null;
+                    });
+
+                    //remove whole localSotrage item if no item in the array list
+                    if (filtered.length == 0) {
+                        localStorage.removeItem("FnBProductCart");
+                    } else {
+                        localStorage.setItem("FnBProductCart", JSON.stringify(filtered));
                     }
+
+                    location.reload(); //relaod if item is deleted
                 }
             }
 
         });
+
+        /*$("button#checkout").click(function () {
+            let CheckoutMenus = [];
+            let Products = [];
+            let CheckoutJsonContainer = new Object();
+            if (!(localStorage.getItem("FnBProductCart") == null || localStorage.getItem("FnBProductCart") == "")) {
+                Products = JSON.parse(localStorage.getItem("FnBProductCart"));
+            }
+
+            if (!(localStorage.getItem("FnBMenuCart") == null || localStorage.getItem("FnBMenuCart") == "")) {
+                CheckoutMenus = JSON.parse(localStorage.getItem("FnBMenuCart"));
+            }
+
+            CheckoutJsonContainer.CheckoutMenus = CheckoutMenus;
+            CheckoutJsonContainer.Products = Products;
+
+            $.ajax({
+                type: 'POST',
+                url: '/Checkout',
+                contentType: 'application/json',
+                data: JSON.stringify(CheckoutJsonContainer),
+                success: function(result) {
+                    console.log("AJAX Sent to Checkout");
+                    console.log(result);
+                }
+            });
+        });*/
     });
     </script>
 }

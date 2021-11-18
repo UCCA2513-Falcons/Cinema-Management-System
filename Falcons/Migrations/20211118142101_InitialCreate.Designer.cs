@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Falcons.Migrations
 {
     [DbContext(typeof(FalconsDBContext))]
-    [Migration("20211116111612_Update")]
-    partial class Update
+    [Migration("20211118142101_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,8 +49,8 @@ namespace Falcons.Migrations
 
                     b.Property<string>("movieName")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("showDateTime")
                         .HasColumnType("datetime2");
@@ -124,11 +124,14 @@ namespace Falcons.Migrations
                     b.Property<int>("OrderID")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductID")
+                    b.Property<int>("ProductDetailID")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductPrice")
+                    b.Property<int?>("ProductID")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("ProductPrice")
+                        .HasColumnType("decimal(6,2)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -136,6 +139,8 @@ namespace Falcons.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("OrderID");
+
+                    b.HasIndex("ProductDetailID");
 
                     b.HasIndex("ProductID");
 
@@ -485,15 +490,19 @@ namespace Falcons.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Falcons.Models.Product", "Product")
-                        .WithMany("FnBOrderDetails")
-                        .HasForeignKey("ProductID")
+                    b.HasOne("Falcons.Models.ProductDetails", "ProductDetails")
+                        .WithMany()
+                        .HasForeignKey("ProductDetailID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Falcons.Models.Product", null)
+                        .WithMany("FnBOrderDetails")
+                        .HasForeignKey("ProductID");
+
                     b.Navigation("FnBOrder");
 
-                    b.Navigation("Product");
+                    b.Navigation("ProductDetails");
                 });
 
             modelBuilder.Entity("Falcons.Models.FoodInventory", b =>

@@ -20,8 +20,8 @@ namespace Falcons.Models
 
         [Display(Name = "Product")]
         [Required]
-        [ForeignKey("Product")]
-        public int ProductID { get; set; }
+        [ForeignKey("ProductDetails")]
+        public int ProductDetailID { get; set; }
         
 
         [Required]
@@ -30,9 +30,10 @@ namespace Falcons.Models
 
         [Required]
         [Display(Name = "Price")]
-        public int ProductPrice { get; set; }
+        [Column(TypeName = "decimal(6,2)")]
+        public decimal ProductPrice { get; set; }
 
-        public Product Product { get; set; }
+        public ProductDetails ProductDetails { get; set; }
         public FnBOrder FnBOrder { get; set; }
 
     }
