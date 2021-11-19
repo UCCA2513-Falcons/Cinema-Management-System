@@ -1,4 +1,53 @@
 ﻿@page
+@using Falcons.Models;
 @model Falcons.Pages.HistoryModel
 @{
+    ViewData["Title"] = "Order History";
+}
+
+@if (Model.FnBOrders != null) {
+    foreach (var item in Model.FnBOrders) {
+        decimal totalPrice = 0;
+        <div class="mt-5 mb-3">
+            <div class="row mb-3">
+                <div class="col-md-9">Order ID : @item.FnBOrderID</div>
+                <div class="col-md-3">Order Date : @item.OrderDate.ToString("dd-MMM-yyyy")</div>
+            </div>
+    @foreach (var details in Model._context.FnBOrderDetails.Where(fd => fd.OrderID == item.FnBOrderID).ToList())
+    {
+        List<string> img;
+        ProductDetails ProductInfo = Model._context.ProductDetails.Find(details.ProductDetailID);
+        Product productDesc = Model._context.Products.Find(ProductInfo.ProductID);
+        if (!String.IsNullOrWhiteSpace(productDesc.ImageURL))
+        {
+            img = productDesc.ImageURL.Split(",").ToList();
+        }
+        else {
+            img = new List<string>();
+            img.Add("/assets/img/No-Image.png");
+        }
+
+        totalPrice += details.ProductPrice;
+
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/assets/img/products/@img[0]" style="max-height:200px;max-width:300px;" />
+            </div>
+            <div class="col-md-8">
+                <h5 class="mt-1">@Html.Raw(productDesc.ProductTitle + " (" + ProductInfo.Size + ")")</h5>
+                <h6 class="mt-1">@Html.Raw("Price : RM" + details.ProductPrice)</h6>
+                <h6 class="mt-1">@Html.Raw("Quantity : " + details.Quantity)</h6>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-9">
+            <p>Total Price</p>
+        </div>
+        <div class="col-md-3">RM @totalPrice</div>
+    </div>
+    <hr style="margin:0rem 0rem 1rem 0rem;background-color:#ffffff;" />
+</div>
+        
+    }
 }

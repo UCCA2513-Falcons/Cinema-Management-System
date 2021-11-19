@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Cinema-Management-System\\Falcons\\Falcons.csproj": {}
+    "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\Falcons.csproj": {}
   },
   "projects": {
-    "D:\\Cinema-Management-System\\Falcons\\Falcons.csproj": {
+    "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\Falcons.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Cinema-Management-System\\Falcons\\Falcons.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\Falcons.csproj",
         "projectName": "Falcons",
-        "projectPath": "D:\\Cinema-Management-System\\Falcons\\Falcons.csproj",
-        "packagesPath": "C:\\Users\\Jiann Tsong\\.nuget\\packages\\",
-        "outputPath": "D:\\Cinema-Management-System\\Falcons\\obj\\",
+        "projectPath": "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\Falcons.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Documents\\GitHub\\Cinema-Management-System\\Falcons\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jiann Tsong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

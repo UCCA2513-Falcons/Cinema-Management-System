@@ -8,33 +8,32 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
-namespace Falcons.Pages
+namespace Falcons.Pages.management.FnB
 {
-    public class HistoryModel : DI_BasePageModel
+    [Authorize(Roles = "Admin, Manager, Staff")]
+    public class OrderModel : DI_BasePageModel
     {
         public List<FnBOrder> FnBOrders;
-        public List<FnBOrderDetail> FnBOrderDetails;
 
         public readonly FalconsDBContext _context;
         protected IServiceProvider ServiceProvider { get; }
-        public HistoryModel(
-            FalconsDBContext context,
+        public OrderModel(FalconsDBContext context,
             Data.ApplicationDbContext authcontext,
             IAuthorizationService authorizationService,
-         UserManager<IdentityUser> userManager,
-         RoleManager<IdentityRole> roleManager,
-         IServiceProvider serviceProvider
-            ) : base(authcontext, authorizationService, userManager, roleManager)
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager,
+            IServiceProvider serviceProvider
+        ) : base(authcontext, authorizationService, userManager, roleManager)
         {
             _context = context;
             ServiceProvider = serviceProvider;
         }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            //get all the order
-            FnBOrders = _context.FnBOrders.Where(fnb => fnb.UID == UserManager.GetUserId(User)).ToList();
+            FnBOrders = await _context.FnBOrders.OrderByDescending(f => f.FnBOrderID).ToListAsync();
         }
     }
 }

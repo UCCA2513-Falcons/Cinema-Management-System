@@ -63,6 +63,9 @@
 
                         if (Model.Products != null)
                         {
+                            //first picture output
+                            bool firstIMG = true;
+
                             foreach (var item in Model.Products)
                             {
                                 List<string> ProductimgURL;
@@ -72,11 +75,13 @@
 
                                     if (ProductimgURL.Count > 0)
                                     {
+
                                         //output all product image
                                         for (int i = 0; i < ProductimgURL.Count; i++)
                                         {
-                                            if ((i == 0) && String.IsNullOrWhiteSpace(Model.Menu.ImageURL))
+                                            if (firstIMG && String.IsNullOrWhiteSpace(Model.Menu.ImageURL))
                                             {
+                                                firstIMG = false;
                                                 <div class="carousel-item active">
                                                     <img src="/assets/img/products/@ProductimgURL[i]" class="d-block w-100">
                                                 </div>
