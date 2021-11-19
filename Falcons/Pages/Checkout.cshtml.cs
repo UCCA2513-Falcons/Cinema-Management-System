@@ -44,7 +44,7 @@ namespace Falcons.Pages
             Menus = await _context.Menus.ToListAsync();
         }
 
-        public async Task OnPostAsync(string json)
+        public async Task<IActionResult> OnPostAsync(string json)
         {
             CheckoutJsonContainer OrderDetail = JsonConvert.DeserializeObject<CheckoutJsonContainer>(json);
 
@@ -82,6 +82,9 @@ namespace Falcons.Pages
                 _context.FnBOrderDetails.Add(OrderItem);
                 _context.SaveChanges();
             }
+
+            //show order history after finish loaded to database
+            return Redirect("/History");
         }
     }
 }

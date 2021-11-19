@@ -45,9 +45,12 @@
         var Menu = @Html.Raw(Menujson);
 
         function AppendToCart(title, description, price, imgUrl, id) {
+            if (imgUrl != "/assets/img/No-Image.png") {
+                imgUrl = "/assets/img/menus/" + imgUrl;
+            }
             $("div#cart").append("<div class='row mt-5'>" +
                 "<div class='col-md-3'>" +
-                "<img style='max-width:100%;' src='/assets/img/menus/" + imgUrl + "' />" +
+                "<img style='max-width:100%;' src='" + imgUrl + "' />" +
                 "</div>" +
                 "<div class='col-md-9'>" +
                 "<div style=''font-size:20px;'>" + title + "</div>" +
@@ -64,10 +67,14 @@
                 "</div>");
         }
 
-        function AppendToAlarcarteCart(title, description, price, imgUrl,id) {
+        function AppendToAlarcarteCart(title, description, price, imgUrl, id) {
+            if (imgUrl != "/assets/img/No-Image.png") {
+                imgUrl = "/assets/img/products/" + imgUrl;
+            }
+
             $("div#cart").append("<div class='row mt-5'>" +
                 "<div class='col-md-3'>" +
-                "<img style='max-width:100%;' src='/assets/img/products/" + imgUrl + "' />" +
+                "<img style='max-width:100%;' src='" + imgUrl + "' />" +
                 "</div>" +
                 "<div class='col-md-9'>" +
                 "<div style=''font-size:20px;'>" + title + "</div>" +
@@ -101,7 +108,11 @@
                     for (let k = 0; k < Menu.length; k++) {
                         if (cartMenuArray[i].MenuID == Menu[k].MenuID) {
                             title = Menu[k].PackageName;
-                            IMGLink = Menu[k].ImageURL.split(",", 1);
+                            if (Menu[k].ImageURL == null || Menu[k].ImageURL == "") {
+                                IMGLink = "/assets/img/No-Image.png";
+                            } else {
+                                IMGLink = Menu[k].ImageURL.split(",", 1);
+                            }
                             id = i;
                         }
                     }
@@ -162,7 +173,13 @@
                             for (let o = 0; o < Product.length; o++) {
                                 if (Product[o].ProductID == ProductDetail[k].ProductID) {
                                     title = Product[o].ProductTitle;
-                                    IMGLink = Product[o].ImageURL.split(",", 1);
+                                    //IMGLink = Product[o].ImageURL.split(",", 1);
+
+                                    if (Product[o].ImageURL == null || Product[o].ImageURL == "") {
+                                        IMGLink = "/assets/img/No-Image.png";
+                                    } else {
+                                        IMGLink = Product[o].ImageURL.split(",", 1);
+                                    }
                                 }
                             }
                         }
