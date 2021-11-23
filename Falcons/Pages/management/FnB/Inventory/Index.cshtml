@@ -245,7 +245,11 @@
                                         <td>@item.Quantity</td>
                                         <td>@item.Price.ToString("c")</td>
                                         <td>@item.Date.ToString("dd-MMM-yyyy") </td>
-                                        <td>@Html.Raw((item.Description.Length > 60 ? item.Description.Substring(0, 60) + " ..." : item.Description))</td>
+                                        @if (!String.IsNullOrWhiteSpace(item.Description)) { 
+                                            <td>@Html.Raw((item.Description.Length > 60 ? item.Description.Substring(0, 60) + " ..." : item.Description))</td>
+                                        }else { 
+                                            <td></td>
+                                        }
 
                                         <td>@item.RecordType</td>
                                         <td>

@@ -43,20 +43,21 @@ namespace Falcons.Pages.FnB
             }
 
             Menu = _context.Menus.Find(id);
-            if(Menu != null)
+            if (Menu != null)
             {
                 MenuItems = _context.MenuItems.Where(mi => mi.MenuID == Menu.MenuID).ToList();
-                if(MenuItems.Count < 1)
+                if (MenuItems.Count < 1)
                 {
                     //nothing to output for the MenuItem
                 }
-                else{
+                else
+                {
 
                     Products = new List<Product>();
                     ProductDetails = new List<ProductDetails>();
 
                     //adding one by one product that listed in menu item
-                    foreach(var item in MenuItems)
+                    foreach (var item in MenuItems)
                     {
                         Products.Add(_context.Products.Where(pd => pd.ProductID == item.ProductID).First());
                         List<ProductDetails> productDetails = _context.ProductDetails.Where(pd => pd.ProductID == item.ProductID).ToList();
@@ -67,7 +68,7 @@ namespace Falcons.Pages.FnB
             else
             {
                 //redirect if the menu not exist
-                return Redirect("/FnB/Menu");
+                //return Redirect("/FnB/Menu");
             }
 
             return Page();

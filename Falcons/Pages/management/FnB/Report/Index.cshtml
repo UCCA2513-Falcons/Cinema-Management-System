@@ -14,7 +14,7 @@
             </div>
             <div class="card-body">
                 <div id="chart-container">
-                    <canvas id="LineChart" height="400px"></canvas>
+                    <canvas id="InventoryValueLineChart" height="400px"></canvas>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
             </div>
             <div class="card-body">
                 <div id="chart-container">
-                    <canvas id="barChart" height="450px"></canvas>
+                    <canvas id="AnnualExpensebarChart" height="450px"></canvas>
                 </div>
             </div>
         </div>
@@ -61,9 +61,9 @@
 
         // Line Chart Inventory Value
 
-        var lineChart = document.getElementById('LineChart').getContext('2d');
+        var InventoryValueLineChart = document.getElementById('InventoryValueLineChart').getContext('2d');
 
-        var myLineChart = new Chart(lineChart, {
+        var myInventoryValueLineChart = new Chart(InventoryValueLineChart, {
             type: 'line',
             data: {
                 labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
@@ -79,7 +79,16 @@
                     backgroundColor: 'transparent',
                     fill: true,
                     borderWidth: 2,
-                    data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 900]
+                    data: [@for(int i = 0; i < Model.InventoryData.Length; i++) {
+                                if(i == Model.InventoryData.Length-1)
+                                {
+                                    @Html.Raw(Model.InventoryData[i])
+                                }
+                                else
+                                {
+                                    @Html.Raw(Model.InventoryData[i] + ",")
+                                }
+                            }]
                 }]
             },
             options: {
@@ -112,9 +121,9 @@
 
         //Start Bar Chart Annual Expense
 
-        var barChart = document.getElementById('barChart').getContext('2d');
+        var AnnualExpensebarChart = document.getElementById('AnnualExpensebarChart').getContext('2d');
 
-        var myBarChart = new Chart(barChart, {
+        var myAnnualExpensebarChart = new Chart(AnnualExpensebarChart, {
             type: 'bar',
             data: {
                 labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
@@ -122,7 +131,16 @@
                     label: "Expenses (MYR)",
                     backgroundColor: 'rgb(23, 125, 255)',
                     borderColor: 'rgb(23, 125, 255)',
-                    data: [3667, 2375, 9423, 5355, 4454, 5646, 8654, 7566, 9787, 6588, 5417, 8883],
+                    data: [@for(int i = 0; i < Model.AnnualExpense.Length; i++) {
+                                if(i == Model.AnnualExpense.Length-1)
+                                {
+                                    @Html.Raw(Model.AnnualExpense[i])
+                                }
+                                else
+                                {
+                                    @Html.Raw(Model.AnnualExpense[i] + ",")
+                                }
+                            }],
                 }],
             },
             options: {
@@ -143,9 +161,9 @@
 
         // Earning Line Chart
 
-        var lineChart = document.getElementById('EarningLineChart').getContext('2d');
+        var EarningLineChart = document.getElementById('EarningLineChart').getContext('2d');
 
-        var myLineChart = new Chart(lineChart, {
+        var myEarningLineChart = new Chart(EarningLineChart, {
             type: 'line',
             data: {
                 labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
@@ -161,7 +179,16 @@
                     backgroundColor: 'transparent',
                     fill: true,
                     borderWidth: 2,
-                    data: [2133, 4344, 3545, 2845, 4324, 2133, 3200, 2933, 3600, 2400, 2666, 4600]
+                    data: [@for(int i = 0; i < Model.TotalEarning.Length; i++) {
+                                if(i == Model.TotalEarning.Length-1)
+                                {
+                                    @Html.Raw(Model.TotalEarning[i])
+                                }
+                                else
+                                {
+                                    @Html.Raw(Model.TotalEarning[i] + ",")
+                                }
+                            }]
                 }]
             },
             options: {

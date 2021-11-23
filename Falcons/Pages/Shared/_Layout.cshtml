@@ -33,7 +33,7 @@
     <!-- Font Awesome 5.15.4 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        body,h5, h4,h3, h2, h1, p, a{
+        body, h6, h5, h4,h3, h2, h1, p, a{
             color:#ffffff;
         }
     </style>
@@ -58,7 +58,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-7">
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
@@ -71,13 +71,15 @@
                         </nav>
                     </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-3">
                     <div class="header__right">
                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
                         <!---partial name="_LoginPartial" /--->
+                        <a asp-page="/Cart" title="Cart"><i class="fas fa-shopping-cart"></i></a>
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <a href="/Identity/Account/Manage" title="Profile"><span class="icon_profile"></span></a>
+                            <a href="/History" title="History"><i class="fas fa-history"></i></a>
                             if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                             {
                                 <a href="/management/" target="_blank" title="Management"><i class="far fa-building"></i></a>
