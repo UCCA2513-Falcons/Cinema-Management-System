@@ -34,7 +34,7 @@ namespace Falcons.Pages
         public void OnGet()
         {
             //get all the order
-            FnBOrders = _context.FnBOrders.Where(fnb => fnb.UID == UserManager.GetUserId(User)).ToList();
+            FnBOrders = _context.FnBOrders.Where(fnb => fnb.UID == UserManager.GetUserId(User)).OrderByDescending(fnb => fnb.FnBOrderID).ToList();
         }
     }
 }

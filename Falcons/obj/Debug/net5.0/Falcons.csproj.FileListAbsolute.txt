@@ -1221,3 +1221,4 @@ D:\Cinema-Management-System\Falcons\obj\Debug\net5.0\Falcons.genruntimeconfig.ca
 D:\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\History.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\History.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Order.cshtml.g.cs
+C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\Ticketing\EditBooking.cshtml.g.cs
