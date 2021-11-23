@@ -1,0 +1,53 @@
+﻿@page
+@model Falcons.Pages.management.Ticketing.EditBookingModel
+@{
+    Layout = "_ManagementLayout";
+}
+<form role="form" method="post">
+    <input type="hidden" asp-for="booking.ID" />
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group form-group-default">
+                <label asp-for="booking.email">Email</label>
+                <input asp-for="booking.email" class="form-control" type="email" />
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group form-group-default">
+                <!--label asp-for="booking.movieName" class="control-label">Movie Name</!--label>
+                <select asp-for="booking.movieName" asp-items="Model.Options">Select Movie</select>
+                <span asp-validation-for="booking.movieName" class="text-danger"></span-->
+
+                <label asp-for="booking.movieName">Movie Name</label>
+                <input asp-for="booking.movieName" class="form-control" type="text" />
+
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group form-group-default">
+                <label asp-for="booking.bookingDateTime">Booking Date</label>
+                <input asp-for="booking.bookingDateTime" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group form-group-default">
+                <label asp-for="booking.showDateTime">Showing Date</label>
+                <input asp-for="booking.showDateTime" class="form-control" />
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group form-group-default">
+                <label asp-for="booking.amount">Amount</label>
+                <input asp-for="booking.amount" class="form-control" type="number" />
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer no-bd">
+        <button type="submit" class="btn btn-primary">Confirm</button>
+        <a asp-page="/management/Movies" class="btn btn-danger"
+           data-dismiss="modal">Back</a>
+    </div>
+</form>

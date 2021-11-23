@@ -1,5 +1,4 @@
 ﻿@page
-@using Falcons.Models
 @model Falcons.Pages.management.Ticketing.BookingModel
 @{
     Layout = "_ManagementLayout";
@@ -42,41 +41,47 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group form-group-default">
-                                                <label asp-for="Booking.email">Email</label>
-                                                <input asp-for="Booking.email" class="form-control" type="email" />
+                                                <label asp-for="booking.email">Email</label>
+                                                <input asp-for="booking.email" class="form-control" type="email" />
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group form-group-default">
-                                                <label asp-for="Booking.movieName">Movie Name</label>
-                                                <input asp-for="Booking.movieName" class="form-control" />
+                                                <!--label asp-for="booking.movieName" class="control-label">Movie Name</!--label>
+                <select asp-for="booking.movieName" asp-items="Model.Options">Select Movie</select>
+                <span asp-validation-for="booking.movieName" class="text-danger"></span-->
+
+                                                <label asp-for="booking.movieName">Movie Name</label>
+                                                <input asp-for="booking.movieName" class="form-control" type="text" />
+
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group form-group-default">
-                                                <label asp-for="Booking.bookingDateTime">Booking Date</label>
-                                                <input asp-for="Booking.bookingDateTime" class="form-control" />
+                                                <label asp-for="booking.bookingDateTime">Booking Date</label>
+                                                <input asp-for="booking.bookingDateTime" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group form-group-default">
-                                                <label asp-for="Booking.showDateTime">Showing Date</label>
-                                                <input asp-for="Booking.showDateTime" class="form-control" />
+                                                <label asp-for="booking.showDateTime">Showing Date</label>
+                                                <input asp-for="booking.showDateTime" class="form-control" />
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group form-group-default">
-                                                <label asp-for="Booking.amount">Amount</label>
-                                                <input asp-for="Booking.amount" class="form-control" type="number" />
+                                                <label asp-for="booking.amount">Amount</label>
+                                                <input asp-for="booking.amount" class="form-control" type="number" />
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="modal-footer no-bd">
+                                        <button type="submit" id="addBookingRecordsButton" class="btn btn-primary">Add</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                    </div>
                                 </form>
-                            </div>
-                            <div class="modal-footer no-bd">
-                                <button type="submit" id="addBookingRecordsButton" class="btn btn-primary">Add</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -89,17 +94,19 @@
                             <tr role="row"></tr>
 
                             <tr role="row">
+                                <th>ID</th>
                                 <th>Username</th>
                                 <th>Movie Name</th>
                                 <th>Booking Details</th>
                                 <th>Showing Details</th>
-                                <th>Amount</th>
+                                <th>Amount (RM)</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var items in Model.BookingList)
+                            @foreach (var items in Model.Booking)
                             {
                             <tr>
+                                <td>@Html.DisplayFor(Booking => items.ID)</td>
                                 <td>@Html.DisplayFor(Booking => items.email)</td>
                                 <td>@Html.DisplayFor(Booking => items.movieName)</td>
                                 <td>@Html.DisplayFor(Booking => items.bookingDateTime)</td>
@@ -108,10 +115,15 @@
 
                                 <td>
                                     <div class="form-button-action">
-                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                        <a asp-page="/management/Ticketing/EditBooking" asp-route-id="@items.ID" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
                                             <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                        </a>
+
+                                        <button asp-page-handler="Delete" asp-route-id="@items.ID"
+                                                onclick="return confirm('Are you sure to delete this record?')"
+                                                data-toggle="tooltip" title=""
+                                                class="btn btn-link btn-danger"
+                                                data-original-title="Delete">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </div>
