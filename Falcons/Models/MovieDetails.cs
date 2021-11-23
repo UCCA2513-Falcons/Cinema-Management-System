@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Falcons.Models
 {
-    public class Movies
+    public class MovieDetails
     {
         [Key]
         [Display(Name = "Movie ID")]
@@ -49,11 +49,13 @@ namespace Falcons.Models
         public string Category { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",
-                       ApplyFormatInEditMode = true)]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",
+        //               ApplyFormatInEditMode = true)]
+        //[Display(Name = "Release Date")]
+        [MaxLength(100)]
         [Display(Name = "Release Date")]
-        public DateTime ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; }
 
         [Column(TypeName = "ntext")]
         [MaxLength(2000)]
@@ -73,3 +75,4 @@ namespace Falcons.Models
         public virtual ICollection<Showtime> Showtimes { get; set; }
     }
 }
+

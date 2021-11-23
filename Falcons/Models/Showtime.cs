@@ -24,6 +24,6 @@ namespace Falcons.Models
         [Display(Name = "End Time")]
         public DateTime EndDateTime { get; set; }
 
-        public virtual Movies Movies { get; set; }
+        public virtual MovieDetails Movies { get; set; }
     }
 }

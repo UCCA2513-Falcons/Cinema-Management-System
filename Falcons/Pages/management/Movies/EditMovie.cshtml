@@ -1,0 +1,89 @@
+﻿@page
+@model Falcons.Pages.management.Movies.EditMovieModel
+@{
+
+    ViewData["Title"] = "Edit Movies";
+
+}
+<form role="form" method="post">
+    <input type="hidden" asp-for="movies.MovieID" />
+    <div class="modal-body">
+        <p class="small">Please fill in all the field.</p>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="movies.MovieName"></label>
+                    <input asp-for="movies.MovieName" type="text" class="form-control" placeholder="Name" required>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="movies.Language"></label>
+                    <input asp-for="movies.Language" type="text" class="form-control" placeholder="Language" required>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="movies.Subtitle"></label>
+                    <input asp-for="movies.Subtitle" type="text" class="form-control" placeholder="Subtitle" required>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="movies.Duration"></label>
+                    <input asp-for="movies.Duration" type="text" class="form-control" placeholder="Duration" required>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="movies.Genre"></label>
+                    <input asp-for="movies.Genre" type="text" class="form-control" placeholder="Genre" required>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="movies.Category"></label>
+                    <input asp-for="movies.Category" type="text" class="form-control" placeholder="Category" required>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="movies.Director"></label>
+                    <input asp-for="movies.Director" type="text" class="form-control" placeholder="Director" required>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="movies.Cast"></label>
+                    <input asp-for="movies.Cast" type="text" class="form-control" placeholder="Cast" required>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="movies.Distributor"></label>
+                    <input asp-for="movies.Distributor" type="text" class="form-control" placeholder="Distributor" required>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="movies.ReleaseDate"></label>
+                    <input asp-for="movies.ReleaseDate" type="text" class="form-control" placeholder="Released Date" required>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="movies.Synopsis"></label>
+                    <textarea class="form-control" asp-for="movies.Synopsis" rows="8" placeholder="Synopsis of movie here ..."></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer no-bd">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-page="/management/Movies/Movies" class="btn btn-danger" data-dismiss="modal">Close</a>
+
+    </div>
+</form>
+

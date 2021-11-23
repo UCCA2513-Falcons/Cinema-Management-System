@@ -34,7 +34,7 @@ namespace Falcons.Models
         public DbSet<Hall> Hall { get; set; }
 
         // Movies
-        public DbSet<Movies> Movies { get; set; }
+        public DbSet<MovieDetails> Movies { get; set; }
         public DbSet<Showtime> Showtime { get; set; }
     }
 }

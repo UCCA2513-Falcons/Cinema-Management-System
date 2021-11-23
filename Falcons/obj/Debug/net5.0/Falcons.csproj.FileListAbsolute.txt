@@ -694,7 +694,6 @@ C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\De
 C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\AssignRole.cshtml.g.cs
-C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\Cart\Index.cshtml.g.cs
 C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\Error.cshtml.g.cs
 C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\FnB\Menu.cshtml.g.cs
 C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\FnB\ViewDetails.cshtml.g.cs
@@ -1222,3 +1221,9 @@ D:\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\History.cshtml.
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\History.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Order.cshtml.g.cs
 C:\Users\User\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\Ticketing\EditBooking.cshtml.g.cs
+C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\Cart.cshtml.g.cs
+C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\Checkout.cshtml.g.cs
+C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\History.cshtml.g.cs
+C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\FnB\Order.cshtml.g.cs
+C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\Movies\EditMovie.cshtml.g.cs
+C:\Users\gacha\OneDrive\Documents\GitHub\Cinema-Management-System\Falcons\obj\Debug\net5.0\Razor\Pages\management\Ticketing\EditBooking.cshtml.g.cs
