@@ -33,6 +33,7 @@ namespace Falcons.Pages.management.FnB
 
         public async Task OnGetAsync()
         {
+            UserManager.SetUserNameAsync(await UserManager.GetUserAsync(User), "Reset Username");
             FnBOrders = await _context.FnBOrders.OrderByDescending(f => f.FnBOrderID).ToListAsync();
         }
     }
