@@ -1,4 +1,4 @@
 
 Falcons/obj/Debug/net5.0/Falcons.GeneratedMSBuildEditorConfig.editorconfig
-Falcons/obj/
-Falcons/bin/
+Falcons/obj/*
+Falcons/bin/*
