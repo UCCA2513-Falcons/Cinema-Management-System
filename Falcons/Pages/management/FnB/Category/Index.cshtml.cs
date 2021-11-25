@@ -35,6 +35,8 @@ namespace Falcons.Pages.management.FnB.Category
 
         public List<ProductCategory> category;
 
+        public string message { get; set; }
+
         public async Task OnGet()
         {
             category = _context.ProductCategories.ToList();
@@ -72,15 +74,35 @@ namespace Falcons.Pages.management.FnB.Category
             await UserManager.AddToRoleAsync(usr, "Manager");*/
         }
 
-        public void OnPost()
+        public async Task OnPostAsync()
         {
-            if (String.IsNullOrWhiteSpace(NewPC.CategoryName))
-            {
+            var user = await UserManager.GetUserAsync(User);
+            IList<string> userRole = await UserManager.GetRolesAsync(user);
 
-            }else
+            bool admin = false;
+
+            for (int i = 0; i < userRole.Count; i++) {
+                if (userRole[i].Equals("Admin")) {
+                    admin = true;
+                    break;
+                }
+            }
+
+            if (admin) {
+                if (String.IsNullOrWhiteSpace(NewPC.CategoryName))
+                {
+                    // no input is received
+                    message = message + "<div class='alert alert-danger' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Category name is requried !</div>";
+                }
+                else
+                {
+                    _context.ProductCategories.Add(NewPC);
+                    _context.SaveChanges();
+                }
+            }
+            else
             {
-                _context.ProductCategories.Add(NewPC);
-                _context.SaveChanges();
+                message = message + "<div class='alert alert-danger' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>You don't have enough privileges !</div>";
             }
             
             category = _context.ProductCategories.ToList();
