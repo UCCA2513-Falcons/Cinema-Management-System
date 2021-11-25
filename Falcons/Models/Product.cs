@@ -32,8 +32,8 @@ namespace Falcons.Models
         [Display(Name = "Image")]
         public string ImageURL { get; set; }
 
-        public ICollection<MenuItem> MenuItems { get; set; }
+        public virtual ICollection<MenuItem> MenuItems { get; set; }
 
-        public ICollection<FnBOrderDetail> FnBOrderDetails { get; set; }
+        public virtual ICollection<FnBOrderDetail> FnBOrderDetails { get; set; }
     }
 }

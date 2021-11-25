@@ -17,6 +17,6 @@ namespace Falcons.Models
         [Display(Name = "Category Name")]
         public string CategoryName { get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

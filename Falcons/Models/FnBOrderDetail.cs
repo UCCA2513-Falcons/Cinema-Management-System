@@ -33,8 +33,8 @@ namespace Falcons.Models
         [Column(TypeName = "decimal(6,2)")]
         public decimal ProductPrice { get; set; }
 
-        public ProductDetails ProductDetails { get; set; }
-        public FnBOrder FnBOrder { get; set; }
+        public virtual ProductDetails ProductDetails { get; set; }
+        public virtual FnBOrder FnBOrder { get; set; }
 
     }
 }

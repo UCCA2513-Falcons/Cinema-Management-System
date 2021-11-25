@@ -289,7 +289,7 @@ namespace Falcons.Pages.management.FnB.Products
             try
             {
                 _context.SaveChanges();
-                message = message + "<div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Product detail is added !</div>";
+                message = message + "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Product detail is added !</div></div>";
             }
             catch (DbUpdateConcurrencyException)
             {

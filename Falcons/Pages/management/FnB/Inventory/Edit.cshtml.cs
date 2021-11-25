@@ -20,6 +20,9 @@ namespace Falcons.Pages.management.FnB.Inventory
         public FalconsDBContext _context;
         protected IServiceProvider ServiceProvider { get; }
 
+        //[TempData]
+        //public string message { get; set; }
+
         [BindProperty]
         public FoodType FoodType { get; set; }
 
@@ -61,6 +64,8 @@ namespace Falcons.Pages.management.FnB.Inventory
             try
             {
                 _context.SaveChanges();
+                //message = message + "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Saved inventory item details !</div></div>";
+                TempData["message"] = "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Saved inventory item details !</div></div>";
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -74,8 +79,9 @@ namespace Falcons.Pages.management.FnB.Inventory
                 }
             }
 
-            //return Page();
-            return Redirect("/management/FnB/Inventory/Index");
+            return Page();
+            //return Redirect("/management/FnB/Inventory/Index");
+            return Redirect("/management/FnB/Inventory/Edit?id="+FoodType.FID);
         }
     }
 }
