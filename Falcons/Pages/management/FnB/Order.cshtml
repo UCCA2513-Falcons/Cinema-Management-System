@@ -16,7 +16,7 @@
                 <div class="card-title">
                     <div class="row">
                         <div class="col-md-6"><h4>Order ID : @item.FnBOrderID</h4></div>
-                        <div class="col-md-3"><h4>Customer : @user.UserName</h4></div>
+                        <div class="col-md-3"><h4>Customer : @UserManager.Users.Where(u => u.Id == item.UID).FirstOrDefault().UserName</h4></div>
                         <div class="col-md-3"><p class="h5">Order Date : @item.OrderDate.ToString("dd-MMM-yyyy")</p></div>
                     </div>
                 </div>
