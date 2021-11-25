@@ -43,7 +43,13 @@ namespace Falcons
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            
+            // add mvc
+            services.AddMvc(MvcOptions => MvcOptions.EnableEndpointRouting = false);
+            // add controllers
+            services.AddControllers().AddJsonOptions
+                (options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
+
 
             services.AddRazorPages(options =>
             {
@@ -74,9 +80,15 @@ namespace Falcons
             app.UseAuthentication();
             app.UseAuthorization();
 
+            // mvc
+            app.UseMvcWithDefaultRoute();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+
+                // map controllers
+                endpoints.MapControllers();
             });
         }
     }
