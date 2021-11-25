@@ -11,7 +11,7 @@ namespace Falcons.Models
     {
         [Key]
         [Display(Name = "Booking ID")]
-        public Int32 ID { get; set; }
+        public int ID { get; set; }
 
 
         [Required]
@@ -23,7 +23,8 @@ namespace Falcons.Models
         [Required]
         [MaxLength(10)]
         [Display(Name = "Movie ID")]
-        public Int32 MID { get; set; }
+        [ForeignKey("MovieDetails")]
+        public int MID { get; set; }
 
         [Required]
         [MaxLength(100)]
@@ -41,10 +42,10 @@ namespace Falcons.Models
         [Required]
         [MaxLength(10)]
         [Display(Name = "Amount")]
-        public double amount { get; set; }
+        public decimal amount { get; set; }
 
-        [Required]
-        public virtual Ticket ticket { get; set; }
+       // [Required]
+       // public virtual Ticket ticket { get; set; }
 
 
         //[Required]

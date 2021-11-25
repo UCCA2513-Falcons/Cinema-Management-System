@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace Falcons.Models
 {
-    public class Hall
+    public class BookedSeat
     {
         [Key]
-        [Display(Name = "Hall Number")]
-        public Int32 HID { get; set; }
-
-
-        public virtual Seat seat { get; set; }
-        
+        public string SeatID { get; set; }
     }
 }
