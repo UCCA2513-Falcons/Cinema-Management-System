@@ -6,6 +6,10 @@
 }
 
 <div class="row">
+    @if (!String.IsNullOrWhiteSpace(Model.message))
+    {
+        @Html.Raw(Model.message);
+    }
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -65,13 +69,13 @@
                             <div class="form-group form-group-default" style="display:flex;">
                                 @foreach (string item in Model.ImgList)
                                 {
-                                <form role="form" method="post" asp-page-handler="DeleteImage" class="ml-1 mr-1">
-                                    <input type="hidden" value="@Model.Menu.MenuID" asp-for="MenuID" />
-                                    <input type="hidden" value="@item" asp-for="ImgURL" />
-                                    <button class="btn btn-default" title="Remove Image">
-                                        <img src="/assets/img/menus/@item" width="250px" height="auto" class="img-fluid rounded float-left" />
-                                    </button>
-                                </form>
+                                    <form role="form" method="post" asp-page-handler="DeleteImage" class="ml-1 mr-1">
+                                        <input type="hidden" value="@Model.Menu.MenuID" asp-for="MenuID" />
+                                        <input type="hidden" value="@item" asp-for="ImgURL" />
+                                        <button class="btn btn-default" title="Remove Image">
+                                            <img src="/assets/img/menus/@item" width="250px" height="auto" class="img-fluid rounded float-left" />
+                                        </button>
+                                    </form>
                                 }
                             </div>
                         </div>
