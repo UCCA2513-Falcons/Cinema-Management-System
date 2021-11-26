@@ -29,8 +29,10 @@ namespace Falcons.Models
         [Display(Name = "End Time")]
         public DateTime EndDateTime { get; set; }
 
-        [ForeignKey("MovieDetails")]
-        public int MovieID { get; set; }
+        //[ForeignKey("MovieDetails")]
+        //public int MovieID { get; set; }
+
+        public virtual int MoviesMovieID { get; set; }
 
         public virtual MovieDetails Movies { get; set; }
 

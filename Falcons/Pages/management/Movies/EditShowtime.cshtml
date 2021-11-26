@@ -1,0 +1,48 @@
+﻿@page
+@model Falcons.Pages.management.Movies.EditShowtimeModel
+@{
+
+    ViewData["Title"] = "Edit Showtime";
+
+}
+<form role="form" method="post">
+    <input type="hidden" asp-for="showtimes.ShowtimeID" />
+    <div class="modal-body">
+        <p class="small">Please fill in all the field.</p>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="showtimes.ShowroomID"></label>
+                    <select asp-for="showtimes.ShowroomID" asp-items="@(new SelectList(Model.Showrooms,"ShowroomID","ShowroomName"))"></select>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="showtimes.MoviesMovieID"></label>
+                    <select asp-for="showtimes.MoviesMovieID" asp-items="@(new SelectList(Model.Movies ,"MovieID","MovieName"))"></select>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="showtimes.StartDateTime"></label>
+                    <input type="datetime-local" asp-for="showtimes.StartDateTime" />
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="showtimes.EndDateTime"></label>
+                    <input type="datetime-local" asp-for="showtimes.EndDateTime" />
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="modal-footer no-bd">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-page="/management/Movies/Showtimes" class="btn btn-danger" data-dismiss="modal">Close</a>
+
+    </div>
+</form>
