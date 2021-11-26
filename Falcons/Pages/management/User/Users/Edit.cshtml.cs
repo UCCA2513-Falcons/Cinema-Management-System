@@ -94,15 +94,21 @@ namespace Falcons.Pages.management.User.Users
 
                     if (!String.IsNullOrWhiteSpace(Email))
                     {
-                        var setEmailResult = await UserManager.SetEmailAsync(user, Email);
-                        if (!setEmailResult.Succeeded)
-                        {
-                            TempData["message"] += "<div class='col-md-12'><div class='alert alert-danger' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Unexpected error when trying to set email.</div></div>";
-                            return RedirectToPage();
-                        }
-                        else
-                        {
-                            TempData["message"] += "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Email is updated.</div></div>";
+                        if (!user.Email.Equals(Email)) {
+                            var setEmailResult = await UserManager.SetEmailAsync(user, Email);
+                            //set the email confirmed
+                            user.EmailConfirmed = true;
+                            await UserManager.UpdateAsync(user);
+                            
+                            if (!setEmailResult.Succeeded)
+                            {
+                                TempData["message"] += "<div class='col-md-12'><div class='alert alert-danger' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Unexpected error when trying to set email.</div></div>";
+                                return RedirectToPage();
+                            }
+                            else
+                            {
+                                TempData["message"] += "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Email is updated.</div></div>";
+                            }
                         }
                     }
                     else
