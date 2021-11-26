@@ -1,0 +1,48 @@
+﻿@page
+@model Falcons.Pages.management.HRM.Leaves.EditModel
+@{
+    Layout = "_ManagementLayout";
+
+    ViewData["Title"] = "Edit";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group form-group-default">
+                        <label asp-for="EmployeeLeave.EmpLeaveID"></label>
+                        <input class="form-control" asp-for="EmployeeLeave.EmpLeaveID" disabled />
+                        <input class="form-control" type="hidden" asp-for="EmployeeLeave.EmpLeaveID" />
+                        <input class="form-control" type="hidden" asp-for="EmployeeLeave.EmpID" />
+
+
+
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="EmployeeLeave.Comments"></label>
+                        <input class="form-control" asp-for="EmployeeLeave.Comments" disabled />
+                        <input class="form-control" type="hidden" asp-for="EmployeeLeave.Comments" />
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="EmployeeLeave.Leavetype"></label>
+                        <input class="form-control" asp-for="EmployeeLeave.Leavetype" disabled />
+                        <input class="form-control" type="hidden" asp-for="EmployeeLeave.Leavetype" />
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="EmployeeLeave.Status"></label>
+                        <select asp-for="EmployeeLeave.Status" class="custom-select">
+                            <option value="Approve">Approve</option>
+                            <option value="Reject">Reject</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary btn-lg" />
+                        <a href="/management/HRM/Leaves/Index" class="btn btn-primary btn-lg ml-3">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

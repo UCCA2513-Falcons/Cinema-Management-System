@@ -22,7 +22,8 @@ namespace Falcons.Models
         public DbSet<FnBOrder> FnBOrders { get; set; }
         public DbSet<FnBOrderDetail> FnBOrderDetails { get; set; }
 
-        public DbSet<Employee> Employee { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<EmployeeLeave> EmployeeLeaves { get; set; }
 
         // ticket
 

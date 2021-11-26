@@ -1,0 +1,26 @@
+﻿@page
+@model Falcons.Pages.management.HRM.Employees.DeleteModel
+@{
+    Layout = "_ManagementLayout";
+
+    ViewData["Title"] = "Remove Staff";
+}
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.EmployeeList.FName)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.EmployeeList.FName)
+    </dd>
+</dl>
+
+<div class="alert alert-danger" role="alert">
+    Continue proceed will remove the employee details!
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="EmployeeList.EmpID" />
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <a asp-page="./Index" class="btn btn-primary">Back to List</a>
+</form>
