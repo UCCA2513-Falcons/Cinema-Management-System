@@ -111,10 +111,8 @@
                                 <th>Employee ID</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
-                                <th>Leave Type</th>
                                 <th>Leave Date</th>
                                 <th>Status</th>
-                                <th>Comments</th>
                                 <th>Action</th>
                             </tr>
                            
@@ -127,10 +125,8 @@
                                 <td>@Html.DisplayFor(modelItem => item.EmpID)</td>
                                 <td>@Html.DisplayFor(EmpItem => Model._context.Employees.Find(item.EmpID).FName)</td>
                                 <td>@Html.DisplayFor(EmpItem => Model._context.Employees.Find(item.EmpID).LName)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Leavetype)</td>
                                 <td>@Html.DisplayFor(modelItem => item.LeaveDate)</td>
                                 <td>@Html.DisplayFor(modelItem => item.Status)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Comments)</td>
                                 <td>
                                     <div class="form-button-action">
                                         <a data-toggle="tooltip" href="/management/HRM/Leaves/Edit?id=@Html.DisplayFor(modelItem => item.EmpLeaveID)" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
