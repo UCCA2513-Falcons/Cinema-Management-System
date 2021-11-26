@@ -2,6 +2,5 @@
 Falcons/obj/Debug/net5.0/Falcons.GeneratedMSBuildEditorConfig.editorconfig
 Falcons/obj/*
 Falcons/bin/*
-Falcons/Migrations/20211125115217_UpdateModelClass.Designer.cs
-Falcons/Migrations/20211125115217_UpdateModelClass.cs
+Falcons/Migrations/*
 .vs/*
