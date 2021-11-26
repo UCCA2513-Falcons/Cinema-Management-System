@@ -82,7 +82,7 @@
                         {
                             <a href="/Identity/Account/Manage" title="Profile"><span class="icon_profile"></span></a>
                             <a href="/History" title="History"><i class="fas fa-history"></i></a>
-                            if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                            if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Staff"))
                             {
                                 <a href="/management/" target="_blank" title="Management"><i class="far fa-building"></i></a>
                             }

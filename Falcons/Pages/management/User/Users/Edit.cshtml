@@ -1,0 +1,66 @@
+﻿@page
+@model Falcons.Pages.management.User.Users.EditModel
+@{
+    Layout = "_ManagementLayout";
+
+    ViewData["Title"] = "Edit User Profile";
+}
+<div class="row">
+    @if (TempData["message"] != null)
+    {
+        @Html.Raw(TempData["message"].ToString());
+
+    }
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group form-group-default">
+                        <label asp-for="user.Id"></label>
+                        <input class="form-control" asp-for="user.Id" disabled />
+                        <input class="form-control" type="hidden" asp-for="UserId" value="@Model.user.Id" />
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="user.UserName"></label>
+                        <input class="form-control" asp-for="Username" value="@Model.user.UserName" required />
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="user.Email"></label>
+                        <input class="form-control" asp-for="Email" value="@Model.user.Email" required type="email" />
+                    </div>
+                    <div class="form-group form-group-default">
+                        <label asp-for="user.PhoneNumber"></label>
+                        <input class="form-control" asp-for="PhoneNumber" value="@Model.user.PhoneNumber" />
+                    </div>
+                    <h5>Role</h5>
+                    <div class="selectgroup selectgroup-pills">
+                        @{
+                            var userRoles = Model.UserManager1.GetRolesAsync(await Model.UserManager1.FindByIdAsync(Model.user.Id)).Result.ToArray();
+                        }
+                        @foreach (var item in Model.AllRole)
+                        {
+                            if (userRoles.Contains(item))
+                            {
+                                <label class="selectgroup-item">
+                                    <input class="selectgroup-input" type="checkbox" value="@item" id="@item" name="Role" checked />
+                                    <span class="selectgroup-button">@item</span>
+                                </label>
+                            }
+                            else
+                            {
+                                <label class="selectgroup-item">
+                                    <input class="selectgroup-input" type="checkbox" value="@item" id="@item" name="Role" />
+                                    <span class="selectgroup-button">@item</span>
+                                </label>
+                            }
+                        }
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary btn-lg" />
+                        <a href="/management/User/Users/Index" class="btn btn-primary btn-lg ml-3">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
