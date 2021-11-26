@@ -9,19 +9,27 @@ namespace Falcons.Models
     public class Employee
     {
         [Key]
-        public Int32 EmpID { get; set; }
-        [MaxLength(100)]
+        [Display(Name = "Employee ID")]
+        public int EmpID { get; set; }
+        [MaxLength(50)]
         [Required]
+        [Display(Name = "Employee First Name")]
+
         public string FName { get; set; }
+
+        [MaxLength(50)]
         [Required]
+        [Display(Name = "Employee Last name")]
         public string LName { get; set; }
+
+        [Display(Name = "Salary")]
         [Required]
         public Int32 Salary { get; set; }
-        [Required]
 
+        [Display(Name = "Department")]
         public string Department { get; set; }
-        //[Required]
 
-        //public virtual Employee Employees { get; set; }
+
+        public ICollection<EmployeeLeave> EmployeeLeave { get; set; }
     }
 }

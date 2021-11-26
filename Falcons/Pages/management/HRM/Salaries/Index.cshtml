@@ -1,0 +1,78 @@
+﻿@page
+@model Falcons.Pages.management.HRM.Salaries.IndexModel
+@{
+
+    Layout = "_ManagementLayout";
+
+    ViewData["Title"] = "Salary";
+
+
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Salary</div>
+            </div>
+            <div class="card-body">
+                <!-- Button -->
+                <div class="d-flex"></div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                </div>
+
+                <!-- Table -->
+                <div class="table-responsive">
+                    <table id="employee-row" class=" display table table-striped table-hover" cellspacing="0" width="100%">
+                        <thead>
+                            <tr role="row"></tr>
+
+                            <tr role="row">
+                                <th>Employee ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Salary</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.EmployeeList)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.EmpID)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.FName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.LName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Salary)</td>
+                                    <td>
+                                        <div class="form-button-action">
+                                            <a data-toggle="tooltip" href="/management/HRM/Salaries/Edit?id=@Html.DisplayFor(modelItem => item.EmpID)" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+    // Add Category
+        $('#employee-row').DataTable({
+            "pageLength": 5,
+        });
+
+        var action = '<td> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="View"> <i class="fa fa-info"></i> </button> </td >';
+
+    </script>
+}
