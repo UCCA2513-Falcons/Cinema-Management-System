@@ -104,7 +104,7 @@
 
                                     <tr>
                                         <td>@Html.DisplayFor(M => item.ShowtimeID)</td>
-                                        <td>@Html.DisplayFor(M => item.Movies.MovieName)</td>
+                                        <td>@Html.DisplayFor(M => Model.Movies.Where(m=>m.MovieID == item.MovieID).FirstOrDefault().MovieName)</td>
                                         <td>@Html.DisplayFor(M => item.Showroom.ShowroomName)</td>
                                         <td>@Html.DisplayFor(M => item.StartDateTime)</td>
                                         <td>@Html.DisplayFor(M => item.EndDateTime)</td>
