@@ -71,8 +71,25 @@ namespace Falcons.Pages.management.FnB.Inventory
 
             if (FoodType != null)
             {
-                _context.FoodTypes.Add(FoodType);
-                _context.SaveChanges();
+                bool complete = false;
+
+                if (String.IsNullOrWhiteSpace(FoodType.Title)) {
+                    complete = false;
+                    TempData["message"] += "<div class='col-md-12'><div class='alert alert-danger' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Food inventory item is empty !</div></div>";
+                } 
+
+                if (String.IsNullOrWhiteSpace(FoodType.Type)) {
+                    complete = false;
+                    TempData["message"] += "<div class='col-md-12'><div class='alert alert-danger' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Food inventory type is empty !</div></div>";
+                }
+
+                if(complete)
+                {
+                    _context.FoodTypes.Add(FoodType);
+                    _context.SaveChanges();
+                    TempData["message"] = "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Successfully created food inventory type !</div></div>";
+                }
+                
             }
 
             return Redirect("/management/FnB/Inventory/Index");
@@ -92,6 +109,7 @@ namespace Falcons.Pages.management.FnB.Inventory
             {
                 _context.FoodInventories.Add(FoodInventory);
                 _context.SaveChanges();
+                TempData["message"] = "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Successfully created food inventory record !</div></div>";
             }
 
             return Redirect("/management/FnB/Inventory/Index");
@@ -114,6 +132,7 @@ namespace Falcons.Pages.management.FnB.Inventory
                 {
                     _context.FoodInventories.Remove(FI);
                     _context.SaveChanges();
+                    TempData["message"] = "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Food inventory record is deleted !</div></div>";
                 }
             }
 

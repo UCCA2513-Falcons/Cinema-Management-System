@@ -207,7 +207,9 @@
 
         CheckoutJsonContainer.CheckoutMenus = CheckoutMenus;
         CheckoutJsonContainer.Products = Products;
+        //CheckoutJsonContainer.Ticket =
 
+        //store the cart product detail to checkout
         $("input#json").val(JSON.stringify(CheckoutJsonContainer));
 
         $("#PayNow").on("click", function (e) {

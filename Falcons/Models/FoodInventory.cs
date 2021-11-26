@@ -40,6 +40,6 @@ namespace Falcons.Models
         [Display(Name = "Inventory Item")]
         [ForeignKey("FoodType")]
         public int FID { get; set; }
-        public FoodType FoodType { get; set; }
+        public virtual FoodType FoodType { get; set; }
     }
 }

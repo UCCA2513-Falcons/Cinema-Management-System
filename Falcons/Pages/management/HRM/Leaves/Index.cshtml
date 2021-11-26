@@ -1,0 +1,160 @@
+﻿@page
+@model Falcons.Pages.management.HRM.IndexModel
+@{
+
+    Layout = "_ManagementLayout";
+
+    ViewData["Title"] = "Leave";
+
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Leave</div>
+            </div>
+            <div class="card-body">
+                <!-- Button -->
+                <div class="d-flex"></div>
+                <!-- Button -->
+                <div class="d-flex">
+                    <button class="btn btn-primary btn-round ml-auto mb-3" data-toggle="modal" data-target="#addEmployee">
+                        <i class="fa fa-plus"></i>
+                        Add New Leave
+                    </button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+                                    <span class="fw-mediumbold">
+                                        New
+                                    </span>
+                                    <span class="fw-light">
+                                        Leave
+                                    </span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form role="form" method="post">
+                                <div class="modal-body">
+                                    <p class="small">Please fill in all the field.</p>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-12">
+                                                <div class="form-group form-group-default">
+                                                    <label asp-for="EmployeeLeave.EmpID"></label>
+                                                    <select asp-for="EmployeeLeave.EmpID" asp-items="Model.EmployeeOption" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group form-group-default">
+                                                    <label asp-for="EmployeeLeave.LeaveDate"></label>
+                                                    <input asp-for="EmployeeLeave.LeaveDate" type="Date" class="form-control" placeholder="Comments" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group form-group-default">
+                                                    <label asp-for="EmployeeLeave.Leavetype"></label>
+                                                    <select asp-for="EmployeeLeave.Leavetype" class="custom-select">
+                                                        <option value="Sick Leave">Sick Leave</option>
+                                                        <option value="Casual Leave">Casual Leave</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group form-group-default">
+                                                    <label asp-for="EmployeeLeave.Comments"></label>
+                                                    <input asp-for="EmployeeLeave.Comments" type="text" class="form-control" placeholder="Comments" required>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        
+
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer no-bd">
+                                    <button class="btn btn-primary" asp-page-handler="EditLeave">Add</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                </div>
+
+                <!-- Table -->
+                <div class="table-responsive">
+                    <table id="employee-row" class=" display table table-striped table-hover" cellspacing="0" width="100%">
+                        <thead>
+                            <tr role="row"></tr>
+
+                            <tr role="row">
+                                <th>Leave ID</th>
+                                <th>Employee ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Leave Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                           
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.EmployeeLeaves)
+                            {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.EmpLeaveID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.EmpID)</td>
+                                <td>@Html.DisplayFor(EmpItem => Model._context.Employees.Find(item.EmpID).FName)</td>
+                                <td>@Html.DisplayFor(EmpItem => Model._context.Employees.Find(item.EmpID).LName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.LeaveDate)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <a data-toggle="tooltip" href="/management/HRM/Leaves/Edit?id=@Html.DisplayFor(modelItem => item.EmpLeaveID)" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a type="button" data-toggle="tooltip" href="/management/HRM/Leaves/Delete?id=@Html.DisplayFor(modelItem => item.EmpLeaveID)" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+    // Add Category
+        $('#employee-row').DataTable({
+            "pageLength": 5,
+        });
+
+        var action = '<td> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="View"> <i class="fa fa-info"></i> </button> </td >';
+
+    </script>
+}

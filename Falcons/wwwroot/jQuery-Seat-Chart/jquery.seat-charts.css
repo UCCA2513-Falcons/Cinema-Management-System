@@ -1,0 +1,107 @@
+.button{
+	transition-duration: 0.4s;
+	border:none;
+	color: white;
+	text-align: center;
+	border-radius:8px;
+	display: inline-block;
+	background-color: cornflowerblue;
+}
+
+.checkout-button:hover {
+	background-color: aliceblue;
+	color: black;
+	border: 2px solid #6495ed;
+}
+
+div.screen {
+	background-color: lightgray;
+	height: 100px;
+	width: %;
+	margin: 30px;
+	transform: rotateX(-48deg);
+	box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+}
+
+div.showcase {
+	margin-top: 20px;
+	background: rgba(0, 0, 0, 0.1);
+	padding: 5px 10px;
+	border-radius: 5px;
+	color: rgba(255, 255, 255, 0.7);
+	list-style-type: none;
+	display: flex;
+	justify-content: space-between;
+}
+
+div.seatCharts-container {
+	/*min-width: 700px;*/
+}
+div.seatCharts-cell {
+
+	height: 16px;
+	width: 16px;
+	margin: 3px;
+	float: left;
+	text-align: center;
+	outline: none;
+	font-size: 13px;
+	line-height:16px;
+	color: blue;
+
+}
+
+div.seatCharts-seat {
+	background-color: dimgray;
+	color: white;
+	height: 26px;
+	width: 32px;
+	margin: 3px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	cursor: default;
+}
+div.seatCharts-seat:focus {
+	border: none;
+}
+/*
+.seatCharts-seat:focus {
+	outline: none;
+}
+*/
+
+div.seatCharts-space {
+	background-color: white;
+}
+div.seatCharts-row {
+	height: 50px;
+}
+
+div.seatCharts-row:after {
+	clear: both;
+}
+
+div.seatCharts-seat.selected {
+	background-color: darkblue;
+}
+
+div.seatCharts-seat.focused {
+	background-color: red;
+}
+
+div.seatCharts-seat.available {
+	background-color: dimgray;
+}
+
+div.seatCharts-seat.unavailable {
+	background-color: lightblue;
+	cursor: not-allowed;
+}
+
+ul.seatCharts-legendList {
+	list-style: none;
+}
+li.seatCharts-legendItem {
+	margin: 20px;
+	line-height: 2;
+}

@@ -47,6 +47,8 @@ namespace Falcons.Pages.management.FnB.Products
         [BindProperty]
         public int MenuID { get; set; }
 
+        public string message { get; set; }
+
         private IWebHostEnvironment webHostEnvironment;
 
         public EditPackageMenuModel(FalconsDBContext context,
@@ -140,14 +142,27 @@ namespace Falcons.Pages.management.FnB.Products
                 EditMenu.ImageURL = JoinURL;
             }
 
-            EditMenu.PackageName = Menu.PackageName;
+            
+            if (!String.IsNullOrWhiteSpace(Menu.PackageName)) {
+                EditMenu.PackageName = Menu.PackageName;
+            }
+            else
+            {
+                //remain the same if the user give an empty name of the menu
+                Menu.PackageName = EditMenu.PackageName;
+
+                message = message + "<div class='col-md-12'><div class='alert alert-danger' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Empty menu name is not allowed, will maintain the original name !</div></div>";
+            }
+            
             EditMenu.Description = Menu.Description;
 
             //save the edited menu
-            if (EditMenu != null)
+            if (EditMenu != null && String.IsNullOrWhiteSpace(message))
             {
                 _context.Attach(EditMenu).State = EntityState.Modified;
                 _context.SaveChanges();
+
+                message = message + "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Menu details is updated !</div></div>";
             }
 
             //fetch basic data
@@ -159,7 +174,6 @@ namespace Falcons.Pages.management.FnB.Products
             {
                 ImgList = _context.Menus.Find(id).ImageURL.Split(",").ToList();
             }
-
 
             return Page();
         }

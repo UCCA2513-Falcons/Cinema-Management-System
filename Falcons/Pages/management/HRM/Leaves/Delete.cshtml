@@ -1,0 +1,26 @@
+﻿@page
+@model Falcons.Pages.management.HRM.Leaves.DeleteModel
+@{
+    Layout = "_ManagementLayout";
+
+    ViewData["Title"] = "Remove Leave";
+}
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.EmployeeLeave.EmpLeaveID)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.EmployeeLeave.EmpLeaveID)
+    </dd>
+</dl>
+
+<div class="alert alert-danger" role="alert">
+    Continue proceed will remove the leave application!
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="EmployeeLeave.EmpLeaveID" />
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <a asp-page="./Index" class="btn btn-primary">Back to List</a>
+</form>

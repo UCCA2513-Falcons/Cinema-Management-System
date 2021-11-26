@@ -52,6 +52,14 @@ namespace Falcons.Pages.management.FnB.Products
 
         public List<SelectListItem> ProductOptions { get; set; }
 
+        public string message { get; set; }
+
+        [BindProperty]
+        public string ReturnUrl
+        {
+            get; set;
+        }
+
         public EditModel(FalconsDBContext context,
          IWebHostEnvironment WebHostEnvironment,
          ApplicationDbContext authcontext,
@@ -186,7 +194,15 @@ namespace Falcons.Pages.management.FnB.Products
             EditProduct.ProductDescription = Product.ProductDescription;
             EditProduct.CategoryID = Product.CategoryID;
 
-            _context.Attach(EditProduct).State = EntityState.Modified;
+            var result = _context.Attach(EditProduct).State = EntityState.Modified;
+
+            if (result > 0) {
+                message = message + "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Product description and detail is updated !</div></div>";
+            }
+            else
+            {
+                message = message + "<div class='col-md-12'><div class='alert alert-danger' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Something went wrong !</div></div>";
+            }
 
             try
             {
@@ -194,7 +210,7 @@ namespace Falcons.Pages.management.FnB.Products
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!_context.Products.Any(e => e.ProductID == Product.ProductID))
+                if (!_context.Products.Any(e => e.ProductID == EditProduct.ProductID))
                 {
                     return NotFound();
                 }
@@ -226,8 +242,8 @@ namespace Falcons.Pages.management.FnB.Products
             //ProductCategory pcEdit = await _context.ProductCategories.FindAsync(pc.CategoryID);
 
             //return RedirectToPage("./Index");
-            return Redirect("Edit?id=" + EditProduct.ProductID);
-            //return Page();
+            //return Redirect("Edit?id=" + EditProduct.ProductID);
+            return Page();
         }
 
         public IActionResult OnPostAddProductDetails(ProductDetails ProductDetail)
@@ -247,6 +263,8 @@ namespace Falcons.Pages.management.FnB.Products
                                         }).ToList();
 
             Product EditProduct = _context.Products.Find(ProductDetail.ProductID);
+
+            //fetch image to display
             imgList = new List<string>();
 
             if (!String.IsNullOrWhiteSpace(EditProduct.ImageURL))
@@ -267,12 +285,36 @@ namespace Falcons.Pages.management.FnB.Products
             }
 
             _context.ProductDetails.Add(ProductDetail);
-            _context.SaveChanges();
+
+            try
+            {
+                _context.SaveChanges();
+                message = message + "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Product detail is added !</div></div>";
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Products.Any(e => e.ProductID == Product.ProductID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             ProductDetails = _context.ProductDetails.Where(pd => pd.ProductID == ProductDetail.ProductID).ToList();
 
             //return Page();
-            return Redirect("Edit?id=" + ProductDetail.ProductID);
+            //return Redirect("Edit?id=" + ProductDetail.ProductID);
+            if (!String.IsNullOrWhiteSpace(ReturnUrl)) {
+                return Redirect(ReturnUrl);
+            }
+            else
+            {
+                return Redirect("Edit?id=" + ProductDetail.ProductID);
+            }
+            
         }
 
         public IActionResult OnPostDeleteProductDetails(ProductDetails ProductDetail)

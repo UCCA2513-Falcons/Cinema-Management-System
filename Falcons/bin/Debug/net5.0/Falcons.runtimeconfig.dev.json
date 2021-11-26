@@ -1,8 +1,0 @@
-{
-  "runtimeOptions": {
-    "additionalProbingPaths": [
-      "C:\\Users\\gacha\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\gacha\\.nuget\\packages"
-    ]
-  }
-}

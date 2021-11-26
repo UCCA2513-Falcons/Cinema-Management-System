@@ -21,6 +21,6 @@ namespace Falcons.Models
         [Display(Name = "User")]
         public string UID { get; set; }
 
-        public ICollection<FnBOrderDetail> FnBOrderDetails { get; set; }
+        public virtual ICollection<FnBOrderDetail> FnBOrderDetails { get; set; }
     }
 }

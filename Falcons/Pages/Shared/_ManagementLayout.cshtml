@@ -1,7 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
-
+@{ 
+    var user = await UserManager.GetUserAsync(User);
+ }
 
 <!DOCTYPE html>
 
@@ -37,7 +39,7 @@
             <div class="logo-header" data-background-color="blue">
 
                 <a href="/management/" class="logo">
-                    <img src="~/assets/management/img/logo.svg" alt="navbar brand" class="navbar-brand">
+                    <img src="/assets/img/FALCONS.png" style="width:100%; height:60px;" alt="navbar brand" class="navbar-brand">
                 </a>
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
@@ -64,29 +66,24 @@
                             <li class="nav-item dropdown hidden-caret">
                                         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                                             <div class="avatar-sm">
-                                                <img src="~/assets/management/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                                                <!-- img src="~/assets/management/img/profile.jpg" alt="..." class="avatar-img rounded-circle" --->
+                                                <i class="fas fa-user-circle avatar-img rounded-circle" style="color:#ffffff;font-size:2.5em;"></i>
                                             </div>
                                         </a>
                                         <ul class="dropdown-menu dropdown-user animated fadeIn">
                                             <div class="dropdown-user-scroll scrollbar-outer">
                                                 <li>
                                                     <div class="user-box">
-                                                        <div class="avatar-lg"><img src="~/assets/management/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+                                                        <!--- ndiv class="avatar-lg"><img src="~/assets/management/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div --->
                                                         <div class="u-text">
-                                                            <h4>Hizrian</h4>
-                                                            <p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                                                            <h4>Hi, @UserManager.GetUserName(User) !</h4>
+                                                            <p class="text-muted">@await UserManager.GetEmailAsync(user)</p><a href="/Identity/Account/Manage" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">My Profile</a>
-                                                    <a class="dropdown-item" href="#">My Balance</a>
-                                                    <a class="dropdown-item" href="#">Inbox</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Account Setting</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Logout</a>
+                                                    <a class="dropdown-item" href="/Identity/Account/Manage">My Profile</a>
+                                                    <a class="dropdown-item" href="/Identity/Account/Logout">Logout</a>
                                                 </li>
                                             </div>
                                         </ul>
@@ -152,22 +149,17 @@
                         <div class="collapse" id="HRM">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a asp-area="" asp-page="/management/HRM/Employee">
+                                    <a asp-area="" asp-page="/management/HRM/Employees/Index">
                                         <span class="sub-item">Employee</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a asp-area="" asp-page="/management/HRM/Attendance">
-                                        <span class="sub-item">Attendance</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a asp-area="" asp-page="/management/HRM/Salary">
+                                    <a asp-area="" asp-page="/management/HRM/Salaries/Index">
                                         <span class="sub-item">Salary</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a asp-area="" asp-page="/management/HRM/Leave">
+                                    <a asp-area="" asp-page="/management/HRM/Leaves/Index">
                                         <span class="sub-item">Leave</span>
                                     </a>
                                 </li>

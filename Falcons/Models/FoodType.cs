@@ -22,6 +22,6 @@ namespace Falcons.Models
         [Display(Name = "Type")]
         public string Type { get; set; }
 
-        public ICollection<FoodInventory> FoodInventories { get; set; }
+        public virtual ICollection<FoodInventory> FoodInventories { get; set; }
     }
 }

@@ -6,6 +6,11 @@
     ViewData["Title"] = "Edit Inventory Item";
 }
 <div class="row">
+    @if (TempData["message"] != null)
+    {
+        @Html.Raw(TempData["message"].ToString());
+
+    }
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">

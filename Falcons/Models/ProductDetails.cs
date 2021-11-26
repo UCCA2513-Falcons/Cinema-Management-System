@@ -14,7 +14,7 @@ namespace Falcons.Models
 
         [ForeignKey("Product")]
         public int ProductID { get; set; }
-        public Product Product { get; set; }
+        
 
         [Required]
         [Display(Name = "Price")]
@@ -24,5 +24,7 @@ namespace Falcons.Models
         [Required]
         [Display(Name = "Size")]
         public string Size { get; set; }
+
+        public virtual Product Product { get; set; }
     }
 }

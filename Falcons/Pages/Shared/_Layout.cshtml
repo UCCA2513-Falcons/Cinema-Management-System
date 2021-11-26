@@ -52,9 +52,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-2">
-                    <div class="header__logo">
+                    <div>
                         <a asp-area="" asp-page="/Index">
-                            <img src="~/assets/main/img/logo.png" alt="">
+                            <img src="/assets/img/FALCONS.png" alt="Falcons Cinema" style="height:60px;">
                         </a>
                     </div>
                 </div>
@@ -67,6 +67,8 @@
                                 <li><a asp-area="" asp-page="/FnB/Menu">Food & Beverages</a></li>
                                 <li><a href="#">About us</a></li>
                                 <li><a href="#">Contacts</a></li>
+                                <a href="#" class="search-switch"><span class="icon_search"></span></a>
+                                <!---partial name="_LoginPartial" /--->
                             </ul>
                         </nav>
                     </div>
@@ -80,7 +82,7 @@
                         {
                             <a href="/Identity/Account/Manage" title="Profile"><span class="icon_profile"></span></a>
                             <a href="/History" title="History"><i class="fas fa-history"></i></a>
-                            if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                            if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Staff"))
                             {
                                 <a href="/management/" target="_blank" title="Management"><i class="far fa-building"></i></a>
                             }

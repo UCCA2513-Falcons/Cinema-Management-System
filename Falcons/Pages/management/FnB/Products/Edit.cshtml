@@ -6,6 +6,10 @@
     ViewData["Title"] = "Edit Product";
 }
 <div class="row">
+    @if (!String.IsNullOrWhiteSpace(Model.message))
+    {
+        @Html.Raw(Model.message);
+    }
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
@@ -40,24 +44,24 @@
                 @if (Model.imgList != null)
                 {
                     <div class="form-group form-group-default">
-                    <label>Image</label><br />
-                                        <div style="display:flex;">
-                                            @foreach (string item in Model.imgList)
-                                            {
-                                                <form role="form" method="post" asp-page-handler="DeleteImage" class="ml-1 mr-1">
-                                                    <input type="hidden" value="@Model.Product.ProductID" asp-for="ProductID" />
-                                                    <input type="hidden" value="@item" asp-for="ImgURL" />
-                                                    <button class="btn btn-default" title="Remove Image">
-                                                        <img src="/assets/img/products/@item" width="250px" height="auto" class="img-fluid rounded float-left" />
-                                                    </button>
-                                                </form>
-                                            }
-                                        </div>
+                        <label>Image</label><br />
+                        <div style="display:flex;">
+                            @foreach (string item in Model.imgList)
+                            {
+                                <form role="form" method="post" asp-page-handler="DeleteImage" class="ml-1 mr-1">
+                                    <input type="hidden" value="@Model.Product.ProductID" asp-for="ProductID" />
+                                    <input type="hidden" value="@item" asp-for="ImgURL" />
+                                    <button class="btn btn-default" title="Remove Image">
+                                        <img src="/assets/img/products/@item" width="250px" height="auto" class="img-fluid rounded float-left" />
+                                    </button>
+                                </form>
+                            }
+                        </div>
                     </div>
                 }
 
-                    
-                </div>
+
+            </div>
         </div>
     </div>
 </div>
@@ -97,20 +101,21 @@
                                 </button>
                             </div>
                             <form role="form" method="post" asp-page-handler="AddProductDetails">
-                                <input type="hidden" asp-for="ProductDetail.ProductID" value="@Model.Product.ProductID"/>
+                                <input type="hidden" asp-for="ReturnUrl" value="@Request.Path@Request.QueryString" />
+                                <input type="hidden" asp-for="ProductDetail.ProductID" value="@Model.Product.ProductID" />
                                 <div class="modal-body">
                                     <p class="small">Please fill in all the field.</p>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group form-group-default">
                                                 <label>Size</label>
-                                                <input class="form-control" asp-for="ProductDetail.Size" required/>
+                                                <input class="form-control" asp-for="ProductDetail.Size" required />
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group form-group-default">
                                                 <label asp-for="ProductDetail.ProductPrice"></label>
-                                                <input class="form-control" asp-for="ProductDetail.ProductPrice" type="number" required/>
+                                                <input class="form-control" asp-for="ProductDetail.ProductPrice" type="number" required />
                                             </div>
                                         </div>
                                     </div>
