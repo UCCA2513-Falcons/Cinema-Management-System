@@ -4,3 +4,4 @@ Falcons/obj/*
 Falcons/bin/*
 Falcons/Migrations/20211125115217_UpdateModelClass.Designer.cs
 Falcons/Migrations/20211125115217_UpdateModelClass.cs
+.vs/*
