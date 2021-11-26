@@ -36,6 +36,7 @@ namespace Falcons.Pages.management.Movies
         [BindProperty]
         public MovieDetails movies { get; set; }
 
+
         public IEnumerable<MovieDetails> Movies { get; set; }
         public async Task OnGet()
         {

@@ -26,7 +26,7 @@ namespace Falcons.Models
         public Int32 BID { get; set; }
 
         [Required]
-        public virtual ICollection<Hall> Halls { get; set; }
+        public virtual ICollection<Showroom> Halls { get; set; }
 
         [Required]
         public virtual ICollection<Booking> booking { get; set; }

@@ -62,15 +62,20 @@ namespace Falcons.Models
         [Display(Name = "Synopsis")]
         public string Synopsis { get; set; }
 
-        [Required]
-        [MaxLength(100)]
-        [Display(Name = "Distributor")]
-        public string Distributor { get; set; }
+        //[Required]
+        //[MaxLength(100)]
+        //[Display(Name = "Distributor")]
+        //public string Distributor { get; set; }
+
+        //[Display(Name = "Poster")]
+        public string MoviesImgURL { get; set; }
 
         [Required]
         [MaxLength(200)]
         [Display(Name = "Cast")]
         public string Cast { get; set; }
+
+        
 
         public virtual ICollection<Showtime> Showtimes { get; set; }
     }

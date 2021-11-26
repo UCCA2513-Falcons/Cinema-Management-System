@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Falcons.Code;
 using Falcons.Data;
 using Falcons.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -19,10 +22,12 @@ namespace Falcons.Pages.management.Movies
         private readonly FalconsDBContext _db;
         protected IServiceProvider ServiceProvider { get; }
 
+        private IWebHostEnvironment webHostEnvironment;
+
 
 
         public EditMovieModel(FalconsDBContext db,
-
+            IWebHostEnvironment WebHostEnvironment,
             ApplicationDbContext authcontext,
             IAuthorizationService authorizationService,
          UserManager<IdentityUser> userManager,
@@ -31,14 +36,16 @@ namespace Falcons.Pages.management.Movies
             ) : base(authcontext, authorizationService, userManager, roleManager)
         {
             _db = db;
-
             ServiceProvider = serviceProvider;
-
-
+            webHostEnvironment = WebHostEnvironment;
 
         }
         [BindProperty]
         public MovieDetails movies { get; set; }
+
+        [BindProperty]
+        public IFormFile Poster { get; set; }
+        public string UniqueFileName { get; set; }
 
         public async Task OnGet(int id)
         {
@@ -47,6 +54,22 @@ namespace Falcons.Pages.management.Movies
 
         public async Task<IActionResult> OnPost()
         {
+
+            MovieDetails EditMovie = _db.Movies.Find(movies.MovieID);
+            //string imgURL = "";
+
+            string UploadFolder = Path.Combine(webHostEnvironment.WebRootPath, "assets\\img\\movies");
+
+            UniqueFileName = Guid.NewGuid().ToString() + "_" + Poster.FileName;
+            string FilePath = Path.Combine(UploadFolder, UniqueFileName);
+            using (var FileStream = new FileStream(FilePath, FileMode.Create))
+            {
+                Poster.CopyTo(FileStream);
+                FileStream.Flush();
+            }
+
+            
+
             if (ModelState.IsValid)
             {
                 var mov = await _db.Movies.FindAsync(movies.MovieID);
@@ -58,9 +81,11 @@ namespace Falcons.Pages.management.Movies
                 mov.Category = movies.Category;
                 mov.Director = movies.Director;
                 mov.Cast = movies.Cast;
-                mov.Distributor = movies.Distributor;
+                //mov.Distributor = movies.Distributor;
                 mov.ReleaseDate = movies.ReleaseDate;
                 mov.Synopsis = movies.Synopsis;
+
+                EditMovie.MoviesImgURL = UniqueFileName;
 
                 await _db.SaveChangesAsync();
                 return RedirectToPage("/management/Movies/Movies");

@@ -22,7 +22,7 @@ namespace Falcons.Models
         public DbSet<FnBOrder> FnBOrders { get; set; }
         public DbSet<FnBOrderDetail> FnBOrderDetails { get; set; }
 
-        public DbSet<Employee> Employee { get; set; }
+        //public DbSet<Employee> Employee { get; set; }
 
         // ticket
 
@@ -31,7 +31,7 @@ namespace Falcons.Models
 
         public DbSet<Seat> Seat { get; set; }
 
-        public DbSet<Hall> Hall { get; set; }
+        public DbSet<Showroom> Hall { get; set; }
 
         // Movies
         public DbSet<MovieDetails> Movies { get; set; }

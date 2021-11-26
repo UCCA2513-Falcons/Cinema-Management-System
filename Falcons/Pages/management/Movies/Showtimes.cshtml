@@ -1,4 +1,133 @@
 ﻿@page
 @model Falcons.Pages.management.Movies.ShowtimesModel
 @{
+    Layout = "_ManagementLayout";
+
+    ViewData["Title"] = "Showtime";
 }
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Showtimes</div>
+            </div>
+            <div class="card-body">
+                <!-- Button -->
+                <div class="d-flex">
+                    <button class="btn btn-primary btn-round ml-auto mb-3" data-toggle="modal" data-target="#addShowtimeModal">
+                        <i class="fa fa-plus"></i>
+                        Add Showtime
+                    </button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addShowtimeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+                                    <span class="fw-mediumbold">
+                                        New
+                                    </span>
+                                    <span class="fw-light">
+                                        Movie
+                                    </span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form role="form" method="post">
+                                <div class="modal-body">
+                                    <p class="small">Please fill in all the field.</p>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label asp-for="showtimes.ShowroomID"></label>
+                                                <select asp-for="showtimes.ShowroomID" asp-items="@(new SelectList(Model.Showrooms,"ShowroomID","ShowroomName"))"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label asp-for="showtimes.MovieID"></label>
+                                                <select asp-for="showtimes.MovieID" asp-items="@(new SelectList(Model.Movies ,"MovieID","MovieName"))"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label asp-for="showtimes.StartDateTime"></label>
+                                                <input type="datetime-local" asp-for="showtimes.StartDateTime" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label asp-for="showtimes.EndDateTime"></label>
+                                                <input type="datetime-local" asp-for="showtimes.EndDateTime" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer no-bd">
+                                    <button type="submit" id="addShowtimeButton" class="btn btn-primary">Add</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <form method="post">
+
+                    <div class="table-responsive">
+                        <table id="category-row" class=" display table table-striped table-hover" cellspacing="0" width="100%">
+                            <thead>
+                                <tr role="row"></tr>
+
+                                <tr role="row">
+                                    <th>ID</th>
+                                    <th>Movie Name</th>
+                                    <th>Showroom No</th>
+                                    <th>Start DateTime</th>
+                                    <th>End DateTime</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                             
+                                @foreach (var item in Model.Showtimes)
+                                {
+                      
+
+                                    <tr>
+                                        <td>@Html.DisplayFor(M => item.ShowtimeID)</td>
+                                        <td>@Html.DisplayFor(M => item.Movies.MovieName)</td>
+                                        <td>@Html.DisplayFor(M => item.Showroom.ShowroomName)</td>
+                                        <td>@Html.DisplayFor(M => item.StartDateTime)</td>
+                                        <td>@Html.DisplayFor(M => item.EndDateTime)</td>
+
+                                        <td>
+                                            <div class="form-button-action">
+                                                <a asp-page="EditShowtime" asp-route-id="@item.ShowtimeID" class="btn btn-link btn-info"><i class="fa fa-edit"></i></a>
+
+                                                <button asp-page-handler="Delete" asp-route-id="@item.ShowtimeID" onclick="return confirm('Confirm delete')" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

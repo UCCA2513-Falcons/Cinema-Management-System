@@ -5,7 +5,7 @@
     ViewData["Title"] = "Edit Movies";
 
 }
-<form role="form" method="post">
+<form role="form" method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="movies.MovieID" />
     <div class="modal-body">
         <p class="small">Please fill in all the field.</p>
@@ -59,12 +59,12 @@
                     <input asp-for="movies.Cast" type="text" class="form-control" placeholder="Cast" required>
                 </div>
             </div>
-            <div class="col-sm-12">
+            @*<div class="col-sm-12">
                 <div class="form-group form-group-default">
                     <label asp-for="movies.Distributor"></label>
                     <input asp-for="movies.Distributor" type="text" class="form-control" placeholder="Distributor" required>
                 </div>
-            </div>
+            </div>*@
             <div class="col-sm-12">
                 <div class="form-group form-group-default">
                     <label asp-for="movies.ReleaseDate"></label>
@@ -77,6 +77,13 @@
                     <textarea class="form-control" asp-for="movies.Synopsis" rows="8" placeholder="Synopsis of movie here ..."></textarea>
                 </div>
             </div>
+            <div class="col-md-12">
+                <div class="form-group form-group-default">
+                    <label >Poster</label>
+                    <input asp-for="Poster" class="form-control" accept="image/*" />
+                </div>
+            </div>
+
         </div>
 
     </div>

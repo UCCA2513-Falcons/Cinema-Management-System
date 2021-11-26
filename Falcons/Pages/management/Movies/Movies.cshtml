@@ -91,12 +91,12 @@
                                                 <input asp-for="movies.Cast" type="text" class="form-control" placeholder="Cast" required>
                                             </div>
                                         </div>
-                                        <div class="col-sm-12">
+                                        @*<div class="col-sm-12">
                                             <div class="form-group form-group-default">
                                                 <label asp-for="movies.Distributor"></label>
                                                 <input asp-for="movies.Distributor" type="text" class="form-control" placeholder="Distributor" required>
                                             </div>
-                                        </div>
+                                        </div>*@
                                         <div class="col-sm-12">
                                             <div class="form-group form-group-default">
                                                 <label asp-for="movies.ReleaseDate"></label>
@@ -132,6 +132,7 @@
 
                                 <tr role="row">
                                     <th>ID</th>
+                                    <th>Poster</th>
                                     <th>Name</th>
                                     <th>Synopsis</th>
                                     <th>Language</th>
@@ -141,7 +142,7 @@
                                     <th>Category</th>
                                     <th>Director</th>
                                     <th>Cast</th>
-                                    <th>Distributor</th>
+                                    @*<th>Distributor</th>*@
                                     <th>Released Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -154,6 +155,7 @@
 
                                     <tr>
                                         <td>@Html.DisplayFor(M => item.MovieID)</td>
+                                        <td><img src="/assets/img/movies/@item.MoviesImgURL" width="40" height="50" /></td>
                                         <td>@Html.DisplayFor(M => item.MovieName)</td>
                                         @if (!String.IsNullOrWhiteSpace(item.Synopsis))
                                         {
@@ -170,7 +172,7 @@
                                         <td>@Html.DisplayFor(M => item.Category)</td>
                                         <td>@Html.DisplayFor(M => item.Director)</td>
                                         <td>@Html.DisplayFor(M => item.Cast)</td>
-                                        <td>@Html.DisplayFor(M => item.Distributor)</td>
+                                        @*<td>@Html.DisplayFor(M => item.Distributor)</td>*@
                                         <td>@Html.DisplayFor(M => item.ReleaseDate)</td>
 
                                         <td>
