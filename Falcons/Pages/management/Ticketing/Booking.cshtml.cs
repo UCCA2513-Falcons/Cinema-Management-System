@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Falcons.Code;
+using Falcons.Data;
 using Falcons.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,13 +14,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Falcons.Pages.management.Ticketing
 {
-    public class BookingModel : PageModel
+    
+    [Authorize(Roles = "Admin, Manager")]
+    public class BookingModel : DI_BasePageModel
     {
+       
         public readonly FalconsDBContext _context;
 
-        public BookingModel(FalconsDBContext context)
+        protected IServiceProvider ServiceProvider { get; }
+
+        public BookingModel(FalconsDBContext context, ApplicationDbContext authcontext,
+            IAuthorizationService authorizationService,
+         UserManager<IdentityUser> userManager,
+         RoleManager<IdentityRole> roleManager,
+         IServiceProvider serviceProvider
+            ) : base(authcontext, authorizationService, userManager, roleManager)
         {
             _context = context;
+
+            ServiceProvider = serviceProvider;
         }
 
         [BindProperty]
@@ -25,34 +40,29 @@ namespace Falcons.Pages.management.Ticketing
         public Booking booking { get; set; }
 
         public IEnumerable<Booking> Booking { get; set; }
+        public IEnumerable<Showtime> Showtime{ get; set; }
+        public IEnumerable<MovieDetails> Movies { get; set; }
 
-        public int BID { get; set; }
+     
 
         // public List<SelectListItem> Options { get; set; }
 
         public async Task OnGet()
         {
-            /* Options = await _context.Movies.Select(m =>
-             new SelectListItem
-             {
-                 Value = m.MovieID.ToString(),
-                 Text = m.MovieName.ToString()
-             }).ToListAsync();
-
-             SelectListItem initialItem = new SelectListItem
-             { Text = "Select a movie", Value = "" };*/
-
+            
             Booking = await _context.Booking.ToListAsync();
+            Showtime = await _context.Showtime.ToListAsync();
+            Movies = await _context.Movies.ToListAsync();
 
         }
 
         // add button is clicked
-        public async Task<IActionResult> OnPostAsync()
+        /*public async Task<IActionResult> OnPostAsync()
         {
-            /* if (!ModelState.IsValid)
+            if (!ModelState.IsValid)
              {
                  return Page();
-             }*/
+             }
 
             //_context.Booking.Add(Booking);
             //await _context.SaveChangesAsync();
@@ -63,7 +73,7 @@ namespace Falcons.Pages.management.Ticketing
             await _context.SaveChangesAsync();
             return RedirectToPage("/management/Ticketing/Booking");
 
-        }
+        }*/
 
         /*
         public IActionResult OnPostCancel()

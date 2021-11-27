@@ -13,74 +13,7 @@
                 <div class="card-title">Booking Information</div>
             </div>
             <div class="card-body">
-                <!-- Button-->
-                <div class="d-flex">
-                    <button class="btn btn-primary btn-round ml-auto mb-3" data-toggle="modal" data-target="#addBookingRecordsModal">
-                        <i class="fa fa-plus"></i>
-                        Add booking record
-                    </button>
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="addBookingRecordsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header no-bd">
-                                <h5 class="modal-title">
-                                    <span class="fw-mediumbold">
-                                        Add Booking Records
-                                    </span>
-                                </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p class="small">Please fill in all the field.</p>
-                                <form role="form" method="post">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group form-group-default">
-                                                <!--label asp-for="booking.movieName" class="control-label">Movie Name</!--label>
-                <select asp-for="booking.movieName" asp-items="Model.Options">Select Movie</select>
-                <span asp-validation-for="booking.movieName" class="text-danger"></span-->
-
-                                                <label asp-for="booking.movieName">Movie Name</label>
-                                                <input asp-for="booking.movieName" class="form-control" type="text" />
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group form-group-default">
-                                                <label asp-for="booking.bookingDateTime">Booking Date</label>
-                                                <input asp-for="booking.bookingDateTime" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group form-group-default">
-                                                <label asp-for="booking.showDateTime">Showing Date</label>
-                                                <input asp-for="booking.showDateTime" class="form-control" />
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="form-group form-group-default">
-                                                <label asp-for="booking.amount">Amount</label>
-                                                <input asp-for="booking.amount" class="form-control" type="number" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="modal-footer no-bd">
-                                        <button type="submit" id="addBookingRecordsButton" class="btn btn-primary">Add</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+               
                 <!-- Table -->
                 <div class="table-responsive">
                     <table id="booking" class=" display table table-striped table-hover" cellspacing="0" width="100%">
@@ -91,9 +24,9 @@
                                 <th>ID</th>
                                 <th>Username</th>
                                 <th>Movie Name</th>
-                                <th>Booking Details</th>
-                                <th>Showing Details</th>
-                                <th>Amount (RM)</th>
+                                <th>Showroom</th>
+                                <th>Showing Date</th>
+                                <th>Showing Time</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -101,17 +34,15 @@
                             {
                             <tr>
                                 <td>@Html.DisplayFor(Booking => items.ID)</td>
-                                <td>@Html.DisplayFor(Booking => items.email)</td>
-                                <td>@Html.DisplayFor(Booking => items.movieName)</td>
-                                <td>@Html.DisplayFor(Booking => items.bookingDateTime)</td>
-                                <td>@Html.DisplayFor(Booking => items.showDateTime)</td>
-                                <td>@Html.DisplayFor(Booking => items.amount)</td>
+                                <td>@Html.DisplayFor(Booking => items.UID)</td>
+                                <td>@Html.DisplayFor(Booking => Model.Showtime.Where(shw => shw.ShowroomID == items.Showtime.ShowroomID).FirstOrDefault().Showroom.ShowroomName)</td>
+                                <td>@Html.DisplayFor(Booking => Model.Movies.Where(m => m.MovieID == items.MID).FirstOrDefault().MovieName)</td>
+                                <td>@Html.DisplayFor(Booking => Model.Showtime.Where(sh => sh.ShowtimeID == items.showtimeID).FirstOrDefault().StartDate)</td>
+                                <td>@Html.DisplayFor(Booking => Model.Showtime.Where(sh => sh.ShowtimeID == items.showtimeID).FirstOrDefault().StartTime)</td>
+
 
                                 <td>
                                     <div class="form-button-action">
-                                        <a asp-page="/management/Ticketing/EditBooking" asp-route-id="@items.ID" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
 
                                         <button asp-page-handler="Delete" asp-route-id="@items.ID"
                                                 onclick="return confirm('Are you sure to delete this record?')"

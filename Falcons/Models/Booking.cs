@@ -13,6 +13,9 @@ namespace Falcons.Models
         [Display(Name = "Booking ID")]
         public int ID { get; set; }
 
+        [Required]
+        [Display(Name = "User")]
+        public int UID { get; set; }
 
         [Required]
         [MaxLength(10)]
@@ -22,17 +25,8 @@ namespace Falcons.Models
 
 
         [Required]
-        [ForeignKey("Showroom")]
-        public int ShowroomID { get; set; }
-
-        [Required]
         [ForeignKey("Showtime")]
         public int showtimeID { get; set; }
-
-
-        [Required]
-        [ForeignKey("BookedSeat")]
-        public int seatID { get; set; }
 
         [Required]
         [MaxLength(10)]
@@ -42,10 +36,7 @@ namespace Falcons.Models
 
         public virtual MovieDetails Movies { get; set; }
 
-        public virtual Showroom Showroom { get; set; }
-
         public virtual Showtime Showtime { get; set; }
 
-        public virtual BookedSeat BookedSeat { get; set; }
     }
 }
