@@ -1,0 +1,45 @@
+﻿@page
+@model Falcons.Pages.ShowtimeModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Showtime";
+}
+
+@foreach (var item in Model.Showtimes)
+{
+    <div>@Html.DisplayFor(m=>item.Movies.MovieName)</div>
+    <div class="Splitme">@Html.DisplayFor(m => item.StartDateTime)</div>
+
+
+}
+
+<div class="down"> </div>
+
+
+
+@section Scripts{
+    <script>
+
+
+        var time = new Date();
+
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+        let Splitme = document.querySelectorAll(".Splitme");
+
+        let splitarray = new Array();
+
+        for (let i = 0; i < Splitme.length; i++) {
+
+            splitarray = Splitme[i].innerHTML.split(" ");
+
+            var date = new Date(splitarray[0]);
+            var dayname = days[date.getDay()]
+
+            document.querySelectorAll(".Splitme")[i].innerHTML = dayname;
+
+        }
+
+    </script>
+
+}

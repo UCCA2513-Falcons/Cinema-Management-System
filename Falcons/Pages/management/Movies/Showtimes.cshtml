@@ -49,12 +49,12 @@
                                                 <select asp-for="showtimes.ShowroomID" asp-items="@(new SelectList(Model.Showrooms,"ShowroomID","ShowroomName"))"></select>
                                             </div>
                                         </div>
-                                        @*<div class="col-sm-12">
+                                        <div class="col-sm-12">
                                             <div class="form-group form-group-default">
-                                                <label asp-for="showtimes.MovieID"></label>
-                                                <select asp-for="showtimes.MovieID" asp-items="@(new SelectList(Model.Movies ,"MovieID","MovieName"))"></select>
+                                                <label asp-for="showtimes.MoviesMovieID"></label>
+                                                <select asp-for="showtimes.MoviesMovieID" asp-items="@(new SelectList(Model.Movies ,"MovieID","MovieName"))"></select>
                                             </div>
-                                        </div>*@
+                                        </div>
                                         <div class="col-sm-12">
                                             <div class="form-group form-group-default">
                                                 <label asp-for="showtimes.StartDateTime"></label>
