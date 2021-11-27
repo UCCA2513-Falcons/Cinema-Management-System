@@ -35,7 +35,7 @@
             Ticket Price: <b>RM <span id="total">0</span></b>
 
             <div></div>
-            <button class="button checkout-button btn-block" onclick="checkOut();">Checkout &raquo;</button>
+            <button class="button checkout-button btn-block" id="AddToCart">Checkout &raquo;</button>
 
 
         </div>
@@ -155,6 +155,14 @@
 
         });
 
+        //get url query parameter
+        function getQueryString(name) {
+            let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            let r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+
         function recalculateTotal(sc) {
             var total = 0;
 
@@ -166,6 +174,60 @@
             return total;
         }
 
+        $("#AddToCart").click(function () {
+            var selectedSeats = [];
+
+            var $selectedSeat = $('#selected-seats li').each(function () {
+                var selectedSeat = {};
+                selectedSeat.seatID = $(this).data("seatId");
+                selectedSeat.seatPrice = $(this).data("seatPrice");
+                selectedSeats.push(selectedSeat);
+            });
+
+            if (typeof (Storage) !== "undefined") {
+                let cartArray = [];
+                //check if cart json already exists
+                if (!(localStorage.getItem("TicketCart") == null || localStorage.getItem("TicketCart") == "")) {
+                    cartArray = JSON.parse(localStorage.getItem("TicketCart"));
+                }
+
+                //loop in cart to find and update
+                let updateStatus = false;
+                for (let f = 0; f < cartArray.length; f++) {
+                    if (cartArray[f].ShowTimeID == getQueryString("id")) {
+                        cartArray[f].SeatID = selectedSeats;
+                        updateStatus = true;
+                    }
+                }
+
+                //if not found after loop then create new
+                if (!updateStatus) {
+                    let cart = new Object();
+                    cart.ShowTimeID = getQueryString("id");
+                    cart.SeatID = selectedSeats;
+
+                    //push item into array
+                    cartArray.push(cart);
+                }
+                console.log(cartArray);
+
+                
+
+                localStorage.setItem("TicketCart", JSON.stringify(cartArray));
+                console.log("inside " + JSON.stringify(cartArray));
+
+                $("div#sys_msg").prepend('<div class="alert alert-success" role="alert" style="margin-top:1rem;margin-bottom:1rem;">' +
+                    'Successfully added to your cart !' +
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>' +
+                    '</div>');
+                setTimeout(function () {
+                    //window.location.href = "/Cart";
+                }, 1000);
+            } else {
+                console.log("no Local Storage available");
+            }
+
+        });
+
     </script>
-    <script src="~/js/sth.js"></script>
 }

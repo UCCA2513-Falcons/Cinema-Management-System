@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Falcons.Pages.Ticketing
 {
     public class SeatBookingModel : PageModel
-    {
+    {   
 
         FalconsDBContext _context;
 
@@ -21,9 +21,16 @@ namespace Falcons.Pages.Ticketing
             _context = context;
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
-            BookedSeats = await _context.BookedSeats.ToListAsync();
+            if (id > 0) {
+                BookedSeats = await _context.BookedSeats.Where(b => b.ShowtimeID == id).ToListAsync();
+            }else
+            {
+                return Redirect("/");
+            }
+
+            
 
             return Page();
         }

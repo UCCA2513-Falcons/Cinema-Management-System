@@ -42,6 +42,7 @@ namespace Falcons.Models
         [Required]
         [MaxLength(10)]
         [Display(Name = "Amount")]
+        [Column(TypeName = "decimal(6,2)")]
         public decimal amount { get; set; }
 
        // [Required]
