@@ -5,19 +5,25 @@
     ViewData["Title"] = "Showtime";
 }
 
-@foreach (var item in Model.Showtimes)
-{
-    <div>@Html.DisplayFor(m=>item.Movies.MovieName)</div>
-    <div class="Splitme">@Html.DisplayFor(m => item.StartDateTime)</div>
+<div>
+
+    @foreach (var item in Model.Showtimes)
+    {
+        <div>@Html.DisplayFor(m => item.Movies.MovieName)</div>
+        <div class="Splitme">@Html.DisplayFor(m => item.StartDate)</div>
+
+        <button class="Splitme">@Html.DisplayFor(m => item.StartTime)</button>
 
 
-}
 
-<div class="down"> </div>
+    }
+</div>
 
 
 
-@section Scripts{
+
+
+@*@section Scripts{
     <script>
 
 
@@ -40,6 +46,6 @@
 
         }
 
-    </script>
+    </script>*@
 
-}
+@*}*@

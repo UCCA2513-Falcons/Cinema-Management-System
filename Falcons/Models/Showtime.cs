@@ -22,12 +22,20 @@ namespace Falcons.Models
         //public int ShowroomNo { get; set; }
 
         [Required]
-        [Display(Name = "Start Time")]
-        public DateTime StartDateTime { get; set; }
+        [Display(Name = "Start Date")]
+        public string StartDate { get; set; }
 
         [Required]
-        [Display(Name = "End Time")]
-        public DateTime EndDateTime { get; set; }
+        [Display(Name = "Start Time")]
+        public string StartTime { get; set; }
+
+        //[Required]
+        //[Display(Name = "End Date")]
+        //public string EndDate { get; set; }
+
+        //[Required]
+        //[Display(Name = "End Time")]
+        //public string EndTime { get; set; }
 
         //[ForeignKey("MovieDetails")]
         //public int MovieID { get; set; }

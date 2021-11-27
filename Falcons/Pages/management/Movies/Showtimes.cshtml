@@ -57,14 +57,14 @@
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group form-group-default">
-                                                <label asp-for="showtimes.StartDateTime"></label>
-                                                <input type="datetime-local" asp-for="showtimes.StartDateTime" />
+                                                <label asp-for="showtimes.StartDate"></label>
+                                                <input type="date" asp-for="showtimes.StartDate" />
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group form-group-default">
-                                                <label asp-for="showtimes.EndDateTime"></label>
-                                                <input type="datetime-local" asp-for="showtimes.EndDateTime" />
+                                                <label asp-for="showtimes.StartTime"></label>
+                                                <input type="time" asp-for="showtimes.StartTime" />
                                             </div>
                                         </div>
                                     </div>
@@ -106,8 +106,8 @@
                                         <td>@Html.DisplayFor(M => item.ShowtimeID)</td>
                                         <td>@Html.DisplayFor(M => Model.Movies.Where(m=>m.MovieID == item.MoviesMovieID).FirstOrDefault().MovieName)</td>
                                         <td>@Html.DisplayFor(M => item.Showroom.ShowroomName)</td>
-                                        <td>@Html.DisplayFor(M => item.StartDateTime)</td>
-                                        <td>@Html.DisplayFor(M => item.EndDateTime)</td>
+                                        <td>@Html.DisplayFor(M => item.StartDate)</td>
+                                        <td>@Html.DisplayFor(M => item.StartTime)</td>
 
                                         <td>
                                             <div class="form-button-action">

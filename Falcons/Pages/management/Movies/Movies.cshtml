@@ -159,7 +159,7 @@
                                         <td>@Html.DisplayFor(M => item.MovieName)</td>
                                         @if (!String.IsNullOrWhiteSpace(item.Synopsis))
                                         {
-                                            <td>@Html.Raw((item.Synopsis.Length > 200 ? item.Synopsis.Substring(0, 200) + "..." : item.Synopsis))</td>
+                                            <td>@Html.Raw((item.Synopsis.Length > 20 ? item.Synopsis.Substring(0, 20) + "..." : item.Synopsis))</td>
                                         }
                                         else
                                         {

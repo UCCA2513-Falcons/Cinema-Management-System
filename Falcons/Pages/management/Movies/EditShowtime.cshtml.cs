@@ -64,8 +64,8 @@ namespace Falcons.Pages.management.Movies
             if (ModelState.IsValid)
             {
                 var showt = await _db.Showtime.FindAsync(showtimes.ShowtimeID);
-                showt.StartDateTime = showtimes.StartDateTime;
-                showt.EndDateTime = showtimes.EndDateTime;
+                showt.StartDate = showtimes.StartDate;
+                showt.StartTime = showtimes.StartTime;
                 showt.MoviesMovieID = showtimes.MoviesMovieID;
                 showt.ShowroomID = showtimes.ShowroomID;
 
