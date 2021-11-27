@@ -15,29 +15,24 @@ namespace Falcons.Models
 
 
         [Required]
-        [MaxLength(100)]
-        [Display(Name = "Email")]
-        //[ForeignKey("Role")]
-        public string email { get; set; }
-
-        [Required]
         [MaxLength(10)]
         [Display(Name = "Movie ID")]
         [ForeignKey("MovieDetails")]
         public int MID { get; set; }
 
-        [Required]
-        [MaxLength(100)]
-        [Display(Name = "Movie Name")]
-        public string movieName { get; set; }
 
         [Required]
-        [Display(Name = "Created on")]
-        public DateTime bookingDateTime { get; set; }
+        [ForeignKey("Showroom")]
+        public int ShowroomID { get; set; }
 
         [Required]
-        [Display(Name = "Booked for")]
-        public DateTime showDateTime { get; set; }
+        [ForeignKey("Showtime")]
+        public int showtimeID { get; set; }
+
+
+        [Required]
+        [ForeignKey("BookedSeat")]
+        public int seatID { get; set; }
 
         [Required]
         [MaxLength(10)]
@@ -45,11 +40,12 @@ namespace Falcons.Models
         [Column(TypeName = "decimal(6,2)")]
         public decimal amount { get; set; }
 
-       // [Required]
-       // public virtual Ticket ticket { get; set; }
+        public virtual MovieDetails Movies { get; set; }
 
+        public virtual Showroom Showroom { get; set; }
 
-        //[Required]
-        //public virtual ICollection<Role> role { get; set; }
+        public virtual Showtime Showtime { get; set; }
+
+        public virtual BookedSeat BookedSeat { get; set; }
     }
 }

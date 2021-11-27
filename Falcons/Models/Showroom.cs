@@ -17,5 +17,7 @@ namespace Falcons.Models
         public string ShowroomName { get; set; }
 
         public virtual ICollection <Showtime> Showtime { get; set; }
+
+        public virtual ICollection<Booking> Booking { get; set; }
     }
 }

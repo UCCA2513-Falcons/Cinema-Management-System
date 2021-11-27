@@ -15,5 +15,7 @@ namespace Falcons.Models
         [ForeignKey("Showtime")]
         public int ShowtimeID { get; set; }
         public virtual Showtime Showtime { get; set; }
+
+        public virtual ICollection<Booking> Booking { get; set; }
     }
 }

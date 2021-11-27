@@ -44,7 +44,9 @@ namespace Falcons.Models
 
         public virtual MovieDetails Movies { get; set; }
 
-       
-        
+        public virtual ICollection<Booking> Booking { get; set; }
+
+
+
     }
 }
