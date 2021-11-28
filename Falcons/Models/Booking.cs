@@ -9,34 +9,23 @@ namespace Falcons.Models
 {
     public class Booking
     {
+
         [Key]
-        [Display(Name = "Booking ID")]
-        public int ID { get; set; }
+        public int BID { get; set; }
 
-        [Required]
-        [Display(Name = "User")]
-        public int UID { get; set; }
+        public string ticketType { get; set; }
 
-        [Required]
-        [MaxLength(10)]
-        [Display(Name = "Movie ID")]
-        [ForeignKey("MovieDetails")]
-        public int MID { get; set; }
+        public string Date { get; set; }
 
+        public int qty { get; set; }
 
-        [Required]
+        public string username { get; set; }
+
+        public string Seat { get; set; }
+
         [ForeignKey("Showtime")]
-        public int showtimeID { get; set; }
-
-        [Required]
-        [MaxLength(10)]
-        [Display(Name = "Amount")]
-        [Column(TypeName = "decimal(6,2)")]
-        public decimal amount { get; set; }
-
-        public virtual MovieDetails Movies { get; set; }
+        public virtual int ShowtimeID { get; set; }
 
         public virtual Showtime Showtime { get; set; }
-
     }
 }

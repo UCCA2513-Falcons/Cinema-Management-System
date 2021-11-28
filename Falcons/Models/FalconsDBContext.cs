@@ -25,9 +25,7 @@ namespace Falcons.Models
         public DbSet<Employee> Employees { get; set; }
         public DbSet<EmployeeLeave> EmployeeLeaves { get; set; }
 
-        public DbSet<Booking> Booking { get; set; }
-
-        public DbSet<BookedSeat> BookedSeats { get; set; }
+      
 
 
         public DbSet<Showroom> Hall { get; set; }
@@ -41,5 +39,14 @@ namespace Falcons.Models
         // Movies
         public DbSet<MovieDetails> Movies { get; set; }
         public DbSet<Showtime> Showtime { get; set; }
+
+        // Ticketing
+        public DbSet<Booking> Booking { get; set; }
+
+        public DbSet<BookedSeat> BookedSeat { get; set; }
+
+        public DbSet<SeatReservation> SeatReservation { get; set; }
+
+
     }
 }

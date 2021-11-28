@@ -19,8 +19,6 @@ namespace Falcons.Pages
         public List<Menu> Menus;
         public List<Product> Products;
 
-        public List<Booking> Bookings;
-
         private readonly FalconsDBContext _context;
         protected IServiceProvider ServiceProvider { get; }
         public CartModel(
@@ -42,7 +40,6 @@ namespace Falcons.Pages
             Products = await _context.Products.ToListAsync();
             Menus = await _context.Menus.ToListAsync();
 
-            Bookings = await _context.Booking.ToListAsync();
         }
     }
 }

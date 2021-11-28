@@ -40,13 +40,10 @@
             string Productjson = JsonConvert.SerializeObject(Model.Products);
             string Menujson = JsonConvert.SerializeObject(Model.Menus);
 
-            string bookingJson = JsonConvert.SerializeObject(Model.Bookings);
         }
         var Product = @Html.Raw(Productjson);
         var ProductDetail = @Html.Raw(ProductDetailjson);
         var Menu = @Html.Raw(Menujson);
-
-        var booking = @Html.Raw(bookingJson);
 
         function AppendToCart(title, description, price, imgUrl, id) {
             if (imgUrl != "/assets/img/No-Image.png") {

@@ -31,11 +31,12 @@ namespace Falcons.Controller
         {
             return new JsonResult("Hello World!");
         }
-        [HttpPost]
+
         public IActionResult PostCheckoutMovieSeats(List<SelectedSeat> selectedSeats)
         {
-            BookedSeat bookedSeat;
 
+            BookedSeat bookedSeat;
+            //Reserve reserve;
             string webRootPath = _hostingEnvironment.WebRootPath;
             string contentRootPath = _hostingEnvironment.ContentRootPath;
 
@@ -49,13 +50,14 @@ namespace Falcons.Controller
                     new JProperty("SeatPrice", ss.SeatPrice)
                     ));
 
+
                 bookedSeat = new BookedSeat();
                 bookedSeat.SeatID = ss.SeatID;
-                _context.BookedSeats.Add(bookedSeat);
+                bookedSeat.SeatPrice = ss.SeatPrice;
+
+
             }
-
             _context.SaveChanges();
-
             // write JSON directly to a file
 
             using (StreamWriter file = System.IO.File.CreateText(filePath))
@@ -81,5 +83,4 @@ namespace Falcons.Controller
 
         }
     }
-
 }

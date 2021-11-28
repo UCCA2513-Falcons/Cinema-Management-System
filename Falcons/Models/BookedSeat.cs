@@ -12,9 +12,7 @@ namespace Falcons.Models
         [Key]
         public string SeatID { get; set; }
 
-        [ForeignKey("Showtime")]
-        public int ShowtimeID { get; set; }
-        public virtual Showtime Showtime { get; set; }
-
+        [Column(TypeName = "decimal(6,2)")]
+        public decimal SeatPrice { get; set; }
     }
 }

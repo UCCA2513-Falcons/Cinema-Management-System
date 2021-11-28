@@ -1,3 +1,8 @@
+.seatbooking {
+	tyle ="width:100%; height:100vh;  display:flex; justify-content:center; align-items:center;
+}
+
+
 .button{
 	transition-duration: 0.4s;
 	border:none;
@@ -12,15 +17,6 @@
 	background-color: aliceblue;
 	color: black;
 	border: 2px solid #6495ed;
-}
-
-div.screen {
-	background-color: lightgray;
-	height: 100px;
-	width: %;
-	margin: 30px;
-	transform: rotateX(-48deg);
-	box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
 }
 
 div.showcase {

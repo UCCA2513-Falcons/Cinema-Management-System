@@ -18,5 +18,8 @@ namespace Falcons.Models
 
         public virtual ICollection <Showtime> Showtime { get; set; }
 
+        // for booking
+        public virtual ICollection<BookedSeat> BookedSeats { get; set; }
+
     }
 }
