@@ -5,18 +5,66 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <label>Name: </label>
-                <label style="font-size:20px;">@Model.movies.MovieName</label>
+            <div class="col-lg-5 col-md-6 col-sm-5 col-xs-12">
+                <img src="/assets/img/movies/@Model.movies.MoviesImgURL" />
+                <div>@Model.movies.Genre</div>
             </div>
-            <div class="col-lg-12">
-                <label>Language: </label>
-                <label style="font-size:20px;">@Model.movies.Language</label>
+            
+            <div class="col-lg-7 col-md-6 col-sm-7 col-xs-12">
+                <div class="col-lg-12">
+                    <label>Name: </label>
+                    <br />
+                    <label style="font-size:20px;">@Model.movies.MovieName</label>
+                </div>
+                <div class="col-lg-12">
+                    <label>Duration: </label>
+                    <br />
+                    <label style="font-size:20px;">@Model.movies.Duration</label>
+                </div>
+                <div class="col-lg-12">
+                    <label>Subtitle: </label>
+                    <br />
+                    <label style="font-size:20px;">@Model.movies.Subtitle</label>
+                </div>
+                <div class="col-lg-12">
+                    <label>Language: </label>
+                    <br />
+                    <label style="font-size:20px;">@Model.movies.Language</label>
+                </div>
+                <div class="col-lg-12">
+                    <label>Category: </label>
+                    <br />
+                    <label style="font-size:20px;">@Model.movies.Category</label>
+                </div>
+                <div class="col-lg-12">
+                    <label>Released Date: </label>
+                    <br />
+                    <label style="font-size:20px;">@Model.movies.ReleaseDate</label>
+                </div>
+                <div class="col-lg-12">
+                    <label>Director: </label>
+                    <br />
+                    <label style="font-size:20px;">@Model.movies.Director</label>
+                </div>
+                <div class="col-lg-12">
+                    <label>Cast: </label>
+                    <br />
+                    <label style="font-size:20px;">@Model.movies.Cast</label>
+                </div>
+                <div class="col-lg-12">
+                    <label>Synopsis: </label>
+                    <br />
+                    <label style="font-size:20px;">@Model.movies.Synopsis</label>
+                </div>
+                <br />
+                <br />
+                <div class="anime__details__btn">
+                    <a asp-page="Index" class="btn btn-primary">Back</a>
+                    <a href="#" class="btn btn-primary">View Trailer</a>
+                    <a asp-page="/Ticketing/SeatBooking" class="btn btn-primary">Buy Ticket</a>
+                </div>
             </div>
-            <div class="col-lg-12">
-                <label>Subtitle: </label>
-                <label style="font-size:20px;">@Model.movies.Subtitle</label>
-            </div>
+            
         </div>
     </div>
 </section>
