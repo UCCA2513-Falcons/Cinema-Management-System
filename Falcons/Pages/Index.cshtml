@@ -94,59 +94,28 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="assets/main/img/now-showing/antlers-poster.jpg">
-                                    @*<div class="ep">18 / 18</div>*@
-                                    <div class="comment"><i class="fa fa-comments"></i> 100</div>
-                                    <div class="view"><i class="fa fa-eye"></i> 1000</div>
-                                </div>
-                                <div class="product__item__text">
-                                    <ul>
-                                        <li>Horror</li>
-                                    </ul>
-                                    <h5><a href="#">Antlers</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="assets/main/img/now-showing/dont-breathe-2-poster.jpg">
-                                    @*<div class="ep">18 / 18</div>*@
-                                    <div class="comment"><i class="fa fa-comments"></i> 55</div>
-                                    <div class="view"><i class="fa fa-eye"></i> 890</div>
-                                </div>
-                                <div class="product__item__text">
-                                    <ul>
-                                        <li>Horror</li>
-                                    </ul>
-                                    <h5><a href="#">Don't Breathe 2</a></h5>
+                        @foreach (var item in Model.Movies)
+                        {
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg">
+                                        <img src="/assets/img/movies/@item.MoviesImgURL" alt="@item.MovieName">
+                                        @*<div class="ep">18 / 18</div>*@
+                                        @*<div class="comment"><i class="fa fa-comments"></i> 100</div>
+        <div class="view"><i class="fa fa-eye"></i> 1000</div>*@
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>@Html.DisplayFor(m=>item.Category)</li>
+                                        </ul>
+                                        <h5><a asp-page="MovieDetail" asp-route-id="@item.MovieID">@Html.DisplayFor(management=>item.MovieName)</a></h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="assets/main/img/now-showing/eternals-poster.jpg">
-                                    @*<div class="ep">18 / 18</div>*@
-                                    <div class="comment"><i class="fa fa-comments"></i> 22</div>
-                                    <div class="view"><i class="fa fa-eye"></i> 761</div>
-                                </div>
-                                <div class="product__item__text">
-                                    <ul>
-                                        <li>Adventure</li>
-                                        <li>Action</li>
-                                    </ul>
-                                    <h5><a href="#">Eternals</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
-                </div>
-                
+                        }
 
+                    </div>
+                </div>     
             </div>
             <div class="col-lg-4 col-md-6 col-sm-8">
                 <div class="product__sidebar">
