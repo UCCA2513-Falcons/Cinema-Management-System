@@ -14,29 +14,38 @@
                     <thead>
                         <tr>
                             <th>Username</th>
+                            <th>Movie Name</th>
                             <th>Ticket Type</th>
-                            <th>Movie Name</th>
-                            <th>Movie Name</th>
-                            <th style="width: 10%">Action</th>
+                            <th>Hall No</th>
+                            <th>Showing Time</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>
-                                <div class="form-button-action">
-                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                        <i class="fa fa-edit"></i>
-                                    </button>
-                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
+
+                        @foreach (var items in Model.Bookings)
+                        {
+
+                            <tr>
+                                <td>@Html.DisplayFor(b => items.username)</td>
+                                <td>@Html.DisplayFor(b => items.Showtime.Movies.MovieName)</td>
+                                <td>@Html.DisplayFor(b => items.ticketType)</td>
+                                <td>@Html.DisplayFor(b => items.Showtime.Showroom.ShowroomName)</td>
+                                <td>@Html.DisplayFor(b => items.Showtime.StartTime)</td>
+                                <td>@Html.DisplayFor(b => items.Date)</td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <button asp-page-handler="Delete" asp-route-id="@items.BID" onclick="return confirm('Confirm Delete')" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                        }
+
                     </tbody>
                 </table>
             </div>

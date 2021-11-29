@@ -47,6 +47,8 @@ namespace Falcons.Models
 
         public DbSet<SeatReservation> SeatReservation { get; set; }
 
+        public DbSet<Payment> Payments { get; set; }
+
 
     }
 }
