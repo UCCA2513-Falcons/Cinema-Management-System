@@ -12,10 +12,10 @@
     {
         <div class="col-lg-12">
 
-            <div>@Html.DisplayFor(m => item.Movies.MovieName)</div>
+            <h3>@Html.DisplayFor(m => item.Movies.MovieName)</h3>
             <div class="ShowDay">@Html.DisplayFor(m => item.StartDate)</div>
 
-            <button asp-page="/Ticketing/SeatBooking">@Html.DisplayFor(m => item.StartTime)</button>
+            <button class="btn btn-primary" asp-page="/Ticketing/SeatBooking">@Html.DisplayFor(m => item.StartTime)</button>
         </div>
        <br />
 

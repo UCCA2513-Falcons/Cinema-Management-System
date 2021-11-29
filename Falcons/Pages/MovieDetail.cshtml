@@ -7,14 +7,16 @@
         <div class="row">
             <div class="col-lg-5 col-md-6 col-sm-5 col-xs-12">
                 <img src="/assets/img/movies/@Model.movies.MoviesImgURL" />
-                <div>@Model.movies.Genre</div>
+                @*<div>@Model.movies.Genre</div>*@
             </div>
             
             <div class="col-lg-7 col-md-6 col-sm-7 col-xs-12">
                 <div class="col-lg-12">
-                    <label>Name: </label>
-                    <br />
-                    <label style="font-size:20px;">@Model.movies.MovieName</label>
+                    @*<label>Name: </label>
+                    <br />*@
+                    <label style="font-size:40px; font-weight:bold">@Model.movies.MovieName </label>
+                    <label style="font-size:25px; font-weight:bold">(@Model.movies.Genre)</label>
+                   
                 </div>
                 <div class="col-lg-12">
                     <label>Duration: </label>

@@ -1,0 +1,32 @@
+﻿@page
+@model Falcons.Pages.management.Movies.EditShowroomModel
+@{
+    ViewData["Title"] = "Edit Showroom";
+}
+
+<form role="form" method="post">
+    <input type="hidden" asp-for="showroom.ShowroomID" />
+    <div class="modal-body">
+        <p class="small">Please fill in all the field.</p>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="showroom.ShowroomName"></label>
+                    <input asp-for="showroom.ShowroomName" type="text" class="form-control" placeholder="Name" required>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+    </div>
+    <div class="modal-footer no-bd">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-page="/management/Movies/AddShowroom" class="btn btn-danger" data-dismiss="modal">Close</a>
+
+    </div>
+</form>
