@@ -15,6 +15,8 @@ using Microsoft.Extensions.Logging;
 namespace Falcons.Pages.Ticketing
 {
 
+    [Authorize]
+
     public class TicketingModel : PageModel
     {
 
@@ -65,7 +67,6 @@ namespace Falcons.Pages.Ticketing
         public List<MovieDetails> movies { get; set; }
 
 
-
         public async Task<IActionResult> OnGetAsync()
         {
 
@@ -82,7 +83,7 @@ namespace Falcons.Pages.Ticketing
                      Text = g.MovieName.ToString()
                  }).ToListAsync();
 
-            SelectListItem initialItem = new SelectListItem { Text = "--- Select a Movie ---", Value = "" };
+            SelectListItem initialItem = new SelectListItem { Text = "Select a Movie", Value = "" };
 
             movieOpt.Insert(0, initialItem);
 
@@ -171,9 +172,7 @@ namespace Falcons.Pages.Ticketing
                 return Page();
             }
 
-
             return Page();
-
 
         }
 
