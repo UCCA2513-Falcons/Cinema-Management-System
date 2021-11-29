@@ -3,7 +3,7 @@
 @inject UserManager<IdentityUser> UserManager
 @model Falcons.Pages.management.FnB.OrderModel
 @{ 
-    ViewData["Title"] = "Order";
+    ViewData["Title"] = "Order - Food and Beverages";
     var user = await UserManager.GetUserAsync(User);
 }
 @if (Model.FnBOrders != null)

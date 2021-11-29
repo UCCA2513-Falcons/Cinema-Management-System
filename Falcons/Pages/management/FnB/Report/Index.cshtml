@@ -1,10 +1,14 @@
 ﻿@page
 @model Falcons.Pages.management.FnB.Report.IndexModel
 @{
-    Layout = "_ManagementLayout";
-    ViewData["Title"] = "Report";
+    ViewData["Title"] = "Report - Food and Beverages";
 }
-
+<div class="input-group mb-5">
+    <div class="input-group-prepend">
+        <div class="input-group-text"><label class="control-label">Year</label></div>
+    </div>
+    <select id="ReportYear" asp-items="Model.YearAvailable" class="form-control"></select>
+</div>
 <!-- Inventory Value Report-->
 <div class="row">
     <div class="col-md-12">
@@ -58,6 +62,12 @@
 
 @section Scripts {
     <script>
+        //Select Report Year
+        $("select#ReportYear").on("change", function () {
+            window.location.href = "/management/FnB/Report?year=" + $("select#ReportYear").val();
+        });
+
+
 
         // Line Chart Inventory Value
 
