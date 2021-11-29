@@ -14,10 +14,10 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="hero__text">
-                            <div class="label">Horror, Triller</div>
+                            <div></div>
                             <h2>A Quiet Place 2</h2>
-                            <p>Following the deadly events at home...</p>
-                            <a asp-page="/Ticketing/Ticketing"><span>Book Now</span> <span>More Info</span><i class="fa fa-angle-right"></i></a>
+                            <p></p>
+                            <a asp-page="/Ticketing/Ticketing"><span>Book Now</span></a> <a href="#ViewMovie"><span>Now Showing</span><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -26,10 +26,10 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="hero__text">
-                            <div class="label">Horror, Triller</div>
+                            <div></div>
                             <h2>Don't Breathe 2</h2>
-                            <p>Blind veteran Norman Nordstrom has been hiding out for several years...</p>
-                            <a asp-page="/Ticketing/Ticketing"><span>Book Now</span> <span>More Info</span><i class="fa fa-angle-right"></i></a>
+                            <p></p>
+                            <a asp-page="/Ticketing/Ticketing"><span>Book Now</span></a><a href="#ViewMovie"><span>Now Showing</span><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -38,34 +38,10 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="hero__text">
-                            <div class="label">Comedy</div>
+                            <div></div>
                             <h2>Sinkhole</h2>
-                            <p>A common man and his family move into a house purchased after 11 years...</p>
-                            <a asp-page="/Ticketing/Ticketing"><span>Book Now</span> <span>More Info</span><i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero__items set-bg" data-setbg="assets/main/img/banner-movies/antlers.jpg">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="hero__text">
-                            <div class="label">Horror, Triller</div>
-                            <h2>Antlers</h2>
-                            <p>A small-town Oregon teacher and her brother...</p>
-                            <a asp-page="/Ticketing/Ticketing"><span>Book Now</span> <span>More Info</span><i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero__items set-bg" data-setbg="assets/main/img/banner-movies/eternals.jpg">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="hero__text">
-                            <div class="label">Adventure</div>
-                            <h2>Eternals</h2>
-                            <p>The Eternals, a race of immortal beings with superhuman powers...</p>
-                            <a asp-page="/Ticketing/Ticketing"><span>Book Now</span> <span>More Info</span><i class="fa fa-angle-right"></i></a>
+                            <p></p>
+                            <a asp-page="/Ticketing/Ticketing"><span>Book Now</span></a> <a href="#ViewMovie"><span>Now Showing</span><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -83,13 +59,13 @@
                 <div class="trending__product">
                     <div class="row">
                         <div class="col-lg-8 col-md-8 col-sm-8">
-                            <div class="section-title">
+                            <div class="section-title" id="ViewMovie">
                                 <h4>Now Showing</h4>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <div class="btn__all">
-                                <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                @*<a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>*@
                             </div>
                         </div>
                     </div>
@@ -98,14 +74,14 @@
                         {
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
-                                    <div class="product__item__pic set-bg">
-                                        <img src="/assets/img/movies/@item.MoviesImgURL" alt="@item.MovieName">
+                                    <div class="product__item__pic set-bg"
+                                        data-setbg="assets/img/movies/@item.MoviesImgURL" alt="@item.MovieName">
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
                                             <li>@Html.DisplayFor(m=>item.Category)</li>
                                         </ul>
-                                        <h5><a asp-page="MovieDetail" asp-route-id="@item.MovieID">@Html.DisplayFor(management=>item.MovieName)</a></h5>
+                                        <h5><a asp-page="MovieDetail" asp-route-id="@item.MovieID">@Html.DisplayFor(m=>item.MovieName)</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -117,51 +93,29 @@
             <div class="col-lg-4 col-md-6 col-sm-8">
                 <div class="product__sidebar">
                     <div class="product__sidebar__view">
-                        <div class="section-title">
-                            <h5>Top Views</h5>
-                        </div>
-                        <ul class="filter__controls">
-                            <li class="active" data-filter="*">Day</li>
-                            <li data-filter=".week">Week</li>
-                            <li data-filter=".month">Month</li>
-                            <li data-filter=".years">Years</li>
-                        </ul>
-                        <div class="filter__gallery">
-                            <div class="product__sidebar__view__item set-bg mix day years"
-                                 data-setbg="assets/main/img/now-showing/antlers-poster.jpg">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 1000</div>
-                                <h5><a href="#">Antlers</a></h5>
+                        <div class="product__sidebar">
+                            <div class="section-title">
+                                <h5>Recommend</h5>
                             </div>
-                            <div class="product__sidebar__view__item set-bg mix month week"
-                                 data-setbg="assets/main/img/now-showing/dont-breathe-2-poster.jpg">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 890</div>
-                                <h5><a href="#">Don't Breathe 2</a></h5>
-                            </div>
-                            <div class="product__sidebar__view__item set-bg mix week years"
-                                 data-setbg="assets/main/img/now-showing/a-quiet-place-2-poster.jpg">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 877</div>
-                                <h5><a href="#">A Quiet Place 2</a></h5>
-                            </div>
-                            <div class="product__sidebar__view__item set-bg mix years month"
-                                 data-setbg="assets/main/img/now-showing/eternals-poster.jpg">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 761</div>
-                                <h5><a href="#">Eternals</a></h5>
-                            </div>
-                            <div class="product__sidebar__view__item set-bg mix day"
-                                 data-setbg="assets/main/img/now-showing/sinkhole-poster.jpg">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 536</div>
-                                <h5><a href="#">Sinkhole</a></h5>
+                            <div class="filter__gallery">
+
+                                @foreach (var item in Model.Movies.Reverse()){
+                                <div class="product__sidebar__view__item set-bg"
+                                    data-setbg="assets/img/movies/@item.MoviesImgURL">
+
+                                    <div></div>
+                                    <div></div>
+                                    <h5><a asp-page="MovieDetail" asp-route-id="@item.MovieID">@Html.DisplayFor(m => item.MovieName)</a></h5>
+                                </div>
+                                }
                             </div>
                         </div>
+
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+   
 </section>
 <!-- Product Section End -->

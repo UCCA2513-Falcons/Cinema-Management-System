@@ -91,16 +91,16 @@
                                                 <input asp-for="movies.Cast" type="text" class="form-control" placeholder="Cast" required>
                                             </div>
                                         </div>
-                                        @*<div class="col-sm-12">
-                                            <div class="form-group form-group-default">
-                                                <label asp-for="movies.Distributor"></label>
-                                                <input asp-for="movies.Distributor" type="text" class="form-control" placeholder="Distributor" required>
-                                            </div>
-                                        </div>*@
                                         <div class="col-sm-12">
                                             <div class="form-group form-group-default">
                                                 <label asp-for="movies.ReleaseDate"></label>
                                                 <input asp-for="movies.ReleaseDate" type="text" class="form-control" placeholder="Released Date" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label asp-for="movies.MovieTrailerURL"></label>
+                                                <input asp-for="movies.MovieTrailerURL" type="text" class="form-control" placeholder="Trailer URL" required>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -109,6 +109,7 @@
                                                 <textarea class="form-control" asp-for="movies.Synopsis" rows="8" placeholder="Synopsis of movie here ..."></textarea>
                                             </div>
                                         </div>
+
                                     </div>
 
                                 </div>
@@ -142,16 +143,16 @@
                                     <th>Category</th>
                                     <th>Director</th>
                                     <th>Cast</th>
-                                    @*<th>Distributor</th>*@
                                     <th>Released Date</th>
+                                    <th>Trailer URL</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @*@{int i = 0;}*@
+
                                 @foreach (var item in Model.Movies)
                                 {
-                                    //i++;
+                                
 
                                     <tr>
                                         <td>@Html.DisplayFor(M => item.MovieID)</td>
@@ -172,8 +173,8 @@
                                         <td>@Html.DisplayFor(M => item.Category)</td>
                                         <td>@Html.DisplayFor(M => item.Director)</td>
                                         <td>@Html.DisplayFor(M => item.Cast)</td>
-                                        @*<td>@Html.DisplayFor(M => item.Distributor)</td>*@
                                         <td>@Html.DisplayFor(M => item.ReleaseDate)</td>
+                                        <td>@Html.DisplayFor(M => item.MovieTrailerURL)</td>
 
                                         <td>
                                             <div class="form-button-action">

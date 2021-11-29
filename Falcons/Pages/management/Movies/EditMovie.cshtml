@@ -59,16 +59,16 @@
                     <input asp-for="movies.Cast" type="text" class="form-control" placeholder="Cast" required>
                 </div>
             </div>
-            @*<div class="col-sm-12">
-                <div class="form-group form-group-default">
-                    <label asp-for="movies.Distributor"></label>
-                    <input asp-for="movies.Distributor" type="text" class="form-control" placeholder="Distributor" required>
-                </div>
-            </div>*@
             <div class="col-sm-12">
                 <div class="form-group form-group-default">
                     <label asp-for="movies.ReleaseDate"></label>
                     <input asp-for="movies.ReleaseDate" type="text" class="form-control" placeholder="Released Date" required>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label asp-for="movies.MovieTrailerURL"></label>
+                    <input asp-for="movies.MovieTrailerURL" type="text" class="form-control" placeholder="Trailer URL" required>
                 </div>
             </div>
             <div class="col-md-12">
@@ -79,7 +79,7 @@
             </div>
             <div class="col-md-12">
                 <div class="form-group form-group-default">
-                    <label >Poster</label>
+                    <label>Poster</label>
                     <input asp-for="Poster" class="form-control" accept="image/*" />
                 </div>
             </div>
