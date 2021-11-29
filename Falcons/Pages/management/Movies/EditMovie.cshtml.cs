@@ -58,14 +58,17 @@ namespace Falcons.Pages.management.Movies
             MovieDetails EditMovie = _db.Movies.Find(movies.MovieID);
             //string imgURL = "";
 
-            string UploadFolder = Path.Combine(webHostEnvironment.WebRootPath, "assets\\img\\movies");
+            //execute save image only if the image is uploaded when update detail
+            if(Poster != null) {
+                string UploadFolder = Path.Combine(webHostEnvironment.WebRootPath, "assets\\img\\movies");
 
-            UniqueFileName = Guid.NewGuid().ToString() + "_" + Poster.FileName;
-            string FilePath = Path.Combine(UploadFolder, UniqueFileName);
-            using (var FileStream = new FileStream(FilePath, FileMode.Create))
-            {
-                Poster.CopyTo(FileStream);
-                FileStream.Flush();
+                UniqueFileName = Guid.NewGuid().ToString() + "_" + Poster.FileName;
+                string FilePath = Path.Combine(UploadFolder, UniqueFileName);
+                using (var FileStream = new FileStream(FilePath, FileMode.Create))
+                {
+                    Poster.CopyTo(FileStream);
+                    FileStream.Flush();
+                }
             }
 
             
@@ -85,7 +88,10 @@ namespace Falcons.Pages.management.Movies
                 mov.ReleaseDate = movies.ReleaseDate;
                 mov.Synopsis = movies.Synopsis;
 
-                EditMovie.MoviesImgURL = UniqueFileName;
+                //save the image file name only if the image is uploaded
+                if (Poster != null) {
+                    EditMovie.MoviesImgURL = UniqueFileName;
+                }
 
                 await _db.SaveChangesAsync();
                 return RedirectToPage("/management/Movies/Movies");
