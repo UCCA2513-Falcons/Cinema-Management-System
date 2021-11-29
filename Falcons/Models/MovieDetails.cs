@@ -75,7 +75,10 @@ namespace Falcons.Models
         [Display(Name = "Cast")]
         public string Cast { get; set; }
 
-        
+        //[Required]
+        //[MaxLength(200)]
+        //[Display(Name = "TrailerURL")]
+        //public string MovieTrailerURL { get; set; }
 
         public virtual ICollection<Showtime> Showtimes { get; set; }
 
