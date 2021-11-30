@@ -21,12 +21,63 @@
              right: -7px;
              //hide it by pushing it off the screen
         }
+        .btn-two {
+            color: #FFF;
+            transition: all 0.5s;
+            position: relative;
+        }
+
+            .btn-two span {
+                z-index: 2;
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+            .btn-two::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                transition: all 0.5s;
+                border: 1px solid rgba(255,255,255,0.2);
+                background-color: rgba(255,255,255,0.1);
+            }
+
+            .btn-two::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                transition: all 0.5s;
+                border: 1px solid rgba(255,255,255,0.2);
+                background-color: rgba(255,255,255,0.1);
+            }
+
+            .btn-two:hover::before {
+                transform: rotate(-45deg);
+                background-color: rgba(255,255,255,0);
+            }
+
+            .btn-two:hover::after {
+                transform: rotate(45deg);
+                background-color: rgba(255,255,255,0);
+            }
+
+
     </style>
 
 }
 
 <div class="float-button">
-    <a asp-page="/Ticketing/Ticketing" class="button btn-info btn">Quick Book</a>
+    <a asp-page="/Ticketing/Ticketing" class="btn-info btn btn-two">Quick Book</a>
 </div>
 
 <!-- Movie Banner Section Begin -->
