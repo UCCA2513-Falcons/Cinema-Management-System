@@ -132,7 +132,7 @@ namespace Falcons.Pages.Ticketing
                  Value = g.ShowtimeID.ToString(),
                  Text = g.StartTime.ToString()
 
-             }).ToListAsync();
+             }).Distinct().ToListAsync();
 
             SelectListItem initialItem2 = new SelectListItem { Text = "Select Time", Value = "" };
 
@@ -142,7 +142,7 @@ namespace Falcons.Pages.Ticketing
 
             if ((MovieID == null) && (btnUpdate == null))
             {
-                ModelState.AddModelError("Movie.MovieName", "Select a valid Menu");
+                ModelState.AddModelError("Movie.MovieName", "Select a valid movie");
 
                 return Page();
             }
@@ -151,10 +151,9 @@ namespace Falcons.Pages.Ticketing
 
                 if (!ModelState.IsValid)
                 {
-
                     await _context.Booking.AddAsync(booking);
-                    await _context.SeatReservation.AddAsync(seatReservation);
-                    await _context.Payments.AddAsync(Payment);
+                    //await _context.SeatReservation.AddAsync(seatReservation);
+                    //await _context.Payments.AddAsync(Payment);
 
                     await _context.SaveChangesAsync();
 
@@ -171,11 +170,8 @@ namespace Falcons.Pages.Ticketing
                 MovieDetails = _context.Movies.Where(g => g.MovieID == MovieID).SingleOrDefault();
                 return Page();
             }
-
             return Page();
-
         }
-
 
 
         // book button

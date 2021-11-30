@@ -203,7 +203,7 @@
 
                             <!--Button for booking-->
 
-                            <div class="form-group align-content-center">
+                            <div class="form-group d-flex justify-content-center">
                                 <a asp-page="/Ticketing/TicketPayment" class="button btn-info btn">Proceed to Payment</a>
 
                             </div>
@@ -344,21 +344,6 @@
 
             console.log(CompareResult)
 
-            var randomItem = myArray[Math.floor(Math.random() * myArray.length)];
-
-
-            document.querySelector(".SeatSuggest").innerHTML = randomItem, CompareResult[randomItem];
-
-            let Grabval = $(".SeatSuggest").text();
-
-            let word1 = Grabval.substring(0, 1);
-            let word2 = Grabval.substring(2, 4);
-
-
-            document.querySelector(".SeatToString").innerHTML = "We Sugguest you with Seat of Row " + word1 + " Seat " + word2;
-
-
-            $(".modal-btn").attr('checked', true); // Checks it
         })
 
 
