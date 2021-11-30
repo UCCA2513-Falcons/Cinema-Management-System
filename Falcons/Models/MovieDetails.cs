@@ -49,10 +49,6 @@ namespace Falcons.Models
         public string Category { get; set; }
 
         [Required]
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",
-        //               ApplyFormatInEditMode = true)]
-        //[Display(Name = "Release Date")]
         [MaxLength(100)]
         [Display(Name = "Release Date")]
         public string ReleaseDate { get; set; }
@@ -62,12 +58,7 @@ namespace Falcons.Models
         [Display(Name = "Synopsis")]
         public string Synopsis { get; set; }
 
-        //[Required]
-        //[MaxLength(100)]
-        //[Display(Name = "Distributor")]
-        //public string Distributor { get; set; }
-
-        //[Display(Name = "Poster")]
+        [Display(Name = "Poster")]
         public string MoviesImgURL { get; set; }
 
         [Required]
@@ -75,10 +66,9 @@ namespace Falcons.Models
         [Display(Name = "Cast")]
         public string Cast { get; set; }
 
-        //[Required]
-        //[MaxLength(200)]
-        //[Display(Name = "TrailerURL")]
-        //public string MovieTrailerURL { get; set; }
+        [MaxLength(200)]
+        [Display(Name = "TrailerURL")]
+        public string MovieTrailerURL { get; set; }
 
         public virtual ICollection<Showtime> Showtimes { get; set; }
 

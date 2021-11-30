@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Falcons.Pages
 {
+    [Authorize(Roles = "Admin, Manager, Staff, User")]
     public class HistoryModel : DI_BasePageModel
     {
         public List<FnBOrder> FnBOrders;

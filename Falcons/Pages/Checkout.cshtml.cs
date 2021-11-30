@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 
 namespace Falcons.Pages
 {
+    [Authorize(Roles = "Admin, Manager, Staff, User")]
     public class CheckoutModel : DI_BasePageModel
     {
         public List<ProductDetails> ProductDetails;
