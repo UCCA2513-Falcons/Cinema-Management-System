@@ -121,8 +121,10 @@ namespace Falcons.Pages.management.FnB.Report
                 }
             }
 
-            YearAvailable.OrderBy(x => x.Text);
-            YearAvailable.Where(y => y.Text.Equals(TargetYear.ToString())).FirstOrDefault().Selected = true;
+            if (YearAvailable.Count > 0) {
+                YearAvailable.OrderBy(x => x.Text);
+                YearAvailable.Where(y => y.Text.Equals(TargetYear.ToString())).FirstOrDefault().Selected = true;
+            }
         }
     }
 }

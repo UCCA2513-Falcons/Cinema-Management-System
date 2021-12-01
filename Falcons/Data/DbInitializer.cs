@@ -139,14 +139,20 @@ namespace Falcons.Data
                 context.SaveChanges();
             }
 
-            //check for product details
-            if (!context.ProductDetails.Any())
+            //check for food inventories
+            if (!context.FoodInventories.Any())
             {
-                var ProductsDetails = new List<ProductDetails>()
+                var FoodIventories = new List<FoodInventory>()
                 {
+                    new FoodInventory { Quantity = 10, Date = new DateTime(2021,11,01), Description = "buy salt", Price = 8, RecordType = "Purchase", FID = context.FoodTypes.Where(f=>f.Title.Contains("Salt")).FirstOrDefault().FID },
+                    new FoodInventory { Quantity = 50, Date = new DateTime(2021,9,5), Description = "buy chicken burger meal from ayamas sdn bhd", Price = 120, RecordType = "Purchase", FID = context.FoodTypes.Where(f=>f.Title.Contains("Chicken Burger Meal")).FirstOrDefault().FID },
+                    new FoodInventory { Quantity = 50, Date = new DateTime(2021,9,5), Description = "buy beef burger meal from ayamas sdn bhd", Price = 120, RecordType = "Purchase", FID = context.FoodTypes.Where(f=>f.Title.Contains("Beef Burger Meal")).FirstOrDefault().FID},
+                    new FoodInventory { Quantity = 15, Date = new DateTime(2021,10,17), Description = "take stock from warehouse - beef burger meal from ayamas sdn bhd", Price = 40, RecordType = "Consume", FID = context.FoodTypes.Where(f=>f.Title.Contains("Beef Burger Meal")).FirstOrDefault().FID},
+                    new FoodInventory { Quantity = 10, Date = new DateTime(2021,9,5), Description = "return burger meal due to expired meal", Price = 30, RecordType = "Return", FID = context.FoodTypes.Where(f=>f.Title.Contains("Beef Burger Meal")).FirstOrDefault().FID},
+                    new FoodInventory { Quantity = 50, Date = new DateTime(2021,10,01), Description = "buy coca cola from Coca Cola Sdn Bhd", Price = 75, RecordType = "Purchase", FID = context.FoodTypes.Where(f=>f.Title.Contains("Coca Cola")).FirstOrDefault().FID}
                 };
 
-                context.AddRange(ProductsDetails);
+                context.AddRange(FoodIventories);
                 context.SaveChanges();
             }
         }
