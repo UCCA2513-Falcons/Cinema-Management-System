@@ -22,6 +22,10 @@ namespace Falcons.Pages.management.HRM.Employees
 
         public readonly FalconsDBContext _context;
 
+        public List<SelectListItem> AllUser { get; set; }
+
+        public List<Employee> EmployeeList;
+
         protected IServiceProvider ServiceProvider { get; }
 
         public IndexModel(FalconsDBContext context,
@@ -36,27 +40,49 @@ namespace Falcons.Pages.management.HRM.Employees
             ServiceProvider = serviceProvider;
         }
 
-        public List<Employee> EmployeeList;
+
+
 
         public async Task OnGet()
         {
+
             EmployeeList = _context.Employees.ToList();
-            
+
+            AllUser = new List<SelectListItem>();
+
+            List<IdentityUser> users = UserManager.Users.ToList();
+
+            foreach (var user in users)
+            {
+                IList<string> TheUser = await UserManager.GetRolesAsync(user);
+                //insert the users have the role only
+                if (TheUser.Contains("Admin") || TheUser.Contains("Manager") || TheUser.Contains("Staff"))
+                {
+                    //check if the user already in employee table
+                    if (_context.Employees.Where(e => e.UID.Equals(user.Id)).FirstOrDefault() == null)
+                    {
+                        SelectListItem item = new SelectListItem { Text = user.Email, Value = user.Id };
+                        AllUser.Add(item);
+                    }
+                }
+            }
         }
 
-        public void OnPost()
-        {
-            if (String.IsNullOrWhiteSpace(NewEmployee.FName))
-            {
 
-            }
-            else
+
+        public IActionResult OnPostAddNewEmp()
+        {
+
+            if (NewEmployee.UID != null)
             {
                 _context.Employees.Add(NewEmployee);
                 _context.SaveChanges();
+                return RedirectToPage("./Index");
             }
 
+
             EmployeeList = _context.Employees.ToList();
+            return Page();
         }
     }
 }

@@ -45,14 +45,17 @@
                                     <td>@Html.DisplayFor(modelItem => item.EmpID)</td>
                                     <td>@Html.DisplayFor(modelItem => item.FName)</td>
                                     <td>@Html.DisplayFor(modelItem => item.LName)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Salary)</td>
+                                    <td>@Html.Raw("RM" + item.Salary)</td>
                                     <td>
                                         <div class="form-button-action">
                                             <a data-toggle="tooltip" href="/management/HRM/Salaries/Edit?id=@Html.DisplayFor(modelItem => item.EmpID)" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-
+                                            <a data-toggle="tooltip" href="/management/HRM/Salaries/PaySlip?id=@Html.DisplayFor(modelItem => item.EmpID)" title="" class="btn btn-link btn-danger" data-original-title="Download Payslip">
+                                                <i class="fas fa-file-pdf"></i>
+                                            </a>
                                         </div>
+
                                     </td>
                                 </tr>
                             }
@@ -67,7 +70,7 @@
 
 @section Scripts {
     <script>
-    // Add Category
+        // Add Category
         $('#employee-row').DataTable({
             "pageLength": 5,
         });

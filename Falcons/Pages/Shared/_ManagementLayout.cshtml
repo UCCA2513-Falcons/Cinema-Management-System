@@ -28,7 +28,7 @@
             }
         });
     </script>
-
+    <link href="~/css/print.css" rel="stylesheet" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
@@ -147,24 +147,49 @@
                             <span class="caret"></span>
                         </a>
                         <div class="collapse" id="HRM">
-                            <ul class="nav nav-collapse">
-                                <li>
-                                    <a asp-area="" asp-page="/management/HRM/Employees/Index">
-                                        <span class="sub-item">Employee</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a asp-area="" asp-page="/management/HRM/Salaries/Index">
-                                        <span class="sub-item">Salary</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a asp-area="" asp-page="/management/HRM/Leaves/Index">
-                                        <span class="sub-item">Leave</span>
-                                    </a>
-                                </li>
-
-                            </ul>
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                {
+                                    <ul class="nav nav-collapse">
+                                        <li>
+                                            <a asp-area="" asp-page="/management/HRM/Employees/Index">
+                                                <span class="sub-item">Employee</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a asp-area="" asp-page="/management/HRM/Salaries/Index">
+                                                <span class="sub-item">Salary</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a asp-area="" asp-page="/management/HRM/Leaves/Index">
+                                                <span class="sub-item">Leave</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <ul class="nav nav-collapse">
+                                        <li>
+                                            <a href="/management/HRM/Staff/Details/Index?string=@UserManager.GetUserId(User)">
+                                                <span class="sub-item">Employee</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/management/HRM/Staff/Salary/Index?string=@UserManager.GetUserId(User)">
+                                                <span class="sub-item">Salary</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/management/HRM/Staff/Leave/Index?string=@UserManager.GetUserId(User)">
+                                                <span class="sub-item">Leave</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                }
+                            }
                         </div>
                     </li>
 

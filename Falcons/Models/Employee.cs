@@ -25,10 +25,12 @@ namespace Falcons.Models
         [Display(Name = "Salary")]
         [Required]
         public Int32 Salary { get; set; }
-
+        [MaxLength(50)]
         [Display(Name = "Department")]
         public string Department { get; set; }
 
+
+        public string UID { get; set; }
 
         public ICollection<EmployeeLeave> EmployeeLeave { get; set; }
     }

@@ -46,7 +46,7 @@ namespace Falcons.Pages.management.HRM
                                     new SelectListItem
                                     {
                                         Value = c.EmpID.ToString(),
-                                        Text = c.FName.ToString()+" "+c.LName.ToString()
+                                        Text = c.FName.ToString() + " " + c.LName.ToString()
                                     }).ToListAsync();
 
             Allemployee = await _context.Employees.ToListAsync();
@@ -71,7 +71,7 @@ namespace Falcons.Pages.management.HRM
                                     new SelectListItem
                                     {
                                         Value = c.EmpID.ToString(),
-                                        Text = c.FName.ToString()
+                                        Text = c.FName.ToString() + " " + c.LName.ToString()
                                     }).ToListAsync();
 
             return Page();
@@ -91,7 +91,7 @@ namespace Falcons.Pages.management.HRM
                                     new SelectListItem
                                     {
                                         Value = c.EmpID.ToString(),
-                                        Text = c.FName.ToString()
+                                        Text = c.FName.ToString() + " " + c.LName.ToString()
                                     }).ToListAsync();
 
             EmployeeLeaves = _context.EmployeeLeaves.ToList();
