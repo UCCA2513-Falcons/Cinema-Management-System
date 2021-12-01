@@ -1,0 +1,68 @@
+﻿@page
+@model Falcons.Pages.management.HRM.Salaries.PaySlipModel
+@{
+
+    Layout = "_ManagementLayout";
+
+    ViewData["Title"] = "Pay Slip";
+
+
+}
+
+<div class="container mt-5 mb-5">
+    @foreach (var item in Model.EmployeeDetails)
+    {
+     <div class="row">
+        <div class="col-md-12">
+        <div class="text-center lh-1 mb-2">
+            <h6 class="fw-bold">Payslip</h6>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div> <span class="fw-bolder">Employee ID</span> <small class="ms-3">@Html.DisplayFor(modelItem => item.EmpID)</small> </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div> <span class="fw-bolder">Employee Name</span> <small class="ms-3">@Html.DisplayFor(modelItem => item.FName)</small> <small class="ms-3">@Html.DisplayFor(modelItem => item.LName)</small></div>
+                    </div>
+                </div>
+                
+               
+                <div class="row">
+                    <div class="col-md-6">
+                        <div> <span class="fw-bolder">Department</span> <small class="ms-3">@Html.DisplayFor(modelItem => item.Department)</small> </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <table class="mt-4 table table-bordered">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th scope="col">Earnings</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Basic</th>
+                        <td>@Html.DisplayFor(modelItem => item.Salary)</td>
+                    </tr>
+                    <tr class="border-top">
+                        <th scope="row">Total Earning</th>
+                        <td>@Html.DisplayFor(modelItem => item.Salary)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-4"> <br><span class="fw-bold">Net Pay : @Html.DisplayFor(modelItem => item.Salary)</span></div>
+            
+        </div>
+        <div class="d-flex justify-content-end">
+            <div class="d-flex flex-column mt-2"> <span class="mt-4">Authorised Signatory</span> </div>
+        </div>
+    </div>
+</div>
+    }
+</div>
