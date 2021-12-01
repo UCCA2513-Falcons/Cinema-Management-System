@@ -46,17 +46,17 @@
                 <tbody>
                     <tr>
                         <th scope="row">Basic</th>
-                        <td>@Html.DisplayFor(modelItem => item.Salary)</td>
+                        <td>@Html.Raw("RM" + item.Salary)</td>
                     </tr>
                     <tr class="border-top">
                         <th scope="row">Total Earning</th>
-                        <td>@Html.DisplayFor(modelItem => item.Salary)</td>
+                        <td>@Html.Raw("RM" + item.Salary)</td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="row">
-            <div class="col-md-4"> <br><span class="fw-bold">Net Pay : @Html.DisplayFor(modelItem => item.Salary)</span></div>
+            <div class="col-md-4"> <br><span class="fw-bold">Net Pay : @Html.Raw("RM" + item.Salary)</span></div>
             
         </div>
         <div class="d-flex justify-content-end">
