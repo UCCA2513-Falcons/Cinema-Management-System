@@ -67,8 +67,8 @@ namespace Falcons.Pages
 
             if(usr != null)
             {
-                await UserManager.AddToRoleAsync(usr, "Admin");
-                await UserManager.AddToRoleAsync(usr, "Manager");
+                //await UserManager.AddToRoleAsync(usr, "Admin");
+                //await UserManager.AddToRoleAsync(usr, "Manager");
             }
 
 

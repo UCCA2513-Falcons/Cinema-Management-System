@@ -77,14 +77,17 @@ namespace Falcons.Pages.management.User.Users
                     }*/
 
                     if (!String.IsNullOrWhiteSpace(Username)) {
-                        var setUsernameResult = await UserManager.SetUserNameAsync(user, Username);
-                        if (!setUsernameResult.Succeeded)
-                        {
-                            TempData["message"] += "<div class='col-md-12'><div class='alert alert-danger' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Unexpected error when trying to set username.</div></div>";
-                            return RedirectToPage();
-                        }
-                        else{
-                            TempData["message"] += "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Username is updated.</div></div>";
+                        if (!Username.Equals(user.UserName)) {
+                            var setUsernameResult = await UserManager.SetUserNameAsync(user, Username);
+                            if (!setUsernameResult.Succeeded)
+                            {
+                                TempData["message"] += "<div class='col-md-12'><div class='alert alert-danger' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Unexpected error when trying to set username.</div></div>";
+                                return RedirectToPage();
+                            }
+                            else
+                            {
+                                TempData["message"] += "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Username is updated.</div></div>";
+                            }
                         }
                     }
                     else
@@ -118,15 +121,17 @@ namespace Falcons.Pages.management.User.Users
 
                     if (!String.IsNullOrWhiteSpace(PhoneNumber))
                     {
-                        var setPhoneNumberResult = await UserManager.SetEmailAsync(user, PhoneNumber);
-                        if (!setPhoneNumberResult.Succeeded)
-                        {
-                            TempData["message"] += "<div class='col-md-12'><div class='alert alert-danger' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Unexpected error when trying to set Phone Number.</div></div>";
-                            return RedirectToPage();
-                        }
-                        else
-                        {
-                            TempData["message"] += "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Phone Number is updated.</div></div>";
+                        if (!PhoneNumber.Equals(user.PhoneNumber)) {
+                            var setPhoneNumberResult = await UserManager.SetPhoneNumberAsync(user, PhoneNumber);
+                            if (!setPhoneNumberResult.Succeeded)
+                            {
+                                TempData["message"] += "<div class='col-md-12'><div class='alert alert-danger' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Unexpected error when trying to set Phone Number.</div></div>";
+                                return RedirectToPage();
+                            }
+                            else
+                            {
+                                TempData["message"] += "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>Phone Number is updated.</div></div>";
+                            }
                         }
                     }
 
@@ -141,6 +146,10 @@ namespace Falcons.Pages.management.User.Users
                             //UserManager.GetRolesAsync(await UserManager.FindByIdAsync(id)).Result.ToArray();
                             await UserManager.RemoveFromRoleAsync(usr, item);
                         }
+                    }
+                    if (!Enumerable.SequenceEqual(Role.OrderBy(e=>e), AllRole.OrderBy(e=>e)))
+                    {
+                        TempData["message"] += "<div class='col-md-12'><div class='alert alert-success' role='alert' style='margin-top:1rem; margin-bottom:1rem;'>User role is updated !</div></div>";
                     }
 
                 }
