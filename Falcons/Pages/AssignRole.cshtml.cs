@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Falcons.Code;
+using Falcons.Data;
 using Falcons.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -14,13 +15,15 @@ namespace Falcons.Pages
     public class AssignRoleModel : DI_BasePageModel
     {
         private readonly FalconsDBContext _context;
+        private readonly ApplicationDbContext AuthContext;
         protected IServiceProvider ServiceProvider { get; }
 
         public FalconsDBContext Context1 => _context;
 
+
         public AssignRoleModel(
             FalconsDBContext context,
-            Data.ApplicationDbContext authcontext,
+            ApplicationDbContext authcontext,
             IAuthorizationService authorizationService,
          UserManager<IdentityUser> userManager,
          RoleManager<IdentityRole> roleManager,
@@ -29,6 +32,7 @@ namespace Falcons.Pages
         {
             _context = context;
             ServiceProvider = serviceProvider;
+            AuthContext = authcontext;
         }
         public async Task OnGetAsync()
         {
@@ -65,6 +69,26 @@ namespace Falcons.Pages
             {
                 await UserManager.AddToRoleAsync(usr, "Admin");
                 await UserManager.AddToRoleAsync(usr, "Manager");
+            }
+
+
+            if (!AuthContext.Users.Any())
+            {
+                var user = new IdentityUser
+                {
+                    UserName = "admin",
+                    NormalizedUserName = "ADMIN",
+                    NormalizedEmail = "ADMIN@1UTAR.MY",
+                    EmailConfirmed = true,
+                    Email = "admin@1utar.my",
+                };
+
+                var result = await UserManager.CreateAsync(user, "Admin@123");
+
+                if (result.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(user, "Admin");
+                }
             }
         }
     }
