@@ -70,6 +70,9 @@ namespace Falcons.Models
         [Display(Name = "TrailerURL")]
         public string MovieTrailerURL { get; set; }
 
+        [Display(Name ="Movie Price")]
+        public int MoviePrice { get; set; }
+
         public virtual ICollection<Showtime> Showtimes { get; set; }
 
     }

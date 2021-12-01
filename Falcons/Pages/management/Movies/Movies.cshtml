@@ -99,6 +99,12 @@
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group form-group-default">
+                                                <label asp-for="movies.MoviePrice"></label>
+                                                <input asp-for="movies.MoviePrice" type="text" class="form-control" placeholder="Movie Price" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
                                                 <label asp-for="movies.MovieTrailerURL"></label>
                                                 <input asp-for="movies.MovieTrailerURL" type="text" class="form-control" placeholder="Trailer URL" required>
                                             </div>
@@ -144,6 +150,7 @@
                                     <th>Director</th>
                                     <th>Cast</th>
                                     <th>Released Date</th>
+                                    <th>Movie Price</th>
                                     <th>Trailer URL</th>
                                     <th>Action</th>
                                 </tr>
@@ -174,6 +181,7 @@
                                         <td>@Html.DisplayFor(M => item.Director)</td>
                                         <td>@Html.DisplayFor(M => item.Cast)</td>
                                         <td>@Html.DisplayFor(M => item.ReleaseDate)</td>
+                                        <td>@Html.DisplayFor(M => item.MoviePrice)</td>
                                         <td>@Html.DisplayFor(M => item.MovieTrailerURL)</td>
 
                                         <td>

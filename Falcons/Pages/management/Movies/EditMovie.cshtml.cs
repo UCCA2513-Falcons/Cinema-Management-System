@@ -87,6 +87,7 @@ namespace Falcons.Pages.management.Movies
                 mov.ReleaseDate = movies.ReleaseDate;
                 mov.Synopsis = movies.Synopsis;
                 mov.MovieTrailerURL = movies.MovieTrailerURL;
+                mov.MoviePrice = movies.MoviePrice;
 
                 //save the image file name only if the image is uploaded
                 if (Poster != null) {

@@ -10,13 +10,16 @@
 
     @foreach (var item in Model.Showtimes)
     {
-        <div class="col-lg-12">
+    <div class="col-lg-12">
 
-            <h3>@Html.DisplayFor(m => item.Movies.MovieName)</h3>
-            <div class="ShowDay">@Html.DisplayFor(m => item.StartDate)</div>
+        <h3>@Html.DisplayFor(m => item[0].Movies.MovieName)</h3>
+        @foreach (var mv in item)
+        {
+            <div class="ShowDay">@Html.DisplayFor(m => mv.StartDate)</div>
 
-            <button class="btn btn-primary" asp-page="/Ticketing/SeatBooking">@Html.DisplayFor(m => item.StartTime)</button>
-        </div>
+            <button class="btn btn-primary" asp-page="/Ticketing/SeatBooking">@Html.DisplayFor(m => mv.StartTime)</button>
+        }
+    </div>
        <br />
 
     }
