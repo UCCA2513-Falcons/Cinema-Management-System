@@ -293,6 +293,9 @@
 
         $('#InventoryRecordTable').DataTable({
             "pageLength": 10,
+            columnDefs: [
+                { type: 'date-dd-mmm-yyyy', targets: 4 }
+            ],
             "order": [[4, "desc"]]
         });
     </script>

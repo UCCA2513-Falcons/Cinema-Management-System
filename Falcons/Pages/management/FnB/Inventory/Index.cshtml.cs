@@ -71,7 +71,7 @@ namespace Falcons.Pages.management.FnB.Inventory
 
             if (FoodType != null)
             {
-                bool complete = false;
+                bool complete = true;
 
                 if (String.IsNullOrWhiteSpace(FoodType.Title)) {
                     complete = false;

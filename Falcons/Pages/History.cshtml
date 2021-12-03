@@ -6,71 +6,54 @@
 }
 
 <p class="h3">Order History</p>
-<nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-link active" id="nav-ticket-tab" data-toggle="tab" href="#nav-ticket" role="tab" aria-controls="nav-ticket" aria-selected="true">Movie Ticket</a>
-        <a class="nav-link" id="nav-fnb-tab" data-toggle="tab" href="#nav-fnb" role="tab" aria-controls="nav-fnb" aria-selected="false">Food and Beverages</a>
-    </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-    <!-- Movie Ticket Order History -->
-    <div class="tab-pane fade show active" id="nav-ticket" role="tabpanel" aria-labelledby="nav-ticket-tab">
-        Movie Ticket History Here
-    </div>
-    <!-- Movie Ticket Order History End -->
-
-    <!-- Food and Beverages Order History -->
-    <div class="tab-pane fade" id="nav-fnb" role="tabpanel" aria-labelledby="nav-fnb-tab">
-        @if (Model.FnBOrders != null)
+<!-- Food and Beverages Order History -->
+@if (Model.FnBOrders != null)
+    {
+        foreach (var item in Model.FnBOrders)
         {
-            foreach (var item in Model.FnBOrders)
-            {
-                decimal totalPrice = 0;
-                <div class="mt-5 mb-3">
-                    <div class="row mb-3">
-                        <div class="col-md-9">Order ID : @item.FnBOrderID</div>
-                        <div class="col-md-3">Order Date : @item.OrderDate.ToString("dd-MMM-yyyy")</div>
-                    </div>
-                    @foreach (var details in Model._context.FnBOrderDetails.Where(fd => fd.OrderID == item.FnBOrderID).ToList())
-                    {
-                        List<string> img;
-                        ProductDetails ProductInfo = Model._context.ProductDetails.Find(details.ProductDetailID);
-                        Product productDesc = Model._context.Products.Find(ProductInfo.ProductID);
-                        if (!String.IsNullOrWhiteSpace(productDesc.ImageURL))
-                        {
-                            img = productDesc.ImageURL.Split(",").ToList();
-                        }
-                        else
-                        {
-                            img = new List<string>();
-                            img.Add("/assets/img/No-Image.png");
-                        }
-
-                        totalPrice += details.ProductPrice;
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="/assets/img/products/@img[0]" style="max-height:200px;max-width:300px;" />
-                            </div>
-                            <div class="col-md-8">
-                                <h5 class="mt-1">@Html.Raw(productDesc.ProductTitle + " (" + ProductInfo.Size + ")")</h5>
-                                <h6 class="mt-1">@Html.Raw("Price : RM" + details.ProductPrice)</h6>
-                                <h6 class="mt-1">@Html.Raw("Quantity : " + details.Quantity)</h6>
-                            </div>
-                        </div>
-                    }
-                    <div class="row">
-                        <div class="col-md-9">
-                            <p>Total Price</p>
-                        </div>
-                        <div class="col-md-3">RM @totalPrice</div>
-                    </div>
-                    <hr style="margin:0rem 0rem 1rem 0rem;background-color:#ffffff;" />
-                </div>
-
-            }
-        }
-
-        <!-- Food and Beverages Order History End -->
+            decimal totalPrice = 0;
+<div class="mt-5 mb-3">
+    <div class="row mb-3">
+        <div class="col-md-9">Order ID : @item.FnBOrderID</div>
+        <div class="col-md-3">Order Date : @item.OrderDate.ToString("dd-MMM-yyyy")</div>
     </div>
+    @foreach (var details in Model._context.FnBOrderDetails.Where(fd => fd.OrderID == item.FnBOrderID).ToList())
+                {
+                    List<string> img;
+                    ProductDetails ProductInfo = Model._context.ProductDetails.Find(details.ProductDetailID);
+                    Product productDesc = Model._context.Products.Find(ProductInfo.ProductID);
+                    if (!String.IsNullOrWhiteSpace(productDesc.ImageURL))
+                    {
+                        img = productDesc.ImageURL.Split(",").ToList();
+                    }
+                    else
+                    {
+                        img = new List<string>();
+                        img.Add("/assets/img/No-Image.png");
+                    }
+
+                    totalPrice += details.ProductPrice;
+
+    <div class="row">
+        <div class="col-md-4">
+            <img src="/assets/img/products/@img[0]" style="max-height:200px;max-width:300px;" />
+        </div>
+        <div class="col-md-8">
+            <h5 class="mt-1">@Html.Raw(productDesc.ProductTitle + " (" + ProductInfo.Size + ")")</h5>
+            <h6 class="mt-1">@Html.Raw("Price : RM" + details.ProductPrice)</h6>
+            <h6 class="mt-1">@Html.Raw("Quantity : " + details.Quantity)</h6>
+        </div>
+    </div>
+                }
+    <div class="row">
+        <div class="col-md-9">
+            <p>Total Price</p>
+        </div>
+        <div class="col-md-3">RM @totalPrice</div>
+    </div>
+    <hr style="margin:0rem 0rem 1rem 0rem;background-color:#ffffff;" />
 </div>
+
+        }
+    }
+<!-- Food and Beverages Order History End -->

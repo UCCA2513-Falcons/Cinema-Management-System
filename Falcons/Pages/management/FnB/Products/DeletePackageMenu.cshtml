@@ -1,0 +1,29 @@
+﻿@page
+@model Falcons.Pages.management.FnB.Products.DeletePackageMenuModel
+@{
+    ViewData["Title"] = "Delete Package Menu - Food and Beverages";
+}
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Menu.MenuID)
+    </dt>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Menu.PackageName)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Menu.MenuID)
+    </dd>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Menu.PackageName)
+    </dd>
+</dl>
+
+<div class="alert alert-danger" role="alert">
+    Continue proceed will delete this menu and the menu item related to it !
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="Menu.MenuID" />
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <a asp-page="./Index" class="btn btn-primary">Back to List</a>
+</form>
